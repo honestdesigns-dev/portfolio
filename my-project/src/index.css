@@ -1,0 +1,87 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #4b4b4b;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: top;
+  margin: 6% 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+}
+
+@font-face {
+  font-family: 'yaro';
+  /* Choose a descriptive name */
+  src: local('MyCustomFont'),
+    url('./src/fonts/yaro.ttf') format('truetype');
+  /* Update path and format */
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #000000;
+  }
+
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@keyframes gradient-xy {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hover-gradient-fill {
+  transition: all 0.3s ease;
+}
+
+.hover-gradient-fill:hover {
+  background: linear-gradient(270deg, #3b82f6, #8b5cf6, #ec4899, #f97316, #eab308);
+  background-size: 400% 400%;
+  animation: gradient-xy 3s ease infinite;
+  color: white;
+  border-color: transparent;
+}
