@@ -101,13 +101,13 @@ export default function Hero2() {
                     <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full border border-[#FF4D00] bg-[#FF4D00]/10 hover:bg-[#FF4D00]/20 transition-colors">Photo Editing</p>
                 </div>
             </div>
-            
+
             <div className="flex items-center justify-center gap-4">
                 <Link to="/uidesigns">UI/UX Design</Link>
                 <Link to="/motiondesigns">Motion Graphics</Link>
                 <Link to="/3ddesigns">3D Animation</Link>
             </div>
-           
+
         </section>
     )
 }

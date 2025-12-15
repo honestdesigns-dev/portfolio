@@ -62,7 +62,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col items-center justify-start pt-28 md:pt-32">
+        <section className="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col items-center justify-start pt-32 sm:pt-24 md:pt-6">
             <div className='text-center flex flex-col items-center justify-center gap-3 w-full'>
                 <div className="h-8 flex items-center justify-center"> {/* Fixed height container to prevent layout shift */}
                     <AnimatePresence mode="wait">
@@ -98,15 +98,15 @@ export default function Hero() {
                     <span className="inline-flex items-center">
                         <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[81px] lg:h-[64px] object-cover' src={htwo} alt="" />
                     </span>
-                    Design Startups
+                    Startups based
                 </h1>
 
                 <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
-                    based in Tamilnadu
+                    in Tamilnadu
                     <span className="inline-flex items-center">
                         <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[81px] lg:h-[64px] object-cover' src={ttre} alt="" />
                     </span>
-                    India
+                    Chennai
                 </h1>
 
                 <br className="hidden md:block" />

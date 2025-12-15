@@ -7,24 +7,29 @@ import UIDesigns from './projectslist/uidesigns';
 import MotionDesigns from './projectslist/motiondesigns';
 import ThreeDDesigns from './projectslist/3ddesigns';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CursorProvider } from './context/CursorContext';
+import Cursor from './components/Cursor';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={
-          <>
-            <Hero />
-            <Hero2 />
-          </>
-        } />
-        <Route path="/image-processing" element={<ImageProcessing />} />
-        <Route path="/uidesigns" element={<UIDesigns />} />
-        <Route path="/motiondesigns" element={<MotionDesigns />} />
-        <Route path="/3ddesigns" element={<ThreeDDesigns />} />
-      </Routes>
-    </BrowserRouter>
+    <CursorProvider>
+      <Cursor />
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Hero />
+              <Hero2 />
+            </>
+          } />
+          <Route path="/image-processing" element={<ImageProcessing />} />
+          <Route path="/uidesigns" element={<UIDesigns />} />
+          <Route path="/motiondesigns" element={<MotionDesigns />} />
+          <Route path="/3ddesigns" element={<ThreeDDesigns />} />
+        </Routes>
+      </BrowserRouter>
+    </CursorProvider>
   );
 }
 
