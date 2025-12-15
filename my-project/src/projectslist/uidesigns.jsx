@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import awalPlastics from "../assets/projects/awal.png";
 import acuite from "../assets/projects/acuite.jpg";
 import caretaker from "../assets/projects/caretaker.png";
-import ee from "../assets/projects/ee.png";
+// import ee from "../assets/projects/ee.png";
 // import eh from "../assets/projects/eh.png";
 import mist from "../assets/projects/mistnov.png";
 import ligma from "../assets/projects/ligma.png";
@@ -45,11 +45,11 @@ export default function Works() {
                                         <p className="text-sm text-gray-600">Social</p>
                                     </div>
                                 </a>
-                                <div className="bg-[#000000]/0 hover:bg-[#000000]/4 hover:scale-105 transition-all p-4 rounded-lg flex flex-col items-center justify-center gap-2">
+                                {/* <div className="bg-[#000000]/0 hover:bg-[#000000]/4 hover:scale-105 transition-all p-4 rounded-lg flex flex-col items-center justify-center gap-2">
                                     <img className="w-[400px] h-auto rounded-lg" src={ee} alt="" />
                                     <h2 className="text-2xl font-bold text-black">Excellent Education</h2>
                                     <p className="text-sm text-gray-600">University</p>
-                                </div>
+                                </div> */}
                                 {/* <div className="bg-[#000000]/0 hover:bg-[#000000]/4 hover:scale-105 transition-all p-4 rounded-lg flex flex-col items-center justify-center gap-2">
                                     <img className="w-[400px] h-auto rounded-lg" src={eh} alt="" />
                                     <h2 className="text-2xl font-bold text-black">Eh</h2>
