@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCursor } from "../context/CursorContext";
 import awalPlastics from "../assets/projects/awal.png";
-import acuite from "../assets/projects/acuite.jpg";
 import caretaker from "../assets/projects/caretaker.png";
 import eedu from "../assets/projects/eeducation.png";
 import ehos from "../assets/projects/ehospital.png";
@@ -76,13 +75,6 @@ export default function Works() {
                             <h2 className="text-2xl font-bold text-black">Mistnov</h2>
                             <p className="text-sm text-gray-600">Travel Booking</p>
                         </div>
-                    </a>
-                    <a href="">
-                    <div className="bg-[#000000]/0 hover:bg-[#000000]/4 p-4 rounded-lg hover:scale-105 transition-all flex flex-col items-center justify-center gap-2">
-                        <img className="w-[400px] h-[220px] rounded-lg" src={acuite} alt="" />
-                        <h2 className="text-2xl font-bold text-black">Acuite</h2>
-                        <p className="text-sm text-gray-600">Tax</p>
-                    </div>
                     </a>
                     <a href="https://www.behance.net/gallery/205963977/Sports-Reform-website-ui-design">
                         <div className="bg-[#000000]/0 hover:bg-[#000000]/4 p-4 rounded-lg hover:scale-105 transition-all flex flex-col items-center justify-center gap-2">
