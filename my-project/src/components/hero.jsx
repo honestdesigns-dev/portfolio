@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import Marquee from "react-fast-marquee";
 import ae from "../assets/ae.png"
 import ai from "../assets/ai.png"
 import ps from "../assets/ps.png"
@@ -8,79 +10,147 @@ import pr from "../assets/pr.png"
 import xd from "../assets/xd.png"
 import rush from "../assets/rush.png"
 import figma from "../assets/fig.png"
-import spline from "../assets/spline.png"
+import spline from "../assets/spline.png"   
 import creatie from "../assets/creatie.png"
 import blender from "../assets/blender.png"
 import react from "../assets/react.svg"
+import hone from "../assets/hone.svg"
+import htwo from "../assets/htwo.avif"
+import ttre from "../assets/ttre.avif"
 
 export default function Hero() {
-    const icons = [figma, ae, ai, ps, pr, xd, rush, spline, creatie, blender, react];
-    const [index, setIndex] = useState(0);
+    const [isTyping, setIsTyping] = useState(true);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setIndex((prev) => (prev + 1) % icons.length);
-        }, 1500);
+            setIsTyping((prev) => !prev);
+        }, 3000); // Toggle every 3 seconds (adjust based on text length + read time)
         return () => clearInterval(interval);
-    }, [icons.length]);
+    }, []);
+
+    const text = "Successfully Completed 10+ Projects";
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.05,
+                ease: "linear",
+            }
+        },
+        exit: {
+            opacity: 0,
+            transition: {
+                staggerChildren: 0.05,
+                staggerDirection: -1,
+                when: "afterChildren",
+                ease: "linear",
+            }
+        }
+    };
+
+    const childVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { duration: 0.1, ease: "linear" }
+        },
+        exit: {
+            opacity: 0,
+            transition: { duration: 0.1, ease: "linear" }
+        }
+    };
 
     return (
-        <section className="max-w-[1280px] h-screen mx-auto px-4 md:px-8">
-            <p className="text-base md:text-[20px] leading-relaxed">Highly driven UIUX Designer with 3+ years of hands-on experience in designing intuitive and scalable digital solutions for complex
-                enterprise systems (ERP and HRMS). Proven expertise in applying user-centered design principles to analyze target user needs, translate
-                research findings into optimized design solutions, and enhance product usability and satisfaction. I completed 10+projects with
-                the client's satisfaction.
-            </p><br className="hidden md:block" /><br className="hidden md:block" />
-            <h1 className="font-yaro text-5xl md:text-7xl lg:text-9xl text-black font-semibold flex flex-wrap items-center gap-4 md:gap-12 my-8 md:my-0">HONESTRAJ <span className="text-lg md:text-xl px-4 py-1.5 rounded-4xl bg-linear-to-r from-blue-500 to-pink-500 text-white">UIUX Designer</span>
-                <span className='h-[80px] w-20 bg-amber-200 overflow-hidden inline-flex items-center justify-center relative rounded-xl align-middle'>
-                    <AnimatePresence mode="popLayout">
-                        <motion.img
-                            key={index}
-                            src={icons[index]}
-                            initial={{ y: 80, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: -80, opacity: 0 }}
-                            transition={{ duration: 0.5, ease: "easeInOut" }}
-                            className='w-16 absolute'
-                            alt=""
-                        />
+        <section className="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col items-center justify-start">
+            <div className='text-center flex flex-col items-center justify-center gap-3 w-full'>
+                <div className="h-8 flex items-center justify-center"> {/* Fixed height container to prevent layout shift */}
+                    <AnimatePresence mode="wait">
+                        {isTyping && (
+                            <motion.h5
+                                key="text"
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                className="text-sm md:text-lg font-medium"
+                            >
+                                {text.split("").map((char, index) => (
+                                    <motion.span key={index} variants={childVariants}>
+                                        {char}
+                                    </motion.span>
+                                ))}
+                            </motion.h5>
+                        )}
                     </AnimatePresence>
-                </span>
-            </h1><br className="hidden md:block" /><br className="hidden md:block" />
+                </div>
 
-            <div className="flex flex-col md:flex-row gap-6 md:gap-12 bg-black p-6 md:p-4 items-center justify-between rounded-lg md:rounded-none">
-                <p className="text-white text-center md:text-left">Web Design</p>
-                <div className="w-full md:w-[160px] h-px bg-white/50 md:bg-white"></div>
-                <p className="text-white text-center md:text-left">Motion Graphic design</p>
-                <div className="w-full md:w-[160px] h-px bg-white/50 md:bg-white"></div>
-                <p className="text-white text-center md:text-left">3D Animation</p>
-                <div className="w-full md:w-[160px] h-px bg-white/50 md:bg-white"></div>
-                <p className="text-white text-center md:text-left">Visual Deign</p>
-            </div><br className="hidden md:block" /><br className="hidden md:block" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 md:mt-0">
-                <div className="flex flex-col gap-4 items-center md:items-start">
-                    <h6 className="text-1xl w-32 text-center font-medium text-gray-600 transition-colors px-2 py-1 border border-gray-300">Understand</h6>
-                    <p className="w-full md:w-[300px] text-center md:text-left">I begin by understanding your goals, brand identity, target audience, and project requirements. This helps set a clear direction from the start.</p>
-                </div>
-                <div className="flex flex-col gap-4 items-center md:items-start">
-                    <h6 className="text-1xl w-18 text-center font-medium text-gray-600 transition-colors px-2 py-1 border border-gray-300">Plan</h6>
-                    <p className="w-full md:w-[300px] text-center md:text-left">I analyze competitors, explore visual directions, and plan the structure. This ensures the creative output is purposeful and aligned with your objectives.</p>
-                </div>
-                <div className="flex flex-col gap-4 items-center md:items-start">
-                    <h6 className="text-1xl w-22 text-center font-medium text-gray-600 transition-colors px-2 py-1 border border-gray-300">Design</h6>
-                    <p className="w-full md:w-[300px] text-center md:text-left">I develop initial concepts, wireframes, moodboards, or storyboards depending on the project. This stage defines the visual language and overall approach.</p>
-                </div>
-                <div className="flex flex-col gap-4 items-center md:items-start">
-                    <h6 className="text-1xl w-22 text-center font-medium text-gray-600 transition-colors px-2 py-1 border border-gray-300">Refine</h6>
-                    <p className="w-full md:w-[300px] text-center md:text-left">You will receive previews or drafts for feedback. I refine details based on your inputs and ensure everything meets the quality benchmark.</p>
-                </div>
-                <div className="flex flex-col gap-4 items-center md:items-start">
-                    <h6 className="text-1xl w-22 text-center font-medium text-gray-600 transition-colors px-2 py-1 border border-gray-300">Deliver</h6>
-                    <p className="w-full md:w-[300px] text-center md:text-left">Once approved, I prepare optimized files, assets, or build-ready deliverables. I ensure a smooth handoff that works across platforms and devices..</p>
-                </div>
-                <div className="flex items-center justify-center md:justify-start">
-                    <h6 className="cursor-pointer text-1xl w-34 flex items-center justify-center h-10 text-center font-medium text-gray-600 transition-colors px-2 py-1 border border-gray-300 hover-gradient-fill">See Works <KeyboardArrowRightIcon /></h6>
-                </div>
+                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
+                    Effortless
+                    <span className="inline-flex items-center">
+                        <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[81px] lg:h-[64px] object-cover' src={hone} alt="" />
+                    </span>
+                    Design
+                </h1>
+
+                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
+                    for
+                    <span className="inline-flex items-center">
+                        <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[81px] lg:h-[64px] object-cover' src={htwo} alt="" />
+                    </span>
+                    Design Startups
+                </h1>
+
+                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
+                    based in Tamilnadu
+                    <span className="inline-flex items-center">
+                        <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[81px] lg:h-[64px] object-cover' src={ttre} alt="" />
+                    </span>
+                    India
+                </h1>
+
+                <br className="hidden md:block" />
+
+                <p className='text-base md:text-xl text-gray-600 w-full max-w-[600px] px-2'>
+                    We make it easy for startups to launch, grow, and scale with clean, conversion focused designs —no delays, no drama.
+                </p>
+
+                <button className='bg-[#FF4D00] shadow-lg shadow-[#FF4D00]/50 text-white px-5 py-3 md:px-6 rounded-full mt-4 flex items-center gap-2 text-sm md:text-base cursor-pointer hover:bg-[#e64600] transition-colors'>
+                    Get Started <NavigateNextIcon fontSize="small" />
+                </button>
+            </div>
+            <div className="w-full mt-8 md:mt-12 overflow-hidden">
+                <Marquee gradient={false} speed={40} pauseOnHover={true} className="py-4 overflow-visible">
+                    {[
+                        { src: figma, name: "Figma" },
+                        { src: ae, name: "Adobe After Effects" },
+                        { src: ai, name: "Adobe Illustrator" },
+                        { src: ps, name: "Adobe Photoshop" },
+                        { src: pr, name: "Adobe Premiere Pro" },
+                        { src: xd, name: "Adobe XD" },
+                        { src: rush, name: "Adobe Premiere Rush" },
+                        { src: creatie, name: "Creatie" },
+                        { src: blender, name: "Blender" },
+                        { src: spline, name: "Spline" },
+                        { src: react, name: "React" }
+                    ].map((tool, index) => (
+                        <div key={index} className="relative group mx-6 md:mx-10 cursor-pointer flex flex-col items-center justify-center pt-10">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none z-50">
+                                <div className="bg-black/80 backdrop-blur-sm text-white text-xs md:text-sm py-1.5 px-3 rounded-lg shadow-xl whitespace-nowrap">
+                                    {tool.name}
+                                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/80 rotate-45"></div>
+                                </div>
+                            </div>
+                            <motion.div
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                            >
+                                <img className='w-12 h-12 md:w-16 md:h-16 object-contain hover:grayscale-0 transition-all duration-300' src={tool.src} alt={tool.name} />
+                            </motion.div>
+                        </div>
+                    ))}
+                </Marquee>
             </div>
         </section>
     )

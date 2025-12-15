@@ -47,7 +47,7 @@ body {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #f0f0f0;
   }
 
   a:hover {
@@ -55,9 +55,6 @@ body {
   }
 
 
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 @keyframes gradient-xy {
