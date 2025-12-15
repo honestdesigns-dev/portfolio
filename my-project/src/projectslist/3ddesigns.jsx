@@ -8,7 +8,7 @@ export default function Works() {
     const { setCursorVariant } = useCursor();
     return (
         <section>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center pt-24 sm:pt-24 md:pt-6">
                 <Link to="/" className="flex items-center gap-2"><ArrowBackIcon /> Go Back</Link><br />
                 <div>
                     <h1 className="text-4xl md:text-6xl font-bold text-black text-center">My Casing</h1>
