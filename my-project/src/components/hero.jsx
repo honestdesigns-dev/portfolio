@@ -9,7 +9,7 @@ import pr from "../assets/pr.png"
 import xd from "../assets/xd.png"
 import rush from "../assets/rush.png"
 import figma from "../assets/fig.png"
-import spline from "../assets/spline.png"   
+import spline from "../assets/spline.png"
 import creatie from "../assets/creatie.png"
 import blender from "../assets/blender.png"
 import react from "../assets/react.svg"
@@ -62,7 +62,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col items-center justify-start">
+        <section className="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col items-center justify-start pt-28 md:pt-32">
             <div className='text-center flex flex-col items-center justify-center gap-3 w-full'>
                 <div className="h-8 flex items-center justify-center"> {/* Fixed height container to prevent layout shift */}
                     <AnimatePresence mode="wait">
@@ -112,7 +112,7 @@ export default function Hero() {
                 <br className="hidden md:block" />
 
                 <p className='text-base md:text-xl text-gray-600 w-full max-w-[600px] px-2'>
-                    We makes it easy for startups to launch, grow, and scale with clean, conversion focused designs —no delays, no drama.
+                    We make it easy for startups to launch, grow, and scale with clean, conversion focused designs —no delays, no drama.
                 </p>
 
                 <button className='bg-[#FF4D00] shadow-lg shadow-[#FF4D00]/50 text-white px-5 py-3 md:px-6 rounded-full mt-4 flex items-center gap-2 text-sm md:text-base cursor-pointer hover:bg-[#e64600] transition-colors'>
