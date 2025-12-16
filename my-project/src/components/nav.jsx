@@ -17,14 +17,14 @@ export default function Navigation() {
                 <div className="hidden md:flex gap-6 items-center">
                     <Link
                         to="/"
-                        className="text-lg w-24 text-center font-medium text-gray-600 transition-all duration-300 px-2 py-1 rounded-full hover:border-black hover:text-black hover:bg-white/50"
+                        className="text-base w-24 text-center font-medium text-gray-600 transition-all duration-300 px-2 py-1 rounded-full hover:border-black hover:text-black"
                     >
                         Home
                     </Link>
                     
                     <Link
                         to="/About"
-                        className="text-lg w-24 text-center font-medium text-gray-600 transition-all duration-300 px-2 py-1 rounded-full hover:border-black hover:text-black hover:bg-white/50"
+                        className="text-base w-24 text-center font-medium text-gray-600 transition-all duration-300 px-2 py-1 rounded-full hover:border-black hover:text-black"
                     >
                         About
                     </Link>

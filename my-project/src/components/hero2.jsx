@@ -94,11 +94,11 @@ export default function Hero2() {
             <div className="my-20 md:my-40 w-full max-w-[1280px] mx-auto px-4 md:px-8">
                 <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-gray-600 text-center leading-tight">“We help fast-moving digital startups build sharper brands and websites with clarity, speed, and zero friction."</h1>
                 <div className="mt-8 md:mt-12 flex flex-wrap items-center justify-center gap-3 md:gap-4">
-                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full border border-[#FF4D00] bg-[#FF4D00]/10 hover:bg-[#FF4D00]/20 transition-colors">Branding</p>
-                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full border border-[#FF4D00] bg-[#FF4D00]/10 hover:bg-[#FF4D00]/20 transition-colors">Animation</p>
-                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full border border-[#FF4D00] bg-[#FF4D00]/10 hover:bg-[#FF4D00]/20 transition-colors">Logo Design</p>
-                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full border border-[#FF4D00] bg-[#FF4D00]/10 hover:bg-[#FF4D00]/20 transition-colors">Video Editing</p>
-                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full border border-[#FF4D00] bg-[#FF4D00]/10 hover:bg-[#FF4D00]/20 transition-colors">Photo Editing</p>
+                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full hover:bg-[#FF4D00]/6 transition-colors flex items-center gap-2"> <GamesIcon fontSize="small"/> Branding</p>
+                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full hover:bg-[#FF4D00]/6 transition-colors flex items-center gap-2"> <GamesIcon fontSize="small"/> Animation</p>
+                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full hover:bg-[#FF4D00]/6 transition-colors flex items-center gap-2"> <GamesIcon fontSize="small"/> Logo Design</p>
+                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full hover:bg-[#FF4D00]/6 transition-colors flex items-center gap-2"> <GamesIcon fontSize="small"/> Video Editing</p>
+                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full hover:bg-[#FF4D00]/6 transition-colors flex items-center gap-2"> <GamesIcon fontSize="small"/> Photo Editing</p>
                 </div>
             </div>
 

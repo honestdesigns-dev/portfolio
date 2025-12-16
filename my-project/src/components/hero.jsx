@@ -13,8 +13,8 @@ import spline from "../assets/spline.png"
 import creatie from "../assets/creatie.png"
 import blender from "../assets/blender.png"
 import react from "../assets/react.svg"
-import hone from "../assets/hone.svg"
-import htwo from "../assets/htwo.avif"
+import designui from "../assets/designui.png"
+import htwo from "../assets/htwo.png"
 import ttre from "../assets/ttre.avif"
 
 export default function Hero() {
@@ -85,18 +85,18 @@ export default function Hero() {
                     </AnimatePresence>
                 </div>
 
-                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
+                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-center gap-2 md:gap-4'>
                     Effortless
                     <span className="inline-flex items-center">
-                        <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[81px] lg:h-[64px] object-cover' src={hone} alt="" />
+                        <img className='w-10 h-8 md:w-16 md:h-12 lg:w-[140px] lg:h-auto object-cover' src={designui} alt="" />
                     </span>
                     Design
                 </h1>
 
-                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
+                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-center gap-2 md:gap-4'>
                     for
                     <span className="inline-flex items-center">
-                        <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[81px] lg:h-[64px] object-cover' src={htwo} alt="" />
+                        <img className='w-10 h-8 md:w-16 md:h-12 lg:w-[160px] lg:h-auto object-cover' src={htwo} alt="" />
                     </span>
                     Startups based
                 </h1>
@@ -104,7 +104,7 @@ export default function Hero() {
                 <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
                     in Tamilnadu
                     <span className="inline-flex items-center">
-                        <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[81px] lg:h-[64px] object-cover' src={ttre} alt="" />
+                        <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[100px] lg:h-auto object-cover' src={ttre} alt="" />
                     </span>
                     Chennai
                 </h1>
@@ -119,7 +119,7 @@ export default function Hero() {
                     Get Started <NavigateNextIcon fontSize="small" />
                 </button>
             </div>
-            <div className="w-full mt-8 md:mt-12 overflow-hidden">
+            <div className="w-full mt-0 md:mt-2 overflow-hidden">
                 <Marquee gradient={false} speed={40} pauseOnHover={true} className="py-4 overflow-visible">
                     {[
                         { src: figma, name: "Figma" },
