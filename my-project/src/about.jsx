@@ -1,62 +1,54 @@
+import Me from "./assets/me.jpg";
+import Figma from "./assets/fig.png";
+import Ae from "./assets/ae.png";
+import Ai from "./assets/ai.png";
+import Ps from "./assets/ps.png";
+import Pr from "./assets/pr.png";
+import Xd from "./assets/xd.png";
+import Rush from "./assets/rush.png";
+import Creatie from "./assets/creatie.png";
+import Blender from "./assets/blender.png";
+import Spline from "./assets/spline.png";
+import ReactLogo from "./assets/react.svg";
+import Framer from "./assets/framer.png";
+
 export default function About() {
+    const skills = [
+        { src: Figma, name: "Figma" },
+        { src: Ae, name: "Adobe After Effects" },
+        { src: Ai, name: "Adobe Illustrator" },
+        { src: Ps, name: "Adobe Photoshop" },
+        { src: Pr, name: "Adobe Premiere Pro" },
+        { src: Xd, name: "Adobe XD" },
+        { src: Rush, name: "Adobe Premiere Rush" },
+        { src: Creatie, name: "Creatie" },
+        { src: Blender, name: "Blender" },
+        { src: Spline, name: "Spline" },
+        { src: ReactLogo, name: "React" },
+        { src: Framer, name: "Framer" }
+    ];
     return (
-        <div className="flex flex-col items-center justify-center">
-            <div>
-                <p className="text-sm text-center">Design's love</p>
-                <h1 className="text-4xl md:text-4xl font-bold text-black text-center">My Casing</h1>
-                <p className="mt-10 text-4xl md:text-4xl font-bold text-[#FF4D00] text-center">UIUX Design's</p>
-            </div>
-            <div
-                className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 cursor-none"
-                onMouseEnter={() => setCursorVariant("project")}
-                onMouseLeave={() => setCursorVariant("default")}
-            >
-                <div className="bg-[#000000]/0 hover:bg-[#000000]/4 p-4 rounded-lg hover:scale-105 transition-all flex flex-col items-center justify-center gap-2">
-                    <img className="w-[400px] h-auto rounded-lg" src={awalPlastics} alt="" />
-                    <h2 className="text-2xl font-bold text-black">Awal Plastics</h2>
-                    <p className="text-sm text-gray-600">ERP</p>
-                </div>
-                <div className="bg-[#000000]/0 hover:bg-[#000000]/4 hover:scale-105 transition-all p-4 rounded-lg flex flex-col items-center justify-center gap-2">
-                    <img className="w-[400px] h-[220px] rounded-lg" src={ligma} alt="" />
-                    <h2 className="text-2xl font-bold text-black">Ligma</h2>
-                    <p className="text-sm text-gray-600">ERP</p>
-                </div>
-                <div className="bg-[#000000]/0 hover:bg-[#000000]/4 hover:scale-105 transition-all p-4 rounded-lg flex flex-col items-center justify-center gap-2">
-                    <img className="w-[400px] h-auto rounded-lg" src={caretaker} alt="" />
-                    <h2 className="text-2xl font-bold text-black">Caretaker</h2>
-                    <p className="text-sm text-gray-600">Social</p>
-                </div>
-                <div className="bg-[#000000]/0 hover:bg-[#000000]/4 hover:scale-105 transition-all p-4 rounded-lg flex flex-col items-center justify-center gap-2">
-                    <img className="w-[400px] h-auto rounded-lg" src={ee} alt="" />
-                    <h2 className="text-2xl font-bold text-black">Excellent Education</h2>
-                    <p className="text-sm text-gray-600">University</p>
-                </div>
-                <div className="bg-[#000000]/0 hover:bg-[#000000]/4 hover:scale-105 transition-all p-4 rounded-lg flex flex-col items-center justify-center gap-2">
-                    <img className="w-[400px] h-auto rounded-lg" src={eh} alt="" />
-                    <h2 className="text-2xl font-bold text-black">Eh</h2>
-                    <p className="text-sm text-gray-600">Hospital</p>
-                </div>
-                <div className="bg-[#000000]/0 hover:bg-[#000000]/4 hover:scale-105 transition-all p-4 rounded-lg flex flex-col items-center justify-center gap-2">
-                    <img className="w-[400px] h-auto rounded-lg" src={mist} alt="" />
-                    <h2 className="text-2xl font-bold text-black">Mistnov</h2>
-                    <p className="text-sm text-gray-600">Travel Booking</p>
-                </div>
-                <div className="bg-[#000000]/0 hover:bg-[#000000]/4 p-4 rounded-lg hover:scale-105 transition-all flex flex-col items-center justify-center gap-2">
-                    <img className="w-[400px] h-auto rounded-lg" src={acuite} alt="" />
-                    <h2 className="text-2xl font-bold text-black">Acuite</h2>
-                    <p className="text-sm text-gray-600">Tax</p>
-                </div>
-                <div className="bg-[#000000]/0 hover:bg-[#000000]/4 p-4 rounded-lg hover:scale-105 transition-all flex flex-col items-center justify-center gap-2">
-                    <img className="w-[400px] h-auto rounded-lg" src={sports} alt="" />
-                    <h2 className="text-2xl font-bold text-black">Sports Reform</h2>
-                    <p className="text-sm text-gray-600">Sports</p>
-                </div>
-                <div className="bg-[#000000]/0 hover:bg-[#000000]/4 p-4 rounded-lg hover:scale-105 transition-all flex flex-col items-center justify-center gap-2">
-                    <img className="w-[400px] h-auto rounded-lg" src={taxquik} alt="" />
-                    <h2 className="text-2xl font-bold text-black">Tax Quick</h2>
-                    <p className="text-sm text-gray-600">Finace</p>
+        <section className="mt-24 flex flex-col md:flex-col items-center justify-center gap-10 max-w-[1280px] mx-auto p-6">
+            <img className="w-64 h-auto rounded-2xl object-cover" src={Me} alt="Profile" />
+            <div className="flex flex-col gap-4 max-w-xl text-center md:text-left">
+                <h1 className="text-4xl text-center font-bold text-black">Honestraj</h1>
+                <p className="text-base text-gray-600 text-center leading-relaxed">
+                    Highly driven <span className="text-[#FF4D00] font-bold">UI/UX Designer</span> with 3+ years of hands-on experience in designing intuitive and
+                    scalable digital solutions for complex enterprise systems [ERP]. Proven expertise in applying
+                    user-centered design principles to analyze target user needs, translate research findings into
+                    optimized design solutions, and enhance product usability and satisfaction. I completed
+                    10+ projects with the client's satisfaction.
+                </p>
+                <div className="flex flex-wrap items-center justify-center md:justify-center gap-6 mt-6">
+                    {skills.map((skill, index) => (
+                        <div key={index} className="flex flex-col items-center gap-2 group cursor-pointer transition-transform hover:-translate-y-1 duration-100">
+                            <div className="w-12 h-12 md:w-14 md:h-14 bg-white rounded-2xl border border-gray-100 p-2 flex items-center justify-center">
+                                <img src={skill.src} alt={skill.name} className="w-full h-full object-contain" />
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

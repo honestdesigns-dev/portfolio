@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import GamesIcon from '@mui/icons-material/Games';
 import { motion } from "framer-motion";
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 export default function Hero2() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -91,23 +92,22 @@ export default function Hero2() {
                     <GamesIcon fontSize="large" className="text-white mr-12" />
                 </div>
             </Marquee>
-            <div className="my-20 md:my-40 w-full max-w-[1280px] mx-auto px-4 md:px-8">
+            <div className="my-16 md:my-16 w-full max-w-[1280px] mx-auto px-4 md:px-8">
                 <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-gray-600 text-center leading-tight">“We help fast-moving digital startups build sharper brands and websites with clarity, speed, and zero friction."</h1>
                 <div className="mt-8 md:mt-12 flex flex-wrap items-center justify-center gap-3 md:gap-4">
-                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full hover:bg-[#FF4D00]/6 transition-colors flex items-center gap-2"> <GamesIcon fontSize="small"/> Branding</p>
-                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full hover:bg-[#FF4D00]/6 transition-colors flex items-center gap-2"> <GamesIcon fontSize="small"/> Animation</p>
-                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full hover:bg-[#FF4D00]/6 transition-colors flex items-center gap-2"> <GamesIcon fontSize="small"/> Logo Design</p>
-                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full hover:bg-[#FF4D00]/6 transition-colors flex items-center gap-2"> <GamesIcon fontSize="small"/> Video Editing</p>
-                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full hover:bg-[#FF4D00]/6 transition-colors flex items-center gap-2"> <GamesIcon fontSize="small"/> Photo Editing</p>
+                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full transition-colors flex items-center gap-2"> <GamesIcon fontSize="small" /> Branding</p>
+                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full transition-colors flex items-center gap-2"> <GamesIcon fontSize="small" /> Animation</p>
+                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full transition-colors flex items-center gap-2"> <GamesIcon fontSize="small" /> Logo Design</p>
+                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full transition-colors flex items-center gap-2"> <GamesIcon fontSize="small" /> Video Editing</p>
+                    <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full transition-colors flex items-center gap-2"> <GamesIcon fontSize="small" /> Photo Editing</p>
                 </div>
             </div>
 
-            <div className="flex items-center justify-center gap-4">
-                <Link to="/uidesigns">UI/UX Design</Link>
-                <Link to="/motiondesigns">Motion Graphics</Link>
-                <Link to="/3ddesigns">3D Animation</Link>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 px-4">
+                <Link className="bg-white text-black hover:text-white! hover:bg-black transition-colors duration-300 text-xl md:text-2xl p-2 md:p-3 w-full md:w-auto text-center" to="/uidesigns">UI/UX Design</Link>
+                <Link className="bg-white text-black hover:text-white! hover:bg-black transition-colors duration-300 text-xl md:text-2xl p-2 md:p-3 w-full md:w-auto text-center" to="/motiondesigns">Motion Graphics</Link>
+                <Link className="bg-white text-black hover:text-white! hover:bg-black transition-colors duration-300 text-xl md:text-2xl p-2 md:p-3 w-full md:w-auto text-center" to="/3ddesigns">3D Animation</Link>
             </div>
-
         </section>
     )
 }

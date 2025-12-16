@@ -61,13 +61,6 @@ export default function Navigation() {
                         Home
                     </Link>
                     <Link
-                        to="/works"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="text-xl font-medium text-gray-600 hover:text-black transition-colors"
-                    >
-                        Works
-                    </Link>
-                    <Link
                         to="/About"
                         onClick={() => setIsMenuOpen(false)}
                         className="text-xl font-medium text-gray-600 hover:text-black transition-colors"

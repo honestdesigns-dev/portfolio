@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Marquee from "react-fast-marquee";
 import ae from "../assets/ae.png"
 import ai from "../assets/ai.png"
@@ -115,9 +114,6 @@ export default function Hero() {
                     We make it easy for startups to launch, grow, and scale with clean, conversion focused designs —no delays, no drama.
                 </p>
 
-                <button className='bg-[#FF4D00] shadow-lg shadow-[#FF4D00]/50 text-white px-5 py-3 md:px-6 rounded-full mt-4 flex items-center gap-2 text-sm md:text-base cursor-pointer hover:bg-[#e64600] transition-colors'>
-                    Get Started <NavigateNextIcon fontSize="small" />
-                </button>
             </div>
             <div className="w-full mt-0 md:mt-2 overflow-hidden">
                 <Marquee gradient={false} speed={40} pauseOnHover={true} className="py-4 overflow-visible">
