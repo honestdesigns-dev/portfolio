@@ -10,6 +10,7 @@ import About from './about';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CursorProvider } from './context/CursorContext';
 import Cursor from './components/Cursor';
+import ContactForm from './components/mail';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/motiondesigns" element={<MotionDesigns />} />
           <Route path="/3ddesigns" element={<ThreeDDesigns />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<ContactForm />} />
         </Routes>
       </BrowserRouter>
     </CursorProvider>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Marquee from "react-fast-marquee";
+import HireMeForm from './mail';
 import ae from "../assets/ae.png"
 import ai from "../assets/ai.png"
 import ps from "../assets/ps.png"
@@ -18,6 +19,7 @@ import ttre from "../assets/ttre.avif"
 
 export default function Hero() {
     const [isTyping, setIsTyping] = useState(true);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -113,7 +115,12 @@ export default function Hero() {
                 <p className='text-base md:text-xl text-gray-600 w-full max-w-[600px] px-2'>
                     We make it easy for startups to launch, grow, and scale with clean, conversion focused designs —no delays, no drama.
                 </p>
-
+                <button onClick={() => setOpen(true)} className="hire-btn hover-gradient-fill px-4 py-2 bg-[#FF4D00] text-white cursor-pointer rounded-md mt-4">
+                    Hire Me
+                </button>
+                <AnimatePresence>
+                    {open && <HireMeForm key="hire-me-modal" onClose={() => setOpen(false)} />}
+                </AnimatePresence>
             </div>
             <div className="w-full mt-0 md:mt-2 overflow-hidden">
                 <Marquee gradient={false} speed={40} pauseOnHover={true} className="py-4 overflow-visible">

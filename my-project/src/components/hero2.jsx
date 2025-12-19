@@ -107,6 +107,10 @@ export default function Hero2() {
                 <Link className="bg-white text-black hover:text-white! hover:bg-black transition-colors duration-300 text-xl md:text-2xl p-2 md:p-3 w-full md:w-auto text-center" to="/uidesigns">UI/UX Design</Link>
                 <Link className="bg-white text-black hover:text-white! hover:bg-black transition-colors duration-300 text-xl md:text-2xl p-2 md:p-3 w-full md:w-auto text-center" to="/motiondesigns">Motion Graphics</Link>
                 <Link className="bg-white text-black hover:text-white! hover:bg-black transition-colors duration-300 text-xl md:text-2xl p-2 md:p-3 w-full md:w-auto text-center" to="/3ddesigns">3D Animation</Link>
+                <div>
+                    <img src="" alt="" />
+                    <h4>UI/UX Design</h4>
+                </div>
             </div>
         </section>
     )
