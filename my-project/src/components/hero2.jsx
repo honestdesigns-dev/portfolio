@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import GamesIcon from '@mui/icons-material/Games';
 import { motion } from "framer-motion";
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import uiux from "../assets/uid.jpg";
+import manime from "../assets/manime.jpg";
+import threeD from "../assets/3dd.jpg";
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 export default function Hero2() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -104,13 +107,39 @@ export default function Hero2() {
             </div>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 px-4">
-                <Link className="bg-white text-black hover:text-white! hover:bg-black transition-colors duration-300 text-xl md:text-2xl p-2 md:p-3 w-full md:w-auto text-center" to="/uidesigns">UI/UX Design</Link>
-                <Link className="bg-white text-black hover:text-white! hover:bg-black transition-colors duration-300 text-xl md:text-2xl p-2 md:p-3 w-full md:w-auto text-center" to="/motiondesigns">Motion Graphics</Link>
-                <Link className="bg-white text-black hover:text-white! hover:bg-black transition-colors duration-300 text-xl md:text-2xl p-2 md:p-3 w-full md:w-auto text-center" to="/3ddesigns">3D Animation</Link>
-                <div>
-                    <img src="" alt="" />
-                    <h4>UI/UX Design</h4>
+                <Link to="/uidesigns">
+                <div className="bg-white p-6 gap-4 flex flex-col items-start justify-center rounded-lg group cursor-pointer">
+                    <div className="overflow-hidden rounded-lg">
+                        <img className="w-[350px] h-[180px] object-cover transition-transform duration-300 group-hover:scale-110" src={uiux} alt="" />
+                    </div>
+                    <p className="flex items-center gap-2 font-medium">
+                        UI/UX Design
+                        <ArrowOutwardIcon className="transition-transform duration-300 group-hover:rotate-45" />
+                    </p>
                 </div>
+                </Link>
+                <Link to="/motiondesigns">
+                <div className="bg-white p-6 gap-4 flex flex-col items-start justify-center rounded-lg group cursor-pointer">
+                    <div className="overflow-hidden rounded-lg">
+                        <img className="w-[350px] h-[180px] object-cover transition-transform duration-300 group-hover:scale-110" src={manime} alt="" />
+                    </div>
+                    <p className="flex items-center gap-2 font-medium">
+                        Motion Graphics
+                        <ArrowOutwardIcon className="transition-transform duration-300 group-hover:rotate-45" />
+                    </p>
+                </div>
+                </Link>
+                <Link to="/3ddesigns">
+                <div className="bg-white p-6 gap-4 flex flex-col items-start justify-center rounded-lg group cursor-pointer">
+                    <div className="overflow-hidden rounded-lg ">
+                        <img className="w-[350px] h-[180px] object-cover transition-transform duration-300 group-hover:scale-110" src={threeD} alt="" />
+                    </div>
+                    <p className="flex items-center gap-2 font-medium">
+                        3D Animation
+                        <ArrowOutwardIcon className="transition-transform duration-300 group-hover:rotate-45" />
+                    </p>
+                </div>
+                </Link>
             </div>
         </section>
     )
