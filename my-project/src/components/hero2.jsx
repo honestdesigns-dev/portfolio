@@ -104,40 +104,43 @@ export default function Hero2() {
                     <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full transition-colors flex items-center gap-2"> <GamesIcon fontSize="small" /> Video Editing</p>
                     <p className="text-sm md:text-base font-bold text-[#FF4D00] text-center py-2 px-4 rounded-full transition-colors flex items-center gap-2"> <GamesIcon fontSize="small" /> Photo Editing</p>
                 </div>
-            </div>
+            </div> 
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 px-4">
                 <Link to="/uidesigns">
-                <div className="bg-white p-6 gap-4 flex flex-col items-start justify-center rounded-lg group cursor-pointer">
+                <div className="bg-transparent md:bg-white p-6 gap-4 flex flex-col items-start justify-center rounded-lg group cursor-pointer">
                     <div className="overflow-hidden rounded-lg">
                         <img className="w-[350px] h-[180px] object-cover transition-transform duration-300 group-hover:scale-110" src={uiux} alt="" />
                     </div>
-                    <p className="flex items-center gap-2 font-medium">
+                    <p className="flex items-center gap-2 font-medium group-hover:text-[#FF4D00]">
                         UI/UX Design
                         <ArrowOutwardIcon className="transition-transform duration-300 group-hover:rotate-45" />
                     </p>
+                    <p className="text-sm md:text-base text-gray-500 w-[350px]">I design intuitive, system-driven UI/UX solutions that simplify complex workflows while maintaining clarity and scalability.</p>
                 </div>
                 </Link>
                 <Link to="/motiondesigns">
-                <div className="bg-white p-6 gap-4 flex flex-col items-start justify-center rounded-lg group cursor-pointer">
+                <div className="bg-transparent md:bg-white p-6 gap-4 flex flex-col items-start justify-center rounded-lg group cursor-pointer">
                     <div className="overflow-hidden rounded-lg">
                         <img className="w-[350px] h-[180px] object-cover transition-transform duration-300 group-hover:scale-110" src={manime} alt="" />
                     </div>
-                    <p className="flex items-center gap-2 font-medium">
+                    <p className="flex items-center gap-2 font-medium group-hover:text-[#FF4D00]">
                         Motion Graphics
                         <ArrowOutwardIcon className="transition-transform duration-300 group-hover:rotate-45" />
                     </p>
+                    <p className="text-sm md:text-base text-gray-500 w-[350px]">My motion graphics focus on storytelling, smooth transitions, and visual flow to bring static designs to life.</p>
                 </div>
                 </Link>
                 <Link to="/3ddesigns">
-                <div className="bg-white p-6 gap-4 flex flex-col items-start justify-center rounded-lg group cursor-pointer">
-                    <div className="overflow-hidden rounded-lg ">
+                <div className="bg-transparent md:bg-white p-6 gap-4 flex flex-col items-start justify-center rounded-lg group cursor-pointer">
+                    <div className="overflow-hidden rounded-lg">
                         <img className="w-[350px] h-[180px] object-cover transition-transform duration-300 group-hover:scale-110" src={threeD} alt="" />
                     </div>
-                    <p className="flex items-center gap-2 font-medium">
+                    <p className="flex items-center gap-2 font-medium group-hover:text-[#FF4D00]">
                         3D Animation
                         <ArrowOutwardIcon className="transition-transform duration-300 group-hover:rotate-45" />
                     </p>
+                    <p className="text-sm md:text-base text-gray-500 w-[350px]">I create high-quality 3D animations that combine realistic modeling, lighting, and motion to visually.</p>
                 </div>
                 </Link>
             </div>
