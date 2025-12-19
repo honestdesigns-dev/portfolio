@@ -105,7 +105,7 @@ export default function Hero() {
                 <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
                     in Tamilnadu
                     <span className="inline-flex items-center">
-                        <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[100px] lg:h-auto object-cover' src={ttre} alt="" />
+                        <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[100px] lg:h-auto object-cover pointer-events-none' src={ttre} alt="" />
                     </span>
                     Chennai
                 </h1>
@@ -115,7 +115,7 @@ export default function Hero() {
                 <p className='text-base md:text-xl text-gray-600 w-full max-w-[600px] px-2'>
                     We make it easy for startups to launch, grow, and scale with clean, conversion focused designs —no delays, no drama.
                 </p>
-                <button onClick={() => setOpen(true)} className="hire-btn hover-gradient-fill px-4 py-2 bg-[#FF4D00] text-white cursor-pointer rounded-md mt-4">
+                <button onClick={() => setOpen(true)} className="hire-btn hover-gradient-fill px-4 py-2 bg-[#FF4D00] text-white font-medium cursor-pointer rounded-md mt-4">
                     Hire Me
                 </button>
                 <AnimatePresence>
@@ -123,7 +123,7 @@ export default function Hero() {
                 </AnimatePresence>
             </div>
             <div className="w-full mt-0 md:mt-2 overflow-hidden">
-                <Marquee gradient={false} speed={40} pauseOnHover={true} className="py-4 overflow-visible">
+                <Marquee gradient={false} speed={100} pauseOnHover={true} className="py-4 overflow-visible">
                     {[
                         { src: figma, name: "Figma" },
                         { src: ae, name: "Adobe After Effects" },
