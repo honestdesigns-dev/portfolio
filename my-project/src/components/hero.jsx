@@ -66,53 +66,42 @@ export default function Hero() {
         <section className="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col items-center justify-start pt-32 sm:pt-24 md:pt-6">
             <div className='text-center flex flex-col items-center justify-center gap-3 w-full'>
                 <div className="h-8 flex items-center justify-center"> {/* Fixed height container to prevent layout shift */}
-                    <AnimatePresence mode="wait">
-                        {isTyping && (
-                            <motion.h5
-                                key="text"
-                                variants={containerVariants}
-                                initial="hidden"
-                                animate="visible"
-                                exit="exit"
-                                className="text-sm md:text-lg font-medium"
-                            >
-                                {text.split("").map((char, index) => (
-                                    <motion.span key={index} variants={childVariants}>
-                                        {char}
-                                    </motion.span>
-                                ))}
-                            </motion.h5>
-                        )}
-                    </AnimatePresence>
+                    <RealisticTypewriter text="Successfully Completed 10+ Projects" />
                 </div>
+                <br />
+                <FlipHeading hiddenText="Pixel Perfect">
+                    <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-center gap-2 md:gap-4'>
+                        Designing
+                        <span className="inline-flex items-center">
+                            <img className='w-10 h-8 md:w-16 md:h-12 lg:w-[140px] lg:h-auto object-cover' src={designui} alt="" />
+                        </span>
+                        Scalable
+                    </h1>
+                </FlipHeading>
 
-                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-center gap-2 md:gap-4'>
-                    Effortless
-                    <span className="inline-flex items-center">
-                        <img className='w-10 h-8 md:w-16 md:h-12 lg:w-[140px] lg:h-auto object-cover' src={designui} alt="" />
-                    </span>
-                    Design
-                </h1>
+                <FlipHeading hiddenText="Scalable Growth">
+                    <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-center gap-2 md:gap-4'>
+                        <span className='text-stroke'>UX</span>
+                        <span className="inline-flex items-center">
+                            <img className='w-10 h-8 md:w-16 md:h-12 lg:w-[160px] lg:h-auto object-cover' src={htwo} alt="" />
+                        </span>
+                        for Startups
+                    </h1>
+                </FlipHeading>
 
-                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-center gap-2 md:gap-4'>
-                    for
-                    <span className="inline-flex items-center">
-                        <img className='w-10 h-8 md:w-16 md:h-12 lg:w-[160px] lg:h-auto object-cover' src={htwo} alt="" />
-                    </span>
-                    Startups based
-                </h1>
-
-                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
-                    in Tamilnadu
-                    <span className="inline-flex items-center">
-                        <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[100px] lg:h-auto object-cover pointer-events-none' src={ttre} alt="" />
-                    </span>
-                    Chennai
-                </h1>
+                <FlipHeading hiddenText="Global Reach">
+                    <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
+                        in Tamilnadu
+                        <span className="inline-flex items-center">
+                            <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[100px] lg:h-auto object-cover pointer-events-none' src={ttre} alt="" />
+                        </span>
+                        Chennai
+                    </h1>
+                </FlipHeading>
 
                 <br className="hidden md:block" />
 
-                <p className='text-base md:text-xl text-gray-600 w-full max-w-[600px] px-2'>
+                <p className='text-base md:text-xl text-gray-600 dark:text-gray-300 w-full max-w-[600px] px-2'>
                     We make it easy for startups to launch, grow, and scale with clean, conversion focused designs —no delays, no drama.
                 </p>
                 <button onClick={() => setOpen(true)} className="hire-btn hover-gradient-fill px-4 py-2 bg-[#FF4D00] text-white font-medium cursor-pointer rounded-md mt-4">
@@ -139,9 +128,9 @@ export default function Hero() {
                     ].map((tool, index) => (
                         <div key={index} className="relative group mx-6 md:mx-10 cursor-pointer flex flex-col items-center justify-center pt-10">
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none z-50">
-                                <div className="bg-black/80 backdrop-blur-sm text-white text-xs md:text-sm py-1.5 px-3 rounded-lg shadow-xl whitespace-nowrap">
+                                <div className="bg-black/80 dark:bg-white/90 backdrop-blur-sm text-white dark:text-black text-xs md:text-sm py-1.5 px-3 rounded-lg shadow-xl whitespace-nowrap">
                                     {tool.name}
-                                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/80 rotate-45"></div>
+                                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/80 dark:bg-white/90 rotate-45"></div>
                                 </div>
                             </div>
                             <motion.div
@@ -155,5 +144,77 @@ export default function Hero() {
                 </Marquee>
             </div>
         </section>
+    )
+}
+
+const RealisticTypewriter = ({ text, speed = 50, variance = 50 }) => {
+    const [displayedText, setDisplayedText] = useState("");
+
+    useEffect(() => {
+        let i = 0;
+        let timeout;
+
+        const typeChar = () => {
+            if (i < text.length) {
+                setDisplayedText(text.slice(0, i + 1));
+                i++;
+                const randomDelay = speed + (Math.random() * variance);
+                timeout = setTimeout(typeChar, randomDelay);
+            } else {
+                // Loop back after delay
+                timeout = setTimeout(() => {
+                    setDisplayedText("");
+                    i = 0;
+                    typeChar();
+                }, 3000)
+            }
+        };
+
+        typeChar();
+
+        return () => clearTimeout(timeout);
+    }, [text, speed, variance]);
+
+    return (
+        <span className="inline-block relative text-sm md:text-lg font-medium">
+            {displayedText}
+            <motion.span
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ repeat: Infinity, duration: 0.8 }}
+                className="inline-block w-[2px] h-[1em] bg-current ml-1 align-middle"
+            />
+        </span>
+    );
+};
+
+const FlipHeading = ({ children, hiddenText }) => {
+    return (
+        <motion.div
+            initial="initial"
+            whileHover="hovered"
+            className="relative block overflow-hidden cursor-pointer"
+        >
+            <motion.div
+                variants={{
+                    initial: { y: 0 },
+                    hovered: { y: "-100%" }
+                }}
+                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+            >
+                {children}
+            </motion.div>
+            <motion.div
+                className="absolute inset-0 flex items-center justify-center w-full h-full"
+                variants={{
+                    initial: { y: "100%" },
+                    hovered: { y: 0 }
+                }}
+                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+            >
+                <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-center gap-2 md:gap-4 text-[#FF4D00]'>
+                    {hiddenText}
+                </h1>
+            </motion.div>
+        </motion.div>
     )
 }

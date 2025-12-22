@@ -11,7 +11,7 @@ export default function Works() {
             <div className="flex flex-col items-center justify-center pt-24 sm:pt-24 md:pt-6">
                 <Link to="/" className="flex items-center gap-2"><ArrowBackIcon /> Go Back</Link><br />
                 <div>
-                    <h1 className="text-4xl md:text-6xl font-bold text-black text-center">My Casing</h1>
+                    <h1 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center">My Casing</h1>
                     <p className="mt-10 text-4xl md:text-4xl font-bold text-[#FF4D00] text-center">3D Animation</p>
                 </div>
                 <div
@@ -20,17 +20,17 @@ export default function Works() {
                     onMouseLeave={() => setCursorVariant("default")}
                 >
                     <a href="https://drive.google.com/file/d/1fvthm8s8gaUEzqzAE-cF-PADXcgndxEi/view?usp=sharing">
-                        <div className="bg-[#000000]/0 hover:bg-[#000000]/4 p-4 rounded-lg hover:scale-105 transition-all flex flex-col items-center justify-center gap-2">
+                        <div className="bg-[#000000]/0 hover:bg-[#000000]/4 dark:hover:bg-[#ffffff]/10 p-4 rounded-lg hover:scale-105 transition-all flex flex-col items-center justify-center gap-2">
                             <img className="w-[400px] h-auto rounded-lg" src={phoneix} alt="" />
-                            <h2 className="text-2xl font-bold text-black">Phoneix Bird</h2>
-                            <p className="text-sm text-gray-600">3D Animation</p>
+                            <h2 className="text-2xl font-bold text-black dark:text-white">Phoneix Bird</h2>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">3D Animation</p>
                         </div>
                     </a>
                     <a href="https://drive.google.com/file/d/1bY_IJ9-j5qRLcUO70GuiEmp907Z-wI4F/view?usp=sharing">
-                        <div className="bg-[#000000]/0 hover:bg-[#000000]/4 hover:scale-105 transition-all p-4 rounded-lg flex flex-col items-center justify-center gap-2">
+                        <div className="bg-[#000000]/0 hover:bg-[#000000]/4 dark:hover:bg-[#ffffff]/10 hover:scale-105 transition-all p-4 rounded-lg flex flex-col items-center justify-center gap-2">
                             <img className="w-[400px] h-[220px] rounded-lg" src={winter} alt="" />
-                            <h2 className="text-2xl font-bold text-black">Winter</h2>
-                            <p className="text-sm text-gray-600">3D Animation</p>
+                            <h2 className="text-2xl font-bold text-black dark:text-white">Winter</h2>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">3D Animation</p>
                         </div>
                     </a>
                 </div>

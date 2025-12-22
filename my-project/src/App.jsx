@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CursorProvider } from './context/CursorContext';
 import Cursor from './components/Cursor';
 import ContactForm from './components/mail';
+import ThreeDBtn from './components/3dbtn';
 
 function App() {
   return (

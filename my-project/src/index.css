@@ -18,10 +18,6 @@ a {
   text-decoration: inherit;
 }
 
-a:hover {
-  color: #4b4b4b;
-}
-
 body {
   display: flex;
   place-items: top;
@@ -55,7 +51,6 @@ body {
     color: #000000;
   }
 
-
 }
 
 @keyframes gradient-xy {
@@ -82,4 +77,9 @@ body {
   animation: gradient-xy 3s ease infinite;
   color: white;
   border-color: transparent;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px #000;
+  color: rgba(0, 0, 0, 0.2);
 }
