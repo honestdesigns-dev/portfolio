@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.svg";
-import resume from "../assets/HCV-F.pdf";
+import resume from "../assets/HonestcvUIUX.pdf";
 
 export default function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
