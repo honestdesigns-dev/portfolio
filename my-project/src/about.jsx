@@ -67,6 +67,11 @@ export default function About() {
                     company="Colan Infotech Pvt Ltd - Chennai"
                 />
                 <br /><hr />
+                <AwardItem
+                    title="Outstanding Performer & Lasting Contribution - Q4 2025"
+                    company="Colan Infotech Pvt Ltd - Chennai"
+                />
+                <br /><hr />
             </div>
         </section>
     )
