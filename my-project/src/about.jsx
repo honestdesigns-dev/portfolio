@@ -86,21 +86,18 @@ export default function About() {
     bio: true,
     skills: false,
     awards: false,
-    paint: false,
     terminal: false,
   });
   const [minimizedWindows, setMinimizedWindows] = useState({
     bio: false,
     skills: false,
     awards: false,
-    paint: false,
     terminal: false,
   });
   const [maximizedWindows, setMaximizedWindows] = useState({
     bio: false,
     skills: false,
     awards: false,
-    paint: false,
     terminal: false,
   });
   const [activeWindow, setActiveWindow] = useState("bio");
@@ -108,7 +105,6 @@ export default function About() {
     bio: 10,
     skills: 10,
     awards: 10,
-    paint: 10,
     terminal: 10,
   });
   const [highestZ, setHighestZ] = useState(10);
@@ -186,7 +182,7 @@ export default function About() {
   return (
     <section 
       ref={desktopRef}
-      className={`relative w-full h-[calc(100vh-140px)] md:h-[750px] max-w-[1280px] mx-auto mt-28 mb-16 overflow-hidden flex flex-col transition-all duration-300 border-4 border-black rounded-lg shadow-2xl p-0`}
+      className={`fixed md:relative w-full h-[calc(100vh-80px)] md:h-[750px] max-w-[1280px] mx-auto top-20 md:top-auto left-0 md:left-auto right-0 md:right-auto mt-0 md:mt-28 mb-0 md:mb-16 overflow-hidden flex flex-col transition-all duration-300 border-t-4 border-b-4 border-x-0 md:border-4 border-black rounded-none md:rounded-lg shadow-2xl p-0`}
       style={activeStyles.desktopStyle}
       onClick={() => setIsStartMenuOpen(false)}
     >
@@ -196,7 +192,7 @@ export default function About() {
       )}
 
       {/* DESKTOP WORKSPACE */}
-      <div className="flex-1 w-full p-6 relative flex flex-col md:flex-row flex-wrap content-start items-start justify-start gap-8 z-10 overflow-y-auto">
+      <div className="flex-1 w-full p-4 md:p-6 relative flex flex-row md:flex-col flex-wrap content-start items-start justify-start gap-4 md:gap-8 z-10 overflow-y-auto">
         
         {/* Desktop Folder Icons */}
         <DesktopIcon
@@ -218,10 +214,10 @@ export default function About() {
           onClick={() => openApp("awards")}
         />
         <DesktopIcon
-          label="Paint Board"
-          icon="🎨"
+          label="LinkedIn Profile"
+          icon="🔗"
           themeStyles={activeStyles}
-          onClick={() => openApp("paint")}
+          onClick={() => window.open("https://www.linkedin.com/in/honestraj-vijay/", "_blank")}
         />
         <DesktopIcon
           label="CLI Terminal"
@@ -360,19 +356,14 @@ export default function About() {
                 </p>
                 <div className="flex flex-col gap-2">
                   <AwardRegistryRow
-                    year="Q4 2024"
-                    title="Best Outstanding Performer"
-                    company="Colan Infotech Pvt Ltd"
+                    year="Quarter IV - March 2024"
+                    title="Outstanding Performance and Lasting Contribution"
+                    company="Colan Infotech Private Limited"
                   />
                   <AwardRegistryRow
-                    year="Q1 2025"
-                    title="Best Outstanding Performer"
-                    company="Colan Infotech Pvt Ltd"
-                  />
-                  <AwardRegistryRow
-                    year="Q4 2025"
-                    title="Outstanding & Lasting Contributor"
-                    company="Colan Infotech Pvt Ltd"
+                    year="Quarter I - July 2025"
+                    title="Solid Delivery Performance"
+                    company="Colan Infotech Private Limited"
                   />
                 </div>
               </div>
@@ -403,26 +394,7 @@ export default function About() {
             </div>
           </AnimateWindow>
 
-          {/* WINDOW 4: RETRO PAINT */}
-          <AnimateWindow
-            isOpen={openWindows.paint && !minimizedWindows.paint}
-            isMaximized={maximizedWindows.paint}
-            zIndex={zIndices.paint}
-            title="paint.exe"
-            winName="paint"
-            activeWindow={activeWindow}
-            activeStyles={activeStyles}
-            desktopRef={desktopRef}
-            focusWindow={focusWindow}
-            toggleMinimize={toggleMinimize}
-            toggleMaximize={toggleMaximize}
-            closeApp={closeApp}
-            initialX={300}
-            initialY={80}
-            width="440px"
-          >
-            <RetroPaint />
-          </AnimateWindow>
+
 
           {/* WINDOW 5: RETRO TERMINAL */}
           <AnimateWindow
@@ -516,13 +488,10 @@ export default function About() {
               <div className="p-4 bg-white text-black flex flex-col gap-4 font-mono text-[10px]">
                 <div className="flex flex-col gap-2">
                   <div className="border border-gray-300 p-2 bg-gray-50">
-                    <span className="font-bold text-[#FF4D00]">Q4 2024:</span> Best Outstanding Performer (Colan Infotech Pvt Ltd)
+                    <span className="font-bold text-[#FF4D00]">Quarter IV - March 2024:</span> Outstanding Performance and Lasting Contribution (Colan Infotech Private Limited)
                   </div>
                   <div className="border border-gray-300 p-2 bg-gray-50">
-                    <span className="font-bold text-[#FF4D00]">Q1 2025:</span> Best Outstanding Performer (Colan Infotech Pvt Ltd)
-                  </div>
-                  <div className="border border-gray-300 p-2 bg-gray-50">
-                    <span className="font-bold text-[#FF4D00]">Q4 2025:</span> Outstanding Performer & Lasting Contribution (Colan Infotech Pvt Ltd)
+                    <span className="font-bold text-[#FF4D00]">Quarter I - July 2025:</span> Solid Delivery Performance (Colan Infotech Private Limited)
                   </div>
                 </div>
                 <div className="border border-gray-400 p-2 rounded flex flex-col items-center bg-[#1a1c1e]">
@@ -533,18 +502,7 @@ export default function About() {
             </div>
           )}
 
-          {/* Mobile Tab 4: Paint */}
-          {openWindows.paint && (
-            <div className={`w-full overflow-hidden ${activeStyles.windowBg}`}>
-              <div className={activeStyles.windowTitle}>
-                <span>🎨 paint.exe</span>
-                <button onClick={(e) => closeApp("paint", e)} className={activeStyles.windowButton}>✕</button>
-              </div>
-              <div className="p-1 bg-[#f0f0f0]">
-                <RetroPaint />
-              </div>
-            </div>
-          )}
+
 
           {/* Mobile Tab 5: Terminal */}
           {openWindows.terminal && (
@@ -602,14 +560,7 @@ export default function About() {
                 🏆 awards.exe
               </button>
             )}
-            {openWindows.paint && (
-              <button
-                onClick={() => toggleMinimize("paint")}
-                className={minimizedWindows.paint ? activeStyles.inactiveTab : activeStyles.activeTab}
-              >
-                🎨 paint.exe
-              </button>
-            )}
+
             {openWindows.terminal && (
               <button
                 onClick={() => toggleMinimize("terminal")}
@@ -675,9 +626,9 @@ export default function About() {
                     onClick={() => { openApp("awards"); setIsStartMenuOpen(false); }}
                   />
                   <StartMenuLink
-                    icon="🎨"
-                    label="Paint Application"
-                    onClick={() => { openApp("paint"); setIsStartMenuOpen(false); }}
+                    icon="🔗"
+                    label="LinkedIn Profile"
+                    onClick={() => { window.open("https://www.linkedin.com/in/honestraj-vijay/", "_blank"); setIsStartMenuOpen(false); }}
                   />
                   <StartMenuLink
                     icon="📟"
@@ -1123,7 +1074,7 @@ const RetroTerminal = ({ activeTheme }) => {
       });
     } else if (cmd === "awards") {
       newHistory.push({
-        text: "AWARDS & CONTRIBUTIONS (Colan Infotech Pvt Ltd):\n- Best Outstanding Performer (Q4 2024)\n- Best Outstanding Performer (Q1 2025)\n- Outstanding Performer & Lasting Contribution (Q4 2025)",
+        text: "RECOGNITION & AWARDS (Colan Infotech Private Limited):\n- Outstanding Performance and Lasting Contribution (Quarter IV - March 2024)\n- Solid Delivery Performance (Quarter I - July 2025)",
         type: "output"
       });
     } else if (cmd === "neofetch") {

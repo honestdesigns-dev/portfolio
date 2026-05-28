@@ -168,7 +168,7 @@ export default function ViewResume() {
   return (
     <section 
       ref={desktopRef}
-      className={`relative w-full h-[calc(100vh-140px)] md:h-[750px] max-w-[1280px] mx-auto mt-28 mb-16 overflow-hidden flex flex-col transition-all duration-300 border-4 border-black rounded-lg shadow-2xl p-0`}
+      className={`fixed md:relative w-full h-[calc(100vh-80px)] md:h-[750px] max-w-[1280px] mx-auto top-20 md:top-auto left-0 md:left-auto right-0 md:right-auto mt-0 md:mt-28 mb-0 md:mb-16 overflow-hidden flex flex-col transition-all duration-300 border-t-4 border-b-4 border-x-0 md:border-4 border-black rounded-none md:rounded-lg shadow-2xl p-0`}
       style={activeStyles.desktopStyle}
       onClick={() => setIsStartMenuOpen(false)}
     >
@@ -178,7 +178,7 @@ export default function ViewResume() {
       )}
 
       {/* DESKTOP AREA */}
-      <div className="flex-1 w-full p-6 relative flex flex-col md:flex-row flex-wrap content-start items-start justify-start gap-8 z-10 overflow-y-auto">
+      <div className="flex-1 w-full p-4 md:p-6 relative flex flex-row md:flex-col flex-wrap content-start items-start justify-start gap-4 md:gap-8 z-10 overflow-y-auto">
         
         {/* Desktop Icons */}
         <DesktopIcon

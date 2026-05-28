@@ -36,6 +36,12 @@ export default function Navigation() {
                     >
                         Resume
                     </Link>
+                    <a
+                        href="mailto:honestdesigns0@gmail.com"
+                        className="bg-[#ffcc00] text-black border-2 border-black font-black uppercase text-[10px] tracking-widest py-1.5 px-4 text-center shadow-[2px_2px_0px_0px_#000] hover:scale-105 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rounded-md ml-2"
+                    >
+                        Hire
+                    </a>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -58,7 +64,7 @@ export default function Navigation() {
 
             {/* Mobile Menu Dropdown */}
             <div
-                className={`md:hidden absolute top-full left-0 right-0 bg-[#f2efe9] bg-grid border-b-4 border-black shadow-xl overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"}`}
+                className={`md:hidden absolute top-full left-0 right-0 bg-[#f2efe9] bg-grid border-b-4 border-black shadow-xl overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
             >
                 <div className="flex flex-col items-center gap-4 py-8">
                     <Link
@@ -82,6 +88,13 @@ export default function Navigation() {
                     >
                         Resume
                     </Link>
+                    <a
+                        href="mailto:honestdesigns0@gmail.com"
+                        onClick={() => setIsMenuOpen(false)}
+                        className="bg-[#ff4a7d] text-white border-2 border-black font-black uppercase text-xs tracking-widest py-3 px-6 text-center w-48 shadow-[3px_3px_0px_0px_#000] hover:scale-102 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rounded-md animate-pulse"
+                    >
+                        Hire Me
+                    </a>
                 </div>
             </div>
         </nav>

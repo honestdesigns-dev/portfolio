@@ -107,3 +107,85 @@ body {
   color: #3bdfd9;
   border-bottom: 2px solid #3bdfd9;
 }
+
+/* Web Preloader Glitch Effects */
+@keyframes glitch-skew {
+  0%, 100% { transform: skew(0deg); }
+  10% { transform: skew(-2deg); }
+  20% { transform: skew(4deg) scaleY(0.95); }
+  35% { transform: skew(-4deg); }
+  50% { transform: skew(2deg) scaleY(1.05); }
+  65% { transform: skew(0deg); }
+  75% { transform: skew(-3deg); }
+  90% { transform: skew(5deg) scaleY(0.98); }
+}
+
+.glitch-active {
+  position: relative;
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+  text-shadow: 0.05em 0 0 #ff0055, -0.05em -0.025em 0 #00ffcc, -0.025em 0.05em 0 #0000ff;
+}
+
+.glitch-active::before,
+.glitch-active::after {
+  content: "HONEST";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: white;
+}
+
+.glitch-active::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff0055;
+  clip-path: inset(40% 0 61% 0);
+  animation: glitch-anim-1 1.5s infinite linear alternate-reverse;
+}
+
+.glitch-active::after {
+  left: -2px;
+  text-shadow: -2px 0 #00ffcc, 2px 2px #ff0055;
+  clip-path: inset(25% 0 58% 0);
+  animation: glitch-anim-2 1.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(40% 0 30% 0); }
+  10% { clip-path: inset(5% 0 80% 0); }
+  20% { clip-path: inset(85% 0 2% 0); }
+  30% { clip-path: inset(20% 0 60% 0); }
+  40% { clip-path: inset(60% 0 10% 0); }
+  50% { clip-path: inset(90% 0 5% 0); }
+  60% { clip-path: inset(10% 0 75% 0); }
+  70% { clip-path: inset(45% 0 45% 0); }
+  80% { clip-path: inset(70% 0 20% 0); }
+  90% { clip-path: inset(15% 0 82% 0); }
+  100% { clip-path: inset(50% 0 35% 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(25% 0 58% 0); }
+  10% { clip-path: inset(60% 0 5% 0); }
+  20% { clip-path: inset(12% 0 78% 0); }
+  30% { clip-path: inset(90% 0 2% 0); }
+  40% { clip-path: inset(34% 0 45% 0); }
+  50% { clip-path: inset(8% 0 88% 0); }
+  60% { clip-path: inset(52% 0 22% 0); }
+  70% { clip-path: inset(78% 0 10% 0); }
+  80% { clip-path: inset(20% 0 65% 0); }
+  90% { clip-path: inset(68% 0 15% 0); }
+  100% { clip-path: inset(40% 0 50% 0); }
+}
+
+.crt-scanlines-preloader {
+  background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.2) 50%);
+  background-size: 100% 4px;
+}
+
+.terminal-green-text {
+  color: #39ff14;
+  text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+}

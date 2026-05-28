@@ -48,6 +48,7 @@ import trinity from "../assets/projects/trinity.png";
 // Project Preview Images - 3D
 import phoneix from "../assets/projects/phoneix.png";
 import winter from "../assets/projects/winter.png";
+import courtyardApocalypse from "../assets/projects/courtyard_apocalypse.mp3";
 
 // Themes Config
 const themeStyles = {
@@ -122,7 +123,6 @@ export default function Hero() {
         projects: false,
         winamp: false,
         settings: false,
-        paint: false,
         terminal: false,
         projDetail: false,
         gallery: false,
@@ -133,7 +133,6 @@ export default function Hero() {
         projects: false,
         winamp: false,
         settings: false,
-        paint: false,
         terminal: false,
         projDetail: false,
         gallery: false,
@@ -144,7 +143,6 @@ export default function Hero() {
         projects: false,
         winamp: false,
         settings: false,
-        paint: false,
         terminal: false,
         projDetail: false,
         gallery: false,
@@ -160,7 +158,6 @@ export default function Hero() {
         projects: 10,
         winamp: 10,
         settings: 10,
-        paint: 10,
         terminal: 10,
         projDetail: 12,
         gallery: 13,
@@ -261,7 +258,7 @@ export default function Hero() {
     return (
         <section
             ref={desktopRef}
-            className={`relative w-full h-[calc(100vh-140px)] md:h-[750px] max-w-[1280px] mx-auto mt-28 mb-16 overflow-hidden flex flex-col transition-all duration-300 border-4 border-black rounded-lg shadow-2xl p-0`}
+            className={`fixed md:relative w-full h-[calc(100vh-80px)] md:h-[750px] max-w-[1280px] mx-auto top-20 md:top-auto left-0 md:left-auto right-0 md:right-auto mt-0 md:mt-28 mb-0 md:mb-16 overflow-hidden flex flex-col transition-all duration-300 border-t-4 border-b-4 border-x-0 md:border-4 border-black rounded-none md:rounded-lg shadow-2xl p-0`}
             style={getResponsiveDesktopStyle()}
             onClick={() => setIsStartMenuOpen(false)}
         >
@@ -274,7 +271,7 @@ export default function Hero() {
             )}
 
             {/* DESKTOP WORKSPACE */}
-            <div className="flex-1 w-full p-6 relative flex flex-col md:flex-row flex-wrap content-start items-start justify-start gap-8 z-10 overflow-y-auto">
+            <div className="flex-1 w-full p-4 md:p-6 relative flex flex-row md:flex-col flex-wrap content-start items-start justify-start gap-4 md:gap-8 z-10 overflow-y-auto">
                 {/* Folder / File Icons */}
                 <DesktopIcon
                     label="welcome_readme.txt"
@@ -295,10 +292,10 @@ export default function Hero() {
                     onClick={() => openApp("winamp")}
                 />
                 <DesktopIcon
-                    label="honest_paint.exe"
-                    icon="🎨"
+                    label="linkedin_profile.lnk"
+                    icon="🔗"
                     themeStyles={activeStyles}
-                    onClick={() => openApp("paint")}
+                    onClick={() => window.open("https://www.linkedin.com/in/honestraj-vijay/", "_blank")}
                 />
                 <DesktopIcon
                     label="terminal_prompt.exe"
@@ -357,7 +354,7 @@ export default function Hero() {
                             <div className="flex flex-col gap-2 p-3 bg-gray-50 border border-gray-300 font-mono text-xs rounded mb-4">
                                 <div>🌐 SYSTEM CORE INFORMATION:</div>
                                 <div className="text-gray-600">Location: Chennai, India</div>
-                                <div className="text-gray-600">Primary Focus: ERP Systems, UI Prototyping, 3D Assets, Interaction Motion Flow</div>
+                                <div className="text-gray-600">Primary Focus: UI/UX Designs, Branding, Video Animation</div>
                                 <div className="text-gray-600">Active Workstation status: Online & Ready for start-ups</div>
                             </div>
 
@@ -517,26 +514,7 @@ export default function Hero() {
                         <SoundboardWinamp />
                     </AnimateWindow>
 
-                    {/* WINDOW 4: RETRO PAINT APPLICATION */}
-                    <AnimateWindow
-                        isOpen={openWindows.paint && !minimizedWindows.paint}
-                        isMaximized={maximizedWindows.paint}
-                        zIndex={zIndices.paint}
-                        title="paint.exe"
-                        winName="paint"
-                        activeWindow={activeWindow}
-                        activeStyles={activeStyles}
-                        desktopRef={desktopRef}
-                        focusWindow={focusWindow}
-                        toggleMinimize={toggleMinimize}
-                        toggleMaximize={toggleMaximize}
-                        closeApp={closeApp}
-                        initialX={180}
-                        initialY={180}
-                        width="440px"
-                    >
-                        <RetroPaint />
-                    </AnimateWindow>
+
 
                     {/* WINDOW 5: RETRO CMD TERMINAL PROMPT */}
                     <AnimateWindow
@@ -668,7 +646,7 @@ export default function Hero() {
                     {/* Mobile Folder Navigation */}
                     <div className={`p-4 ${activeStyles.windowBg} rounded text-black`}>
                         <div className="font-mono text-xs font-bold border-b border-gray-300 pb-2 mb-3">📁 Workstation Folder Explorer</div>
-                        <div className="grid grid-cols-3 gap-3">
+                        <div className="grid grid-cols-2 gap-3">
                             <button
                                 onClick={() => {
                                     setSelectedProjCat("uiux");
@@ -699,6 +677,15 @@ export default function Hero() {
                                 <span>📂</span>
                                 <span className="font-mono text-[10px] font-bold">3D Anim</span>
                             </button>
+                            <a
+                                href="https://www.linkedin.com/in/honestraj-vijay/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 p-2 bg-white border border-gray-300 rounded text-left active:scale-95 cursor-pointer no-underline text-black"
+                            >
+                                <span>🔗</span>
+                                <span className="font-mono text-[10px] font-bold">LinkedIn</span>
+                            </a>
                         </div>
                     </div>
 
@@ -793,18 +780,7 @@ export default function Hero() {
                         </div>
                     )}
 
-                    {/* Mobile Paint */}
-                    {openWindows.paint && (
-                        <div className={`w-full overflow-hidden ${activeStyles.windowBg}`}>
-                            <div className={activeStyles.windowTitle}>
-                                <span>🎨 honest_paint.exe</span>
-                                <button onClick={(e) => closeApp("paint", e)} className={activeStyles.windowButton}>✕</button>
-                            </div>
-                            <div className="bg-white">
-                                <RetroPaint />
-                            </div>
-                        </div>
-                    )}
+
 
                     {/* Mobile Settings */}
                     {openWindows.settings && (
@@ -882,14 +858,7 @@ export default function Hero() {
                                 📻 retro_winamp.exe
                             </button>
                         )}
-                        {openWindows.paint && (
-                            <button
-                                onClick={() => toggleMinimize("paint")}
-                                className={minimizedWindows.paint ? activeStyles.inactiveTab : activeStyles.activeTab}
-                            >
-                                🎨 paint.exe
-                            </button>
-                        )}
+
                         {openWindows.terminal && (
                             <button
                                 onClick={() => toggleMinimize("terminal")}
@@ -971,9 +940,9 @@ export default function Hero() {
                                         onClick={() => { openApp("winamp"); setIsStartMenuOpen(false); }}
                                     />
                                     <StartMenuLink
-                                        icon="🎨"
-                                        label="honest_paint.exe (Canvas)"
-                                        onClick={() => { openApp("paint"); setIsStartMenuOpen(false); }}
+                                        icon="🔗"
+                                        label="linkedin_profile.lnk"
+                                        onClick={() => { window.open("https://www.linkedin.com/in/honestraj-vijay/", "_blank"); setIsStartMenuOpen(false); }}
                                     />
                                     <StartMenuLink
                                         icon="📟"
@@ -1375,16 +1344,16 @@ const SoundboardWinamp = () => {
     const loopTimerRef = useRef(null);
     const gainNodeRef = useRef(null);
     const analyserRef = useRef(null);
+    const audioElRef = useRef(null);
+    const audioSourceRef = useRef(null);
 
-    const playlist = [
-        { title: "Honestraj - 8-Bit Chill Lofi", tempo: 110, scale: [220, 261.63, 293.66, 329.63, 392.00, 440] },
-        { title: "Dreamy Synthwave Arp Loop", tempo: 130, scale: [196, 220, 261.63, 329.63, 392.00, 523.25] },
-        { title: "Dither Workstation Melodies", tempo: 95, scale: [146.83, 164.81, 220, 261.63, 293.66, 329.63] }
-    ];
+    const [playlist, setPlaylist] = useState([
+        { title: "Courtyard Apocalypse", fileUrl: courtyardApocalypse, type: "file" }
+    ]);
 
-    // Start synthesizing simple 8-bit retro loops
-    const startSynthEngine = () => {
-        if (audioCtxRef.current) return;
+    // Initialize Web Audio Engine
+    const initAudioEngine = () => {
+        if (audioCtxRef.current) return audioCtxRef.current;
 
         const AudioContextClass = window.AudioContext || window.webkitAudioContext;
         const ctx = new AudioContextClass();
@@ -1398,13 +1367,22 @@ const SoundboardWinamp = () => {
         gainNode.gain.setValueAtTime(volume / 100, ctx.currentTime);
         gainNodeRef.current = gainNode;
 
-        // Route: Osc -> Gain -> Analyser -> Output
+        // Route: Gain -> Analyser -> Output
         gainNode.connect(analyser);
         analyser.connect(ctx.destination);
 
+        return ctx;
+    };
+
+    // Start synthesizing simple 8-bit retro loops
+    const startSynthEngine = (index = trackIndex) => {
+        const ctx = initAudioEngine();
+
+        if (loopTimerRef.current) return;
+
         // Play a basic synth melody loop
         let beatStep = 0;
-        const track = playlist[trackIndex];
+        const track = playlist[index];
         const beatDuration = 60 / track.tempo / 2; // eighth notes
 
         const playMelodyNote = () => {
@@ -1432,7 +1410,7 @@ const SoundboardWinamp = () => {
             oscGain.gain.exponentialRampToValueAtTime(0.001, time + beatDuration - 0.02);
 
             osc.connect(oscGain);
-            oscGain.connect(gainNode);
+            oscGain.connect(gainNodeRef.current);
             osc.start(time);
             osc.stop(time + beatDuration);
 
@@ -1448,7 +1426,7 @@ const SoundboardWinamp = () => {
                 bassGain.gain.exponentialRampToValueAtTime(0.001, time + beatDuration * 2 - 0.05);
 
                 bassOsc.connect(bassGain);
-                bassGain.connect(gainNode);
+                bassGain.connect(gainNodeRef.current);
                 bassOsc.start(time);
                 bassOsc.stop(time + beatDuration * 2);
             }
@@ -1460,25 +1438,59 @@ const SoundboardWinamp = () => {
         playMelodyNote();
     };
 
+    // Play uploaded/custom audio files
+    const startAudioFileEngine = (url) => {
+        const ctx = initAudioEngine();
+
+        if (ctx.state === "suspended") {
+            ctx.resume();
+        }
+
+        // Initialize Audio Element if not exists
+        if (!audioElRef.current) {
+            const audio = new Audio();
+            audio.crossOrigin = "anonymous";
+            audioElRef.current = audio;
+
+            const source = ctx.createMediaElementSource(audio);
+            audioSourceRef.current = source;
+            source.connect(gainNodeRef.current);
+
+            // Play next track automatically on end
+            audio.onended = () => {
+                changeTrack(1);
+            };
+        }
+
+        audioElRef.current.src = url;
+        audioElRef.current.play().catch((err) => {
+            console.warn("Audio playback failed to start:", err);
+        });
+    };
+
     const stopSynthEngine = () => {
         if (loopTimerRef.current) {
             clearTimeout(loopTimerRef.current);
             loopTimerRef.current = null;
         }
-        if (audioCtxRef.current) {
-            audioCtxRef.current.close();
-            audioCtxRef.current = null;
-        }
-        analyserRef.current = null;
     };
 
     const handlePlayToggle = () => {
+        const track = playlist[trackIndex];
         if (isPlaying) {
-            stopSynthEngine();
+            if (track.type === "file" && audioElRef.current) {
+                audioElRef.current.pause();
+            } else {
+                stopSynthEngine();
+            }
             setIsPlaying(false);
         } else {
-            startSynthEngine();
             setIsPlaying(true);
+            if (track.type === "file") {
+                startAudioFileEngine(track.fileUrl);
+            } else {
+                startSynthEngine(trackIndex);
+            }
         }
     };
 
@@ -1488,6 +1500,37 @@ const SoundboardWinamp = () => {
         if (gainNodeRef.current && audioCtxRef.current) {
             gainNodeRef.current.gain.setValueAtTime(val / 100, audioCtxRef.current.currentTime);
         }
+    };
+
+    const handleFileUpload = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const fileUrl = URL.createObjectURL(file);
+        const newTrack = {
+            title: file.name.replace(/\.[^/.]+$/, ""), // remove extension
+            fileUrl: fileUrl,
+            type: "file"
+        };
+
+        // Stop current playing track
+        if (audioElRef.current) {
+            audioElRef.current.pause();
+        }
+        stopSynthEngine();
+
+        setPlaylist((prev) => {
+            const nextPlaylist = [...prev, newTrack];
+            const newIndex = nextPlaylist.length - 1;
+            setTrackIndex(newIndex);
+
+            setIsPlaying(true);
+            setTimeout(() => {
+                startAudioFileEngine(fileUrl);
+            }, 100);
+
+            return nextPlaylist;
+        });
     };
 
     // Visualizer spectrum rendering animation
@@ -1578,25 +1621,43 @@ const SoundboardWinamp = () => {
     // Clean engine on unmount
     useEffect(() => {
         return () => {
-            stopSynthEngine();
+            if (loopTimerRef.current) {
+                clearTimeout(loopTimerRef.current);
+            }
+            if (audioElRef.current) {
+                audioElRef.current.pause();
+                audioElRef.current = null;
+            }
+            if (audioCtxRef.current) {
+                audioCtxRef.current.close();
+                audioCtxRef.current = null;
+            }
         };
     }, []);
 
     const changeTrack = (direction) => {
-        const nextIdx = (trackIndex + direction + playlist.length) % playlist.length;
-        setTrackIndex(nextIdx);
-        if (isPlaying) {
+        setTrackIndex((prevIndex) => {
+            const nextIdx = (prevIndex + direction + playlist.length) % playlist.length;
+
+            // Stop current playing
+            if (audioElRef.current) {
+                audioElRef.current.pause();
+            }
             stopSynthEngine();
-            // Short delay before rebooting oscillator
-            setTimeout(() => {
-                setIsPlaying(true);
-                // Ensure new audio Context starts immediately
-                const ctx = audioCtxRef.current;
-                if (!ctx) {
-                    startSynthEngine();
-                }
-            }, 100);
-        }
+
+            if (isPlaying) {
+                // Short delay before rebooting oscillator/playback
+                setTimeout(() => {
+                    const nextTrack = playlist[nextIdx];
+                    if (nextTrack.type === "file") {
+                        startAudioFileEngine(nextTrack.fileUrl);
+                    } else {
+                        startSynthEngine(nextIdx);
+                    }
+                }, 100);
+            }
+            return nextIdx;
+        });
     };
 
     return (
@@ -1606,14 +1667,18 @@ const SoundboardWinamp = () => {
                 <div className="flex justify-between items-center text-gray-400 text-[8px] uppercase tracking-wide">
                     <span>Track #{trackIndex + 1}</span>
                     <span className="text-[#39ff14] animate-pulse">
-                        {isPlaying ? "● PLAYING CHIPTUNE" : "■ STOPPED"}
+                        {isPlaying
+                            ? (playlist[trackIndex]?.type === "file" ? "● PLAYING AUDIO" : "● PLAYING CHIPTUNE")
+                            : "■ STOPPED"}
                     </span>
                 </div>
                 <div className="text-white text-xs font-bold truncate leading-tight select-text">
-                    {playlist[trackIndex].title}
+                    {playlist[trackIndex]?.title}
                 </div>
                 <div className="text-[9px] text-[#39ff14]/70 mt-0.5">
-                    Tempo: {playlist[trackIndex].tempo} BPM // Synth Wave
+                    {playlist[trackIndex]?.type === "file"
+                        ? (playlist[trackIndex]?.title === "Courtyard Apocalypse" ? "Source: OST Track // 44.1 kHz Stereo" : "Source: Local File // Stereo Channel")
+                        : `Tempo: ${playlist[trackIndex]?.tempo} BPM // Synth Wave`}
                 </div>
             </div>
 
@@ -1654,6 +1719,22 @@ const SoundboardWinamp = () => {
                     >
                         ▶▶
                     </button>
+                    {/* Eject / Load Custom File */}
+                    <label
+                        htmlFor="winamp-file-upload"
+                        className="px-2.5 py-1 bg-black/40 hover:bg-[#39ff14] hover:text-black text-white border border-gray-800 rounded font-bold cursor-pointer transition-colors active:scale-95 text-[9px] flex items-center justify-center gap-1"
+                        title="Load Custom MP3/Audio File"
+                    >
+                        <span>⏏</span>
+                        <span>LOAD</span>
+                    </label>
+                    <input
+                        type="file"
+                        id="winamp-file-upload"
+                        accept="audio/*"
+                        onChange={handleFileUpload}
+                        className="hidden"
+                    />
                 </div>
 
                 {/* Volume controls */}
@@ -1673,7 +1754,9 @@ const SoundboardWinamp = () => {
             </div>
 
             <div className="text-[8px] text-gray-500 text-center font-mono leading-relaxed mt-1">
-                🔊 GENERATED DYNAMICALLY USING WEB AUDIO OSCILLATORS. NO STATIC FILES REQUIRED.
+                {playlist[trackIndex]?.type === "file"
+                    ? "🎵 PLAYING CUSTOM AUDIO FILE VIA WEB AUDIO API DECODE & SPECTRAL ANALYSER."
+                    : "🔊 GENERATED DYNAMICALLY USING WEB AUDIO OSCILLATORS. NO STATIC FILES REQUIRED."}
             </div>
         </div>
     );
