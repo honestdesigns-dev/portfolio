@@ -277,7 +277,7 @@ export default function About() {
                   JOB_TITLE: <span className="text-[#FF4D00] font-black">UI/UX PRODUCT DESIGNER</span>
                 </div>
                 <p className="mb-3 text-xs md:text-sm">
-                  Highly driven <span className="text-[#FF4D00] font-bold font-mono">UI/UX Designer</span> with 3+ years of experience in designing intuitive and scalable digital solutions for complex enterprise systems [ERP].
+                  Highly driven <span className="text-[#FF4D00] font-bold font-mono">UI/UX Designer</span> with 4+ years of experience in designing intuitive and scalable digital solutions for complex enterprise systems [ERP].
                 </p>
                 <p className="text-xs md:text-sm">
                   Expert at translating intricate user needs into neat, satisfying interfaces that elevate system usability. I have successfully driven 10+ projects with absolute client satisfaction.
@@ -285,7 +285,7 @@ export default function About() {
                 <div className="mt-4 border border-dashed border-gray-400 p-2.5 bg-gray-50 font-mono text-[10px] leading-normal text-gray-600 rounded">
                   📌 WORKSTATION CORE: <br />
                   - Chennai, India <br />
-                  - Systems architect for Colan Infotech Pvt Ltd <br />
+                  - UI/UX Product Designer for <a href="https://colaninfotech.com/" target="_blank" rel="noopener noreferrer" className="text-[#FF4D00] font-bold font-mono underline hover:text-blue-600 transition-colors">Colan Infotech Pvt Ltd</a> <br />
                   - Passionate about creative scripting & motion flows.
                 </div>
               </div>

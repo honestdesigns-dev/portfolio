@@ -87,14 +87,6 @@ export default function Works() {
                             <p className="text-sm text-gray-600 dark:text-gray-300">Medical Insurance</p>
                         </div>
                     </a>
-                    <Link to="/image-processing" onMouseEnter={() => setCursorVariant("link")} onMouseLeave={() => setCursorVariant("default")} className="hover:cursor-none">
-                        <div className="bg-[#000000]/0 hover:bg-[#000000]/4 dark:hover:bg-[#ffffff]/10 p-4 rounded-lg hover:scale-105 transition-all flex flex-col items-center justify-center gap-2">
-                            <img className="w-[400px] h-[220px] rounded-lg" src={Imageprocessing} alt="" />
-                            <h2 className="text-2xl font-bold text-black dark:text-white">Image Processing</h2>
-                            <p className="text-sm text-gray-600 dark:text-gray-300">AI & Machine Learning</p>
-                        </div>
-                    </Link>
-
                 </div>
             </div>
 

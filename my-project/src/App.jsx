@@ -21,12 +21,7 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route path="/" element={
-            <>
-              <Hero />
-              <Hero2 />
-            </>
-          } />
+          <Route path="/" element={<Hero />} />
           <Route path="/image-processing" element={<ImageProcessing />} />
           <Route path="/uidesigns" element={<UIDesigns />} />
           <Route path="/motiondesigns" element={<MotionDesigns />} />
