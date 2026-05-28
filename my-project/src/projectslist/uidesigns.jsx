@@ -9,6 +9,7 @@ import ligma from "../assets/projects/ligma.png";
 import sports from "../assets/projects/sportsref.png";
 import Imageprocessing from "../assets/projects/imageprocessing.png";
 import kuvi from "../assets/projects/kuvi.png";
+import qodora from "../assets/projects/Qodora.png";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function Works() {
@@ -77,6 +78,13 @@ export default function Works() {
                             <img className="w-[400px] h-[220px] rounded-lg" src={sports} alt="" />
                             <h2 className="text-2xl font-bold text-black dark:text-white">Sports Reform</h2>
                             <p className="text-sm text-gray-600 dark:text-gray-300">Sports</p>
+                        </div>
+                    </a>
+                    <a href="https://www.figma.com/proto/96NaXwVxNbHTitsOmLXaj0/Clemens?page-id=0%3A1&node-id=7-46&t=Du7VHba3ZZxyLNxO-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=7%3A46&hide-ui=1" onMouseEnter={() => setCursorVariant("link")} onMouseLeave={() => setCursorVariant("default")} className="hover:cursor-none" target="_blank" rel="noopener noreferrer">
+                        <div className="bg-[#000000]/0 hover:bg-[#000000]/4 dark:hover:bg-[#ffffff]/10 p-4 rounded-lg hover:scale-105 transition-all flex flex-col items-center justify-center gap-2">
+                            <img className="w-[400px] h-[220px] rounded-lg" src={qodora} alt="" />
+                            <h2 className="text-2xl font-bold text-black dark:text-white">Qodora</h2>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">Medical Insurance</p>
                         </div>
                     </a>
                     <Link to="/image-processing" onMouseEnter={() => setCursorVariant("link")} onMouseLeave={() => setCursorVariant("default")} className="hover:cursor-none">

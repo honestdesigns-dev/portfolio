@@ -14,6 +14,11 @@ import creatie from "../assets/creatie.png"
 import blender from "../assets/blender.png"
 import react from "../assets/react.svg"
 import designui from "../assets/designui.png"
+import cartoonPencil from "../assets/cartoon_pencil.png"
+import cartoonPaintPen from "../assets/cartoon_paint_pen.png"
+import cartoonEraser from "../assets/cartoon_eraser.png"
+import cartoonPaintTool from "../assets/cartoon_paint_tool.png"
+import cartoonRuler from "../assets/cartoon_ruler.png"
 import htwo from "../assets/htwo.png"
 import ttre from "../assets/ttre.avif"
 
@@ -63,86 +68,131 @@ export default function Hero() {
     };
 
     return (
-        <section className="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col items-center justify-start pt-32 sm:pt-24 md:pt-6">
-            <div className='text-center flex flex-col items-center justify-center gap-3 w-full'>
-                <div className="h-8 flex items-center justify-center"> {/* Fixed height container to prevent layout shift */}
-                    <RealisticTypewriter text="Successfully Completed 10+ Projects" />
-                </div>
-                <br />
-                <FlipHeading hiddenText="Pixel Perfect">
-                    <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-center gap-2 md:gap-4'>
-                        Designing
-                        <span className="inline-flex items-center">
-                            <img className='w-10 h-8 md:w-16 md:h-12 lg:w-[140px] lg:h-auto object-cover' src={designui} alt="" />
-                        </span>
-                        Scalable
-                    </h1>
-                </FlipHeading>
-
-                <FlipHeading hiddenText="Scalable Growth">
-                    <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-center gap-2 md:gap-4'>
-                        <span className='text-stroke'>UX</span>
-                        <span className="inline-flex items-center">
-                            <img className='w-10 h-8 md:w-16 md:h-12 lg:w-[160px] lg:h-auto object-cover' src={htwo} alt="" />
-                        </span>
-                        for Startups
-                    </h1>
-                </FlipHeading>
-
-                <FlipHeading hiddenText="Global Reach">
-                    <h1 className='font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-wrap justify-center items-end gap-2 md:gap-4'>
-                        in Tamilnadu
-                        <span className="inline-flex items-center">
-                            <img className='rounded-full w-10 h-8 md:w-16 md:h-12 lg:w-[100px] lg:h-auto object-cover pointer-events-none' src={ttre} alt="" />
-                        </span>
-                        Chennai
-                    </h1>
-                </FlipHeading>
-
-                <br className="hidden md:block" />
-
-                <p className='text-base md:text-xl text-gray-600 dark:text-gray-300 w-full max-w-[600px] px-2'>
-                    We make it easy for startups to launch, grow, and scale with clean, conversion focused designs —no delays, no drama.
-                </p>
-                <button onClick={() => setOpen(true)} className="hire-btn hover-gradient-fill px-4 py-2 bg-[#FF4D00] text-white font-medium cursor-pointer rounded-md mt-4">
-                    Hire Me
-                </button>
-                <AnimatePresence>
-                    {open && <HireMeForm key="hire-me-modal" onClose={() => setOpen(false)} />}
-                </AnimatePresence>
-            </div>
-            <div className="w-full mt-0 md:mt-2 overflow-hidden">
-                <Marquee gradient={false} speed={100} pauseOnHover={true} className="py-4 overflow-visible">
-                    {[
-                        { src: figma, name: "Figma" },
-                        { src: ae, name: "Adobe After Effects" },
-                        { src: ai, name: "Adobe Illustrator" },
-                        { src: ps, name: "Adobe Photoshop" },
-                        { src: pr, name: "Adobe Premiere Pro" },
-                        { src: xd, name: "Adobe XD" },
-                        { src: rush, name: "Adobe Premiere Rush" },
-                        { src: creatie, name: "Creatie" },
-                        { src: blender, name: "Blender" },
-                        { src: spline, name: "Spline" },
-                        { src: react, name: "React" }
-                    ].map((tool, index) => (
-                        <div key={index} className="relative group mx-6 md:mx-10 cursor-pointer flex flex-col items-center justify-center pt-10">
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none z-50">
-                                <div className="bg-black/80 dark:bg-white/90 backdrop-blur-sm text-white dark:text-black text-xs md:text-sm py-1.5 px-3 rounded-lg shadow-xl whitespace-nowrap">
-                                    {tool.name}
-                                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/80 dark:bg-white/90 rotate-45"></div>
-                                </div>
-                            </div>
-                            <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            >
-                                <img className='w-12 h-12 md:w-16 md:h-16 object-contain hover:grayscale-0 transition-all duration-300' src={tool.src} alt={tool.name} />
-                            </motion.div>
-                        </div>
-                    ))}
+        <section className="w-full flex flex-col items-center justify-start pt-[72px]">
+            {/* Top White Marquee Section */}
+            <div className="w-full bg-white text-black py-4 border-b-4 border-black z-20 relative">
+                <Marquee gradient={false} speed={50}>
+                    <div className="flex items-center gap-12 font-black text-sm uppercase tracking-widest px-6">
+                        <span>Portfolio Design Exploration</span>
+                        <img 
+                            src={cartoonPencil} 
+                            alt="Cartoon Pencil" 
+                            className="h-10 w-10 object-contain drop-shadow-md"
+                        />
+                        <span>Digital Brand & Product Designer</span>
+                        <img 
+                            src={cartoonPaintPen} 
+                            alt="Paint Pen" 
+                            className="h-10 w-10 object-contain drop-shadow-md"
+                        />
+                        <span>Creative Design Loop</span>
+                        <img 
+                            src={cartoonEraser} 
+                            alt="Eraser" 
+                            className="h-10 w-10 object-contain drop-shadow-md"
+                        />
+                        <span>Seamless UI/UX</span>
+                        <img 
+                            src={cartoonPaintTool} 
+                            alt="Paint Palette" 
+                            className="h-10 w-10 object-contain drop-shadow-md"
+                        />
+                        <span>Scalable Businesses</span>
+                        <img 
+                            src={cartoonRuler} 
+                            alt="Ruler" 
+                            className="h-10 w-10 object-contain drop-shadow-md"
+                        />
+                    </div>
                 </Marquee>
             </div>
+
+            {/* Top Black Section */}
+            <div className="w-full bg-black flex flex-col items-center pt-10 pb-16 px-4 md:px-8 relative z-10 border-t-4 border-black">
+                <div className="max-w-[1280px] w-full flex flex-col items-start gap-8">
+                    <h1 className='font-black text-6xl md:text-[9rem] leading-none text-[#f2efe9] uppercase w-full text-center tracking-tighter'>
+                        Product Designer
+                    </h1>
+                    <div className="w-full flex flex-col md:flex-row justify-between items-start gap-8 text-[#f2efe9] text-sm md:text-base font-medium max-w-4xl mx-auto mt-8">
+                        <p className="max-w-xs">
+                            I'm currently orchestrating experiences for fast-moving startups and scalable businesses.
+                        </p>
+                        <p className="max-w-xs">
+                            I'm a passionate designer with many years of experience who uses research, data, and thoughtful design to create delightful products that scale.
+                        </p>
+                        <button onClick={() => setOpen(true)} className="neo-button">
+                            Get In Touch ➔
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Bottom Grid Section with Stickers */}
+            <div className="w-full bg-grid relative overflow-hidden min-h-[600px] flex items-center justify-center border-t-4 border-black">
+                {/* Center Portrait Placeholder */}
+                <div className="relative z-20 h-full flex items-end justify-center pt-10">
+                    <img src={designui} alt="Profile" className="h-[300px] md:h-[400px] w-auto object-cover grayscale mix-blend-multiply" />
+                </div>
+
+                {/* Stickers */}
+                <div className="absolute top-[5%] md:top-1/4 left-[10%] md:left-[20%] -translate-x-1/2 -rotate-12 bg-[#3bdfd9] text-black px-6 py-4 rounded-full neo-sticker text-center z-30 scale-[0.55] md:scale-100 origin-center">
+                    <p className="text-xl leading-tight">DESIGN</p>
+                    <p className="text-xl leading-tight">STRATEGY</p>
+                    <p className="text-[10px] tracking-wider mt-1">ALIGNING BUSINESS</p>
+                    <p className="text-[10px] tracking-wider">& USER NEEDS</p>
+                </div>
+
+                <div className="absolute bottom-[25%] md:bottom-[20%] left-[-5%] md:left-[10%] -rotate-6 bg-[#ffcc00] text-black px-6 py-3 rounded-md neo-sticker z-30 scale-[0.55] md:scale-100 origin-center">
+                    <p className="text-lg leading-tight">E-COMM. WWW.*</p>
+                    <p className="text-lg leading-tight">EXPERIENCES</p>
+                </div>
+
+                <div className="absolute bottom-[5%] md:bottom-[10%] left-[10%] md:left-[30%] -rotate-12 bg-[#ff7300] text-white px-6 py-3 rounded-md neo-sticker z-30 scale-[0.55] md:scale-100 origin-center">
+                    <p className="text-lg leading-tight">MOTION &</p>
+                    <p className="text-lg leading-tight">INTERACTION</p>
+                    <p className="text-lg leading-tight">➔ DESIGN</p>
+                </div>
+
+                <div className="absolute top-[15%] md:top-1/3 right-[-5%] md:right-[25%] rotate-[10deg] bg-[#ff4a7d] text-white px-6 py-3 rounded-md neo-sticker z-30 scale-[0.55] md:scale-100 origin-center">
+                    <p className="text-lg leading-tight">USER</p>
+                    <p className="text-lg leading-tight">EXPER-IENCE</p>
+                    <p className="text-lg leading-tight">DESIGN ©</p>
+                </div>
+                
+                <div className="absolute bottom-[35%] md:bottom-[40%] right-[0%] md:right-[10%] -rotate-12 bg-[#3bdfd9] text-black px-6 py-3 rounded-md neo-sticker z-30 scale-[0.55] md:scale-100 origin-center">
+                    <p className="text-lg leading-tight">BRANDING &</p>
+                    <p className="text-lg leading-tight">IDENTITY</p>
+                    <p className="text-lg leading-tight">©'22 *</p>
+                </div>
+
+                <div className="absolute bottom-[5%] md:bottom-[10%] right-[5%] md:right-[25%] rotate-[15deg] bg-[#b1e847] text-black w-36 h-36 rounded-full neo-sticker flex flex-col items-center justify-center z-30 scale-[0.55] md:scale-100 origin-center">
+                    <p className="text-center font-bold text-[10px] uppercase">Usability</p>
+                    <div className="w-8 h-8 rounded-full border-2 border-black flex items-center justify-center my-1">
+                        <span className="text-lg">🌐</span>
+                    </div>
+                    <p className="text-center font-bold text-[10px] uppercase">Testing</p>
+                </div>
+            </div>
+
+            {/* Bottom Marquee */}
+            <div className="w-full border-b-4 border-black bg-black py-4 z-40 relative">
+                <Marquee gradient={false} speed={80}>
+                    <div className="flex items-center gap-12 text-white font-black text-3xl md:text-5xl uppercase px-6 tracking-wide">
+                        <span>Branding</span>
+                        <span className="text-[#3bdfd9] text-2xl md:text-4xl">✦</span>
+                        <span>Visual Design</span>
+                        <span className="text-[#ffcc00] text-2xl md:text-4xl">✦</span>
+                        <span>Animation</span>
+                        <span className="text-[#ff4a7d] text-2xl md:text-4xl">✦</span>
+                        <span>Video Editing</span>
+                        <span className="text-[#b1e847] text-2xl md:text-4xl mr-12">✦</span>
+                    </div>
+                </Marquee>
+            </div>
+
+            <AnimatePresence>
+                {open && <HireMeForm key="hire-me-modal" onClose={() => setOpen(false)} />}
+            </AnimatePresence>
         </section>
     )
 }
