@@ -10,8 +10,9 @@ export default function Navigation() {
         <nav className="fixed top-0 left-0 right-0 z-50 bg-[#000000] transition-all duration-300">
             <div className="max-w-[1280px] mx-auto flex items-center justify-between px-6 py-4 xl:px-0">
 
-                <Link to="/">
-                    <img src={Logo} alt="Logo" className="h-16 w-auto object-contain dark:invert" />
+                <Link to="/" className="flex items-center gap-3 select-none">
+                    <img src={Logo} alt="Logo" className="h-12 w-auto object-contain dark:invert" />
+                    <span className="text-[#f2efe9] font-black text-2xl tracking-widest uppercase font-mono">HONEST</span>
                 </Link>
 
                 {/* Desktop Menu */}
@@ -29,7 +30,12 @@ export default function Navigation() {
                     >
                         About
                     </Link>
-                    <a href={resume} download="HCV-F.pdf" className="neo-button text-xs tracking-widest">Contact</a>
+                    <Link
+                        to="/resume"
+                        className="neo-button text-xs tracking-widest text-center"
+                    >
+                        Resume
+                    </Link>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -52,31 +58,30 @@ export default function Navigation() {
 
             {/* Mobile Menu Dropdown */}
             <div
-                className={`md:hidden absolute top-full left-0 right-0 bg-white border-b-4 border-black shadow-xl overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"}`}
+                className={`md:hidden absolute top-full left-0 right-0 bg-[#f2efe9] bg-grid border-b-4 border-black shadow-xl overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"}`}
             >
-                <div className="flex flex-col items-center gap-4 py-6">
+                <div className="flex flex-col items-center gap-4 py-8">
                     <Link
                         to="/"
                         onClick={() => setIsMenuOpen(false)}
-                        className="neo-button text-sm tracking-widest text-center w-48"
+                        className="bg-[#ffcc00] text-black border-2 border-black font-black uppercase text-xs tracking-widest py-3 px-6 text-center w-48 shadow-[3px_3px_0px_0px_#000] hover:scale-102 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rounded-md"
                     >
                         Home
                     </Link>
                     <Link
                         to="/About"
                         onClick={() => setIsMenuOpen(false)}
-                        className="neo-button text-sm tracking-widest text-center w-48"
+                        className="bg-[#3bdfd9] text-black border-2 border-black font-black uppercase text-xs tracking-widest py-3 px-6 text-center w-48 shadow-[3px_3px_0px_0px_#000] hover:scale-102 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rounded-md"
                     >
                         About
                     </Link>
-                    <a 
-                        href={resume} 
-                        download="HCV-F.pdf" 
+                    <Link 
+                        to="/resume" 
                         onClick={() => setIsMenuOpen(false)}
-                        className="neo-button text-sm tracking-widest text-center w-48"
+                        className="bg-[#b1e847] text-black border-2 border-black font-black uppercase text-xs tracking-widest py-3 px-6 text-center w-48 shadow-[3px_3px_0px_0px_#000] hover:scale-102 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rounded-md"
                     >
-                        Contact
-                    </a>
+                        Resume
+                    </Link>
                 </div>
             </div>
         </nav>

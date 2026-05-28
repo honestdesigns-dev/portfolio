@@ -68,45 +68,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="w-full flex flex-col items-center justify-start pt-[72px]">
-            {/* Top White Marquee Section */}
-            <div className="w-full bg-white text-black py-4 border-b-4 border-black z-20 relative">
-                <Marquee gradient={false} speed={50}>
-                    <div className="flex items-center gap-12 font-black text-sm uppercase tracking-widest px-6">
-                        <span>Portfolio Design Exploration</span>
-                        <img 
-                            src={cartoonPencil} 
-                            alt="Cartoon Pencil" 
-                            className="h-10 w-10 object-contain drop-shadow-md"
-                        />
-                        <span>Digital Brand & Product Designer</span>
-                        <img 
-                            src={cartoonPaintPen} 
-                            alt="Paint Pen" 
-                            className="h-10 w-10 object-contain drop-shadow-md"
-                        />
-                        <span>Creative Design Loop</span>
-                        <img 
-                            src={cartoonEraser} 
-                            alt="Eraser" 
-                            className="h-10 w-10 object-contain drop-shadow-md"
-                        />
-                        <span>Seamless UI/UX</span>
-                        <img 
-                            src={cartoonPaintTool} 
-                            alt="Paint Palette" 
-                            className="h-10 w-10 object-contain drop-shadow-md"
-                        />
-                        <span>Scalable Businesses</span>
-                        <img 
-                            src={cartoonRuler} 
-                            alt="Ruler" 
-                            className="h-10 w-10 object-contain drop-shadow-md"
-                        />
-                    </div>
-                </Marquee>
-            </div>
-
+        <section className="w-full flex flex-col items-center justify-start pt-[96px]">
             {/* Top Black Section */}
             <div className="w-full bg-black flex flex-col items-center pt-10 pb-16 px-4 md:px-8 relative z-10 border-t-4 border-black">
                 <div className="max-w-[1280px] w-full flex flex-col items-start gap-8">
