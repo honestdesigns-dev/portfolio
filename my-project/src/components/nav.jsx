@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/logo.svg";
 import resume from "../assets/HonestcvUIUX.pdf";
 
 export default function Navigation() {
@@ -11,7 +10,6 @@ export default function Navigation() {
             <div className="max-w-[1280px] mx-auto flex items-center justify-between px-6 py-4 xl:px-0">
 
                 <Link to="/" className="flex items-center gap-3 select-none">
-                    <img src={Logo} alt="Logo" className="h-12 w-auto object-contain dark:invert" />
                     <span className="text-[#f2efe9] font-black text-2xl tracking-widest uppercase font-mono">HONEST</span>
                 </Link>
 

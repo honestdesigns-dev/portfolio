@@ -108,6 +108,128 @@ Extremely focused on aligning business logic with sleek, accessible user-centere
   }
 };
 
+const generateResumeDoc = (format) => {
+  const title = "Honestraj - UI/UX Product Designer Resume";
+  const contentHtml = `
+    <div style="font-family: 'Calibri', sans-serif; color: #333333; margin: 0 auto; max-width: 6.5in;">
+      <table style="width:100%; margin-bottom: 20pt; border-collapse: collapse;">
+        <tr>
+          <td style="vertical-align: top;">
+            <h1 style="margin: 0; font-family: 'Georgia', serif; font-size: 26pt; font-weight: bold; color: #000000; letter-spacing: -0.5px;">HONESTRAJ</h1>
+            <p style="margin: 2pt 0 0 0; font-size: 13pt; color: #555555; text-transform: uppercase; letter-spacing: 1px;">Lead UI/UX & Product Designer</p>
+          </td>
+          <td style="text-align: right; vertical-align: top; font-size: 10pt; color: #555555; line-height: 1.4;">
+            <p style="margin: 0;">📍 Chennai, Tamil Nadu, India</p>
+            <p style="margin: 0;">✉️ honestdesigns.dev@gmail.com</p>
+            <p style="margin: 0;">🌐 behance.net/honestraj</p>
+          </td>
+        </tr>
+      </table>
+
+      <hr style="border: 0; border-top: 1.5pt solid #222222; margin-bottom: 15pt;" />
+
+      <!-- SUMMARY -->
+      <h2 style="font-family: 'Georgia', serif; font-size: 13pt; font-weight: bold; color: #111111; text-transform: uppercase; margin-top: 0; margin-bottom: 6pt; letter-spacing: 0.5px;">Professional Summary</h2>
+      <p style="margin: 0 0 15pt 0; font-size: 10.5pt; line-height: 1.5; text-align: justify;">
+        Experienced and user-oriented UI/UX Product Designer with over 3 years of hands-on expertise orchestrating responsive, elegant, and highly scalable enterprise (ERP) dashboards, custom application suites, and landing architectures. Extremely focused on aligning business logic with sleek, accessible, and user-centered experiences.
+      </p>
+
+      <!-- EXPERIENCE -->
+      <h2 style="font-family: 'Georgia', serif; font-size: 13pt; font-weight: bold; color: #111111; text-transform: uppercase; margin-top: 15pt; margin-bottom: 6pt; letter-spacing: 0.5px;">Work Experience</h2>
+      
+      <table style="width:100%; margin-bottom: 4pt; border-collapse: collapse;">
+        <tr>
+          <td style="font-weight: bold; font-size: 11pt; color: #111111;">Colan Infotech Pvt Ltd</td>
+          <td style="text-align: right; font-size: 10pt; color: #555555; font-style: italic;">Chennai, India</td>
+        </tr>
+        <tr>
+          <td style="font-style: italic; font-size: 10pt; color: #444444;">Lead UI/UX & Product Designer</td>
+          <td style="text-align: right; font-size: 10pt; color: #555555;">2023 - Present</td>
+        </tr>
+      </table>
+      <ul style="margin: 0 0 15pt 0; padding-left: 15pt; font-size: 10.5pt; line-height: 1.5;">
+        <li style="margin-bottom: 3pt;">Architected and designed 10+ scalable enterprise ERP systems, improving user task completion rates.</li>
+        <li style="margin-bottom: 3pt;">Reduced usability obstacles by 40% through structured usability testing workflows and data-driven iterations.</li>
+        <li style="margin-bottom: 3pt;">Designed rich 3D and 2D components using Blender, Spline, Figma, and translated them into modular React codebases.</li>
+        <li style="margin-bottom: 3pt;">Collaborated closely with engineering and product management teams to define component libraries and style guides.</li>
+      </ul>
+
+      <!-- EDUCATION -->
+      <h2 style="font-family: 'Georgia', serif; font-size: 13pt; font-weight: bold; color: #111111; text-transform: uppercase; margin-top: 15pt; margin-bottom: 6pt; letter-spacing: 0.5px;">Education & Certifications</h2>
+      
+      <table style="width:100%; margin-bottom: 4pt; border-collapse: collapse;">
+        <tr>
+          <td style="font-weight: bold; font-size: 11pt; color: #111111;">Bachelor of Science in Creative Design</td>
+          <td style="text-align: right; font-size: 10pt; color: #555555; font-style: italic;">Specialization: Interaction & Interface Architectures</td>
+        </tr>
+      </table>
+      <p style="margin: 0 0 10pt 0; font-size: 10.5pt; line-height: 1.5; color: #555555;">
+        Focus areas: Usability Engineering, Interactive Media, Motion Design, and Human-Computer Interaction.
+      </p>
+      
+      <p style="margin: 0 0 15pt 0; font-size: 10pt; line-height: 1.4;">
+        <strong>Professional Certifications:</strong><br/>
+        • Enterprise Architecture Usability Engineering<br/>
+        • Motion Graphics & Flow Design (After Effects Focus)
+      </p>
+
+      <!-- KEY SKILLS -->
+      <h2 style="font-family: 'Georgia', serif; font-size: 13pt; font-weight: bold; color: #111111; text-transform: uppercase; margin-top: 15pt; margin-bottom: 6pt; letter-spacing: 0.5px;">Core Skills</h2>
+      <table style="width: 100%; font-size: 10pt; line-height: 1.5; border-collapse: collapse; margin-bottom: 15pt;">
+        <tr>
+          <td style="width: 33%; vertical-align: top; padding: 2pt 0;">• UI/UX Design & Prototyping</td>
+          <td style="width: 33%; vertical-align: top; padding: 2pt 0;">• 3D Modeling (Blender/Spline)</td>
+          <td style="width: 33%; vertical-align: top; padding: 2pt 0;">• React.js & Front-End Dev</td>
+        </tr>
+        <tr>
+          <td style="width: 33%; vertical-align: top; padding: 2pt 0;">• Usability Testing & Research</td>
+          <td style="width: 33%; vertical-align: top; padding: 2pt 0;">• Design Systems Architecture</td>
+          <td style="width: 33%; vertical-align: top; padding: 2pt 0;">• Motion & Interaction Design</td>
+        </tr>
+      </table>
+    </div>
+  `;
+  
+  const docHtml = `
+    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+    <head>
+      <!--[if gte mso 9]>
+      <xml>
+        <w:WordDocument>
+          <w:View>Print</w:View>
+          <w:Zoom>100</w:Zoom>
+          <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+      </xml>
+      <![endif]-->
+      <meta charset="utf-8">
+      <title>${title}</title>
+      <style>
+        @page {
+          size: 8.5in 11in;
+          margin: 1.0in 1.0in 1.0in 1.0in;
+          mso-header-margin: .5in;
+          mso-footer-margin: .5in;
+          mso-paper-source: 0;
+        }
+        div.Section1 { page: Section1; }
+      </style>
+    </head>
+    <body>
+      <div class="Section1">
+        ${contentHtml}
+      </div>
+    </body>
+    </html>
+  `;
+  
+  const mimeType = format === 'docx' 
+    ? 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' 
+    : 'application/msword';
+  
+  return new Blob([docHtml], { type: mimeType });
+};
+
 export default function ViewResume() {
   const [theme, setTheme] = useState("win98");
   const [isReaderOpen, setIsReaderOpen] = useState(true);
@@ -116,10 +238,89 @@ export default function ViewResume() {
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
   const [isShutDown, setIsShutDown] = useState(false);
 
+  // Exporter state
+  const [isDownloaderOpen, setIsDownloaderOpen] = useState(false);
+  const [isDownloaderMinimized, setIsDownloaderMinimized] = useState(false);
+  const [selectedFormat, setSelectedFormat] = useState("docx");
+  const [isExporting, setIsExporting] = useState(false);
+  const [exportProgress, setExportProgress] = useState(0);
+  const [exportStatus, setExportStatus] = useState("");
+
   // Document outline tab state
   const [activeOutlineTab, setActiveOutlineTab] = useState("summary");
 
   const desktopRef = useRef(null);
+
+  const getPanelClass = () => {
+    if (theme === "win98") {
+      return "bg-white border-2 border-t-[#808080] border-l-[#808080] border-b-white border-r-white p-3";
+    } else if (theme === "synthwave") {
+      return "bg-[#150b22]/80 border border-[#ff4a7d]/40 shadow-[0_0_8px_rgba(255,74,125,0.2)] p-3 text-[#00ffff]";
+    } else {
+      return "bg-white border-2 border-black p-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]";
+    }
+  };
+
+  const getBtnClass = (active = false) => {
+    if (theme === "win98") {
+      return active
+        ? "bg-[#c0c0c0] border-2 border-t-[#808080] border-l-[#808080] border-b-white border-r-white font-bold p-2 text-center"
+        : "bg-[#c0c0c0] border-2 border-b-[#808080] border-r-[#808080] border-t-white border-l-white hover:bg-[#d0d0d0] p-2 text-center active:border-t-[#808080] active:border-l-[#808080] active:border-b-white active:border-r-white";
+    } else if (theme === "synthwave") {
+      return active
+        ? "bg-[#ff4a7d] text-white border border-[#ff4a7d] shadow-[0_0_10px_rgba(255,74,125,0.6)] p-2 text-center font-bold"
+        : "bg-[#10061a] text-[#ff4a7d] border border-[#ff4a7d]/50 hover:border-[#ff4a7d] hover:bg-[#ff4a7d]/10 p-2 text-center transition-all";
+    } else {
+      return active
+        ? "bg-black text-white border-2 border-black font-bold p-2 text-center shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+        : "bg-white text-black border-2 border-black hover:bg-gray-100 p-2 text-center font-medium shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] transition-all";
+    }
+  };
+
+  const handleDownload = () => {
+    setIsExporting(true);
+    setExportProgress(0);
+    setExportStatus("Initializing export stream...");
+    
+    const intervals = [
+      { progress: 25, status: "Resolving template metadata...", delay: 200 },
+      { progress: 55, status: "Compiling structures & styling...", delay: 400 },
+      { progress: 85, status: "Packaging stream buffer...", delay: 700 },
+      { progress: 100, status: "Export complete!", delay: 950 }
+    ];
+    
+    intervals.forEach((step) => {
+      setTimeout(() => {
+        setExportProgress(step.progress);
+        setExportStatus(step.status);
+        
+        if (step.progress === 100) {
+          setTimeout(() => {
+            // Perform actual download
+            if (selectedFormat === "pdf") {
+              const link = document.createElement("a");
+              link.href = resume;
+              link.download = "HonestcvUIUX.pdf";
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            } else {
+              const blob = generateResumeDoc(selectedFormat);
+              const url = URL.createObjectURL(blob);
+              const link = document.createElement("a");
+              link.href = url;
+              link.download = `Honestraj_CV_Template.${selectedFormat}`;
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              URL.revokeObjectURL(url);
+            }
+            setIsExporting(false);
+          }, 300);
+        }
+      }, step.delay);
+    });
+  };
 
   const toggleMinimize = (e) => {
     if (e) e.stopPropagation();
@@ -198,10 +399,16 @@ export default function ViewResume() {
           <div className="text-3xl filter drop-shadow-md leading-none mb-1.5">📂</div>
           <span className={activeStyles.iconText}>AboutOS.lnk</span>
         </Link>
-        <a href={resume} download="HCV-F.pdf" className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 text-center select-none">
+        <div
+          onClick={() => {
+            setIsDownloaderOpen(true);
+            setIsDownloaderMinimized(false);
+          }}
+          className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 text-center select-none"
+        >
           <div className="text-3xl filter drop-shadow-md leading-none mb-1.5">📥</div>
-          <span className={activeStyles.iconText}>Get_PDF.lnk</span>
-        </a>
+          <span className={activeStyles.iconText}>CV_Exporter.exe</span>
+        </div>
 
         {/* DRAGGABLE RESUME READER APPLICATION (Desktop Viewports) */}
         <div className="absolute inset-0 pointer-events-none hidden md:block z-20">
@@ -249,13 +456,15 @@ export default function ViewResume() {
                 >
                   <span>🖨️</span> <span>Print CV</span>
                 </button>
-                <a
-                  href={resume}
-                  download="HCV-F.pdf"
+                <button
+                  onClick={() => {
+                    setIsDownloaderOpen(true);
+                    setIsDownloaderMinimized(false);
+                  }}
                   className="flex items-center gap-1 px-2 py-0.5 border border-gray-400 bg-white hover:bg-gray-100 cursor-pointer shadow-[1px_1px_0px_0px_#000] active:shadow-none active:translate-y-0.5"
                 >
-                  <span>📥</span> <span>Download PDF</span>
-                </a>
+                  <span>📥</span> <span>Download CV Templates</span>
+                </button>
                 <div className="h-4 w-[1px] bg-gray-400 mx-1" />
                 <span className="text-[10px] text-gray-500 font-mono">Scale: 100% Fit Width</span>
               </div>
@@ -307,6 +516,131 @@ export default function ViewResume() {
               </div>
             </motion.div>
           )}
+
+          {isDownloaderOpen && !isDownloaderMinimized && (
+            <motion.div
+              drag
+              dragMomentum={false}
+              dragElastic={0}
+              dragConstraints={desktopRef}
+              initial={{ x: 120, y: 60, scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              style={{
+                zIndex: 40,
+                width: "480px",
+                position: "absolute",
+              }}
+              className={`pointer-events-auto flex flex-col overflow-hidden rounded ${activeStyles.windowBg}`}
+            >
+              {/* Exporter Title Bar */}
+              <div className={activeStyles.windowTitle}>
+                <span className="truncate font-mono">CV_Exporter.exe - Export Templates</span>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <button onClick={() => setIsDownloaderMinimized(true)} className={activeStyles.windowButton} title="Minimize">_</button>
+                  <button onClick={() => setIsDownloaderOpen(false)} className={`${activeStyles.windowButton} hover:bg-red-500 hover:text-white`} title="Close">✕</button>
+                </div>
+              </div>
+
+              {/* Exporter Body */}
+              <div className={`p-4 flex flex-col gap-4 font-sans text-xs ${theme === 'synthwave' ? 'text-[#00ffff]' : 'text-black'} ${theme === 'synthwave' ? 'bg-[#0a0414]/95' : 'bg-[#c0c0c0]'}`}>
+                {isExporting ? (
+                  <div className={getPanelClass()}>
+                    <h3 className="font-bold text-sm mb-2 font-mono">EXPORT PROGRESS</h3>
+                    <div className="w-full bg-gray-300 border-2 border-t-[#808080] border-l-[#808080] border-b-white border-r-white h-6 relative overflow-hidden mb-2">
+                      <div
+                        className={`h-full transition-all duration-100 ${
+                          theme === 'win98' 
+                            ? 'bg-blue-800' 
+                            : theme === 'synthwave' 
+                              ? 'bg-[#ff4a7d]' 
+                              : 'bg-black'
+                        }`}
+                        style={{ width: `${exportProgress}%` }}
+                      />
+                      <span className="absolute inset-0 flex items-center justify-center font-bold text-[10px] text-shadow mix-blend-difference text-white">
+                        {exportProgress}%
+                      </span>
+                    </div>
+                    <p className="font-mono text-[10px] animate-pulse">{exportStatus}</p>
+                  </div>
+                ) : (
+                  <>
+                    <p className="font-medium">
+                      Select the desired resume template format to export. Each template is formatted professionally according to industry standards.
+                    </p>
+                    <div className="grid grid-cols-3 gap-3">
+                      {/* PDF Option */}
+                      <button
+                        onClick={() => setSelectedFormat("pdf")}
+                        className={`${getBtnClass(selectedFormat === "pdf")} flex flex-col items-center justify-center p-3 gap-2 cursor-pointer`}
+                      >
+                        <span className="text-3xl">📄</span>
+                        <span className="font-bold">PDF Format</span>
+                        <span className="text-[9px] opacity-80">Official PDF</span>
+                      </button>
+
+                      {/* DOCX Option */}
+                      <button
+                        onClick={() => setSelectedFormat("docx")}
+                        className={`${getBtnClass(selectedFormat === "docx")} flex flex-col items-center justify-center p-3 gap-2 cursor-pointer`}
+                      >
+                        <span className="text-3xl">📝</span>
+                        <span className="font-bold">Word (.docx)</span>
+                        <span className="text-[9px] opacity-80">Modern XML</span>
+                      </button>
+
+                      {/* DOC Option */}
+                      <button
+                        onClick={() => setSelectedFormat("doc")}
+                        className={`${getBtnClass(selectedFormat === "doc")} flex flex-col items-center justify-center p-3 gap-2 cursor-pointer`}
+                      >
+                        <span className="text-3xl">💾</span>
+                        <span className="font-bold">Word (.doc)</span>
+                        <span className="text-[9px] opacity-80">Legacy Doc</span>
+                      </button>
+                    </div>
+
+                    {/* Selected Format Description Panel */}
+                    <div className={getPanelClass()}>
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl mt-0.5">
+                          {selectedFormat === "pdf" ? "ℹ️" : selectedFormat === "docx" ? "⚙️" : "📂"}
+                        </div>
+                        <div>
+                          <h4 className="font-bold uppercase text-[10px] tracking-wide mb-1 font-mono">
+                            {selectedFormat === "pdf" && "Adobe PDF Document"}
+                            {selectedFormat === "docx" && "Office Open XML Document"}
+                            {selectedFormat === "doc" && "Microsoft Word Legacy Document"}
+                          </h4>
+                          <p className="text-[10px] leading-relaxed opacity-90">
+                            {selectedFormat === "pdf" && "Perfect for job applications, ensuring layout consistency across all screen types and operating systems. Clean, print-ready, and non-editable."}
+                            {selectedFormat === "docx" && "Fully editable, modern template formatted with standard fonts (Calibri, Georgia). Compatible with Microsoft Word 2007+, Google Docs, and Pages."}
+                            {selectedFormat === "doc" && "Classic legacy format. Maximum backwards compatibility with older versions of Word and alternative office suites."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex justify-end gap-2 mt-2">
+                      <button
+                        onClick={() => setIsDownloaderOpen(false)}
+                        className={`${getBtnClass(false)} px-4 py-1.5 cursor-pointer`}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={handleDownload}
+                        className={`${getBtnClass(true)} px-6 py-1.5 font-bold cursor-pointer`}
+                      >
+                        Export Now 🚀
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </motion.div>
+          )}
         </div>
 
         {/* MOBILE LAYOUT STACKED PANELS (Visible on mobile/tablet screens) */}
@@ -324,9 +658,14 @@ export default function ViewResume() {
                 <button onClick={triggerPrint} className="px-2 py-1 border border-gray-400 bg-white active:bg-gray-150">
                   🖨️ Print CV
                 </button>
-                <a href={resume} download="HCV-F.pdf" className="px-2 py-1 border border-gray-400 bg-white active:bg-gray-150">
-                  📥 Download PDF
-                </a>
+                <button
+                  onClick={() => {
+                    setIsDownloaderOpen(true);
+                  }}
+                  className="px-2 py-1 border border-gray-400 bg-white active:bg-gray-150 cursor-pointer"
+                >
+                  📥 Download CV Templates
+                </button>
               </div>
 
               {/* Stacked mobile outline index */}
@@ -361,6 +700,88 @@ export default function ViewResume() {
               </div>
             </div>
           )}
+
+          {isDownloaderOpen && (
+            <div className={`w-full overflow-hidden ${activeStyles.windowBg}`}>
+              {/* Mobile window bar */}
+              <div className={activeStyles.windowTitle}>
+                <span>📥 CV_Exporter.exe</span>
+                <button onClick={() => setIsDownloaderOpen(false)} className={activeStyles.windowButton}>✕</button>
+              </div>
+
+              {/* Mobile Exporter Body */}
+              <div className={`p-4 flex flex-col gap-4 font-sans text-xs bg-[#c0c0c0] ${theme === 'synthwave' ? 'text-[#00ffff]' : 'text-black'} ${theme === 'synthwave' ? 'bg-[#0a0414]' : ''}`}>
+                {isExporting ? (
+                  <div className="p-3 border border-gray-300 rounded bg-white text-black">
+                    <h3 className="font-bold text-[10px] mb-2 font-mono text-black">EXPORTING TEMPLATE...</h3>
+                    <div className="w-full bg-gray-200 border h-5 relative overflow-hidden mb-2">
+                      <div
+                        className="h-full bg-black"
+                        style={{ width: `${exportProgress}%` }}
+                      />
+                    </div>
+                    <p className="font-mono text-[9px] text-gray-700">{exportStatus}</p>
+                  </div>
+                ) : (
+                  <>
+                    <p className="font-medium text-[10px]">
+                      Choose format to download the resume:
+                    </p>
+                    <div className="grid grid-cols-3 gap-2">
+                      <button
+                        onClick={() => setSelectedFormat("pdf")}
+                        className={`p-2 border rounded text-center flex flex-col items-center gap-1 cursor-pointer ${
+                          selectedFormat === "pdf" ? "bg-black text-white border-black font-bold" : "bg-white text-gray-700 border-gray-300"
+                        }`}
+                      >
+                        <span className="text-xl">📄</span>
+                        <span className="text-[9px]">PDF</span>
+                      </button>
+                      <button
+                        onClick={() => setSelectedFormat("docx")}
+                        className={`p-2 border rounded text-center flex flex-col items-center gap-1 cursor-pointer ${
+                          selectedFormat === "docx" ? "bg-black text-white border-black font-bold" : "bg-white text-gray-700 border-gray-300"
+                        }`}
+                      >
+                        <span className="text-xl">📝</span>
+                        <span className="text-[9px]">DOCX</span>
+                      </button>
+                      <button
+                        onClick={() => setSelectedFormat("doc")}
+                        className={`p-2 border rounded text-center flex flex-col items-center gap-1 cursor-pointer ${
+                          selectedFormat === "doc" ? "bg-black text-white border-black font-bold" : "bg-white text-gray-700 border-gray-300"
+                        }`}
+                      >
+                        <span className="text-xl">💾</span>
+                        <span className="text-[9px]">DOC</span>
+                      </button>
+                    </div>
+
+                    <p className="text-[9px] leading-relaxed text-gray-600 bg-white/80 p-2 border rounded border-gray-300">
+                      {selectedFormat === "pdf" && "Official static PDF. Ideal for most platforms."}
+                      {selectedFormat === "docx" && "Microsoft Word modern template. Editable."}
+                      {selectedFormat === "doc" && "Legacy DOC Word format. Maximum compatibility."}
+                    </p>
+
+                    <div className="flex gap-2 justify-end">
+                      <button
+                        onClick={() => setIsDownloaderOpen(false)}
+                        className="px-3 py-1.5 border border-gray-300 rounded text-[10px] bg-white text-black cursor-pointer"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={handleDownload}
+                        className="px-4 py-1.5 bg-black text-white font-bold rounded text-[10px] cursor-pointer"
+                      >
+                        Download 🚀
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
       </div>
@@ -388,6 +809,16 @@ export default function ViewResume() {
                 className={isReaderMinimized ? activeStyles.inactiveTab : activeStyles.activeTab}
               >
                 📄 ResumeReader.exe
+              </button>
+            </div>
+          )}
+          {isDownloaderOpen && (
+            <div className="hidden sm:flex items-center ml-2">
+              <button
+                onClick={() => setIsDownloaderMinimized(!isDownloaderMinimized)}
+                className={isDownloaderMinimized ? activeStyles.inactiveTab : activeStyles.activeTab}
+              >
+                📥 CV_Exporter.exe
               </button>
             </div>
           )}
@@ -458,14 +889,17 @@ export default function ViewResume() {
 
                 <div className="py-1 font-bold">
                   {/* Download CV */}
-                  <a
-                    href={resume}
-                    download="HCV-F.pdf"
-                    className="flex items-center gap-2.5 py-1.5 px-3 hover:bg-black hover:text-white transition-all cursor-pointer font-sans"
+                  <button
+                    onClick={() => {
+                      setIsDownloaderOpen(true);
+                      setIsDownloaderMinimized(false);
+                      setIsStartMenuOpen(false);
+                    }}
+                    className="w-full text-left flex items-center gap-2.5 py-1.5 px-3 hover:bg-black hover:text-white transition-all cursor-pointer font-sans border-none"
                   >
                     <span>💾</span>
                     <span>Download CV / Resume</span>
-                  </a>
+                  </button>
 
                   {/* Shut down trigger */}
                   <button
