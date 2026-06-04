@@ -18,7 +18,7 @@ import Spline from "./assets/spline.png";
 import ReactLogo from "./assets/react.svg";
 import Framer from "./assets/framer.png";
 import AwardImg from "./assets/aw.jpg";
-import resume from "./assets/HonestcvUIUX.pdf";
+import resume from "./assets/uicv.pdf";
 
 // Themes Config
 const themeStyles = {
@@ -260,7 +260,8 @@ export default function About() {
                 </div>
                 <div className="mt-3 text-center">
                   <span className="bg-black text-white text-[10px] font-black uppercase px-2 py-0.5 font-mono rounded tracking-wider">
-                    Creative Lead
+                    <span style={{paddingRight:"6px"}}>UI/UX | Motion Graphic</span> <br />
+                    <span style={{paddingLeft:"6px"}}> Designer </span>
                   </span>
                 </div>
               </div>
@@ -446,7 +447,7 @@ export default function About() {
                 <div className="border border-dashed border-gray-400 p-2 bg-gray-50 font-mono text-[9px] text-gray-600">
                   📌 WORKSTATION DETAILS: <br />
                   - Chennai, India <br />
-                  - 3+ Years Hands-on Experience
+                  - 4+ Years Hands-on Experience
                 </div>
               </div>
             </div>

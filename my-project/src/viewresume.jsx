@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 // Assets from existing project structure
-import resume from "./assets/HonestcvUIUX.pdf";
+import resume from "./assets/uicv.pdf";
+import templatePdf from "./assets/uicv.pdf";
 
 // Themes Config (perfectly aligned with about.jsx)
 const themeStyles = {
@@ -71,39 +72,56 @@ const documentOutlines = {
     title: "SUMMARY.TXT",
     content: `PROFESSIONAL SUMMARY:
 =========================================
-Experienced and user-oriented UI/UX Product Designer with over 3 years of hands-on expertise orchestrating responsive, elegant, and highly scalable enterprise (ERP) dashboards, custom application suites, and landing architectures. 
+Experienced and user-oriented UI/UX Product Designer with over 4+ years of hands-on expertise orchestrating responsive, elegant, and highly scalable enterprise (ERP) dashboards, custom application suites, and landing architectures. 
 
 Extremely focused on aligning business logic with sleek, accessible user-centered experiences.`
   },
+
+  skills: {
+   title: "SKILLS.TXT",
+   content: `SKILLS:
+=========================================
+User Experience Design, User Interface Design, Motion Graphic Design, Video Editing, 3D
+Animation [Beginner], HTML, CSS, React / Tailwind / Github [Beginner].`
+  },
+
+  tools: {
+   title: "DESIGN TOOLS.TXT",
+   content: `DESIGN TOOLS:
+=========================================
+Figma, Adobe XD, Framer, Webflow, UX Pin, Marvel, Blender 3D, Spline, Cinema 4D,
+Adobe Aero 3D, Adobe Dimension, Adobe Mixamo 3D, Adobe After Effects, Premiere Pro,
+Photoshop, Adobe Illustrator, Dora 3D, Adobe creative cloud, learning more tools…
+`
+  },
+
   experience: {
     title: "EXPERIENCE.TXT",
     content: `WORK CHRONICLES:
 =========================================
 💼 Colan Infotech Pvt Ltd (Chennai, India)
    Role: Lead UI/UX & Product Designer
-   Duration: 3+ Years Hands-on Experience
+   Duration: 4+ Years Hands-on Experience
    
-   * Architected 10+ scalable enterprise ERP systems.
-   * Reduced usability obstacles by 40% via structured testing workflows.
+   * Architected 10+ client projects including scalable enterprise ERP systems.
    * Designed rich aesthetic components in Blender, Spline, Figma, & React.`
   },
+
   education: {
     title: "EDUCATION.TXT",
     content: `ACADEMIC OUTLINE:
 =========================================
-🎓 Bachelor of Science in Creative Design
-   Specialization: Interaction & Interface Architectures
+🎓 Bachelor of Science in Computer Science
    
 📌 Professional Certifications:
-   * Enterprise Architecture Usability Engineering
-   * Motion Graphics & Flow Design (After Effects Focus)`
+=========================================
+🎓 Diploma in Computer Application`
   },
   contact: {
     title: "CONTACT_INFO.TXT",
     content: `GET IN TOUCH:
 =========================================
-📬 Email: honestdesigns.dev@gmail.com
-💻 Behance: behance.net/honestraj
+📬 Email: honestdesigns0.@gmail.com
 🌐 Location: Chennai, Tamil Nadu, India`
   }
 };
@@ -131,7 +149,7 @@ const generateResumeDoc = (format) => {
       <!-- SUMMARY -->
       <h2 style="font-family: 'Georgia', serif; font-size: 13pt; font-weight: bold; color: #111111; text-transform: uppercase; margin-top: 0; margin-bottom: 6pt; letter-spacing: 0.5px;">Professional Summary</h2>
       <p style="margin: 0 0 15pt 0; font-size: 10.5pt; line-height: 1.5; text-align: justify;">
-        Experienced and user-oriented UI/UX Product Designer with over 3 years of hands-on expertise orchestrating responsive, elegant, and highly scalable enterprise (ERP) dashboards, custom application suites, and landing architectures. Extremely focused on aligning business logic with sleek, accessible, and user-centered experiences.
+        Experienced and user-oriented UI/UX Product Designer with over 4+ years of hands-on expertise orchestrating responsive, elegant, and highly scalable enterprise (ERP) dashboards, custom application suites, and landing architectures. Extremely focused on aligning business logic with sleek, accessible, and user-centered experiences.
       </p>
 
       <!-- EXPERIENCE -->
@@ -246,6 +264,8 @@ export default function ViewResume() {
   const [exportProgress, setExportProgress] = useState(0);
   const [exportStatus, setExportStatus] = useState("");
 
+  const [downloaderType, setDownloaderType] = useState("template");
+
   // Document outline tab state
   const [activeOutlineTab, setActiveOutlineTab] = useState("summary");
 
@@ -277,6 +297,41 @@ export default function ViewResume() {
     }
   };
 
+  const handleDownloadResume = () => {
+    setDownloaderType("resume");
+    setIsDownloaderOpen(true);
+    setIsDownloaderMinimized(false);
+    setIsExporting(true);
+    setExportProgress(0);
+    setExportStatus("Connecting to document server...");
+
+    const intervals = [
+      { progress: 20, status: "Retrieving uicv.pdf...", delay: 250 },
+      { progress: 50, status: "Verifying document signature...", delay: 500 },
+      { progress: 80, status: "Generating print stream...", delay: 800 },
+      { progress: 100, status: "Ready for download!", delay: 1100 }
+    ];
+
+    intervals.forEach((step) => {
+      setTimeout(() => {
+        setExportProgress(step.progress);
+        setExportStatus(step.status);
+
+        if (step.progress === 100) {
+          setTimeout(() => {
+            const link = document.createElement("a");
+            link.href = resume;
+            link.download = "uicv.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setIsExporting(false);
+          }, 300);
+        }
+      }, step.delay);
+    });
+  };
+
   const handleDownload = () => {
     setIsExporting(true);
     setExportProgress(0);
@@ -299,8 +354,8 @@ export default function ViewResume() {
             // Perform actual download
             if (selectedFormat === "pdf") {
               const link = document.createElement("a");
-              link.href = resume;
-              link.download = "HonestcvUIUX.pdf";
+              link.href = templatePdf;
+              link.download = "Honestraj_CV_Template.pdf";
               document.body.appendChild(link);
               link.click();
               document.body.removeChild(link);
@@ -451,19 +506,26 @@ export default function ViewResume() {
               {/* Reader Application Toolbar */}
               <div className="bg-[#eeeeee] border-b border-gray-400 p-1 flex items-center gap-3 text-xs text-black select-none font-sans font-medium">
                 <button
+                  onClick={handleDownloadResume}
+                  className="flex items-center gap-1 px-2 py-0.5 border border-gray-400 bg-white hover:bg-gray-100 cursor-pointer shadow-[1px_1px_0px_0px_#000] active:shadow-none active:translate-y-0.5 font-bold"
+                >
+                  <span>📄</span> <span>Download Resume</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setDownloaderType("template");
+                    setIsDownloaderOpen(true);
+                    setIsDownloaderMinimized(false);
+                  }}
+                  className="flex items-center gap-1 px-2 py-0.5 border border-gray-400 bg-white hover:bg-gray-100 cursor-pointer shadow-[1px_1px_0px_0px_#000] active:shadow-none active:translate-y-0.5 font-bold"
+                >
+                  <span>📥</span> <span>Download Template</span>
+                </button>
+                <button
                   onClick={triggerPrint}
                   className="flex items-center gap-1 px-2 py-0.5 border border-gray-400 bg-white hover:bg-gray-100 cursor-pointer shadow-[1px_1px_0px_0px_#000] active:shadow-none active:translate-y-0.5"
                 >
                   <span>🖨️</span> <span>Print CV</span>
-                </button>
-                <button
-                  onClick={() => {
-                    setIsDownloaderOpen(true);
-                    setIsDownloaderMinimized(false);
-                  }}
-                  className="flex items-center gap-1 px-2 py-0.5 border border-gray-400 bg-white hover:bg-gray-100 cursor-pointer shadow-[1px_1px_0px_0px_#000] active:shadow-none active:translate-y-0.5"
-                >
-                  <span>📥</span> <span>Download CV Templates</span>
                 </button>
                 <div className="h-4 w-[1px] bg-gray-400 mx-1" />
                 <span className="text-[10px] text-gray-500 font-mono">Scale: 100% Fit Width</span>
@@ -534,7 +596,9 @@ export default function ViewResume() {
             >
               {/* Exporter Title Bar */}
               <div className={activeStyles.windowTitle}>
-                <span className="truncate font-mono">CV_Exporter.exe - Export Templates</span>
+                <span className="truncate font-mono">
+                  {downloaderType === "resume" ? "CV_Exporter.exe - Downloading Resume" : "CV_Exporter.exe - Export Templates"}
+                </span>
                 <div className="flex items-center gap-1.5 shrink-0">
                   <button onClick={() => setIsDownloaderMinimized(true)} className={activeStyles.windowButton} title="Minimize">_</button>
                   <button onClick={() => setIsDownloaderOpen(false)} className={`${activeStyles.windowButton} hover:bg-red-500 hover:text-white`} title="Close">✕</button>
@@ -545,7 +609,9 @@ export default function ViewResume() {
               <div className={`p-4 flex flex-col gap-4 font-sans text-xs ${theme === 'synthwave' ? 'text-[#00ffff]' : 'text-black'} ${theme === 'synthwave' ? 'bg-[#0a0414]/95' : 'bg-[#c0c0c0]'}`}>
                 {isExporting ? (
                   <div className={getPanelClass()}>
-                    <h3 className="font-bold text-sm mb-2 font-mono">EXPORT PROGRESS</h3>
+                    <h3 className="font-bold text-sm mb-2 font-mono">
+                      {downloaderType === "resume" ? "DOWNLOAD PROGRESS" : "EXPORT PROGRESS"}
+                    </h3>
                     <div className="w-full bg-gray-300 border-2 border-t-[#808080] border-l-[#808080] border-b-white border-r-white h-6 relative overflow-hidden mb-2">
                       <div
                         className={`h-full transition-all duration-100 ${
@@ -613,7 +679,7 @@ export default function ViewResume() {
                             {selectedFormat === "doc" && "Microsoft Word Legacy Document"}
                           </h4>
                           <p className="text-[10px] leading-relaxed opacity-90">
-                            {selectedFormat === "pdf" && "Perfect for job applications, ensuring layout consistency across all screen types and operating systems. Clean, print-ready, and non-editable."}
+                            {selectedFormat === "pdf" && "Clean, print-ready, and non-editable static PDF template. Perfect for maintaining formatting and styling consistency."}
                             {selectedFormat === "docx" && "Fully editable, modern template formatted with standard fonts (Calibri, Georgia). Compatible with Microsoft Word 2007+, Google Docs, and Pages."}
                             {selectedFormat === "doc" && "Classic legacy format. Maximum backwards compatibility with older versions of Word and alternative office suites."}
                           </p>
@@ -654,17 +720,27 @@ export default function ViewResume() {
               </div>
 
               {/* Mobile controls */}
-              <div className="bg-[#eeeeee] border-b border-gray-300 p-2 flex items-center justify-between font-sans text-[10px] text-black font-semibold">
-                <button onClick={triggerPrint} className="px-2 py-1 border border-gray-400 bg-white active:bg-gray-150">
-                  🖨️ Print CV
+              <div className="bg-[#eeeeee] border-b border-gray-300 p-2 flex items-center gap-2 justify-center font-sans text-[10px] text-black font-semibold">
+                <button
+                  onClick={handleDownloadResume}
+                  className="px-2 py-1 border border-gray-400 bg-white active:bg-gray-150 cursor-pointer flex items-center gap-1"
+                >
+                  <span>📄</span> <span>Download Resume</span>
                 </button>
                 <button
                   onClick={() => {
+                    setDownloaderType("template");
                     setIsDownloaderOpen(true);
                   }}
-                  className="px-2 py-1 border border-gray-400 bg-white active:bg-gray-150 cursor-pointer"
+                  className="px-2 py-1 border border-gray-400 bg-white active:bg-gray-150 cursor-pointer flex items-center gap-1"
                 >
-                  📥 Download CV Templates
+                  <span>📥</span> <span>Download Template</span>
+                </button>
+                <button
+                  onClick={triggerPrint}
+                  className="px-2 py-1 border border-gray-400 bg-white active:bg-gray-150 cursor-pointer flex items-center gap-1"
+                >
+                  <span>🖨️</span> <span>Print</span>
                 </button>
               </div>
 
@@ -705,7 +781,9 @@ export default function ViewResume() {
             <div className={`w-full overflow-hidden ${activeStyles.windowBg}`}>
               {/* Mobile window bar */}
               <div className={activeStyles.windowTitle}>
-                <span>📥 CV_Exporter.exe</span>
+                <span>
+                  {downloaderType === "resume" ? "📥 CV_Exporter.exe - Downloading Resume" : "📥 CV_Exporter.exe - Export Templates"}
+                </span>
                 <button onClick={() => setIsDownloaderOpen(false)} className={activeStyles.windowButton}>✕</button>
               </div>
 
@@ -713,7 +791,9 @@ export default function ViewResume() {
               <div className={`p-4 flex flex-col gap-4 font-sans text-xs bg-[#c0c0c0] ${theme === 'synthwave' ? 'text-[#00ffff]' : 'text-black'} ${theme === 'synthwave' ? 'bg-[#0a0414]' : ''}`}>
                 {isExporting ? (
                   <div className="p-3 border border-gray-300 rounded bg-white text-black">
-                    <h3 className="font-bold text-[10px] mb-2 font-mono text-black">EXPORTING TEMPLATE...</h3>
+                    <h3 className="font-bold text-[10px] mb-2 font-mono text-black">
+                      {downloaderType === "resume" ? "DOWNLOADING RESUME..." : "EXPORTING TEMPLATE..."}
+                    </h3>
                     <div className="w-full bg-gray-200 border h-5 relative overflow-hidden mb-2">
                       <div
                         className="h-full bg-black"
@@ -758,7 +838,7 @@ export default function ViewResume() {
                     </div>
 
                     <p className="text-[9px] leading-relaxed text-gray-600 bg-white/80 p-2 border rounded border-gray-300">
-                      {selectedFormat === "pdf" && "Official static PDF. Ideal for most platforms."}
+                      {selectedFormat === "pdf" && "Official static PDF Template. Clean and print-ready."}
                       {selectedFormat === "docx" && "Microsoft Word modern template. Editable."}
                       {selectedFormat === "doc" && "Legacy DOC Word format. Maximum compatibility."}
                     </p>
@@ -818,7 +898,7 @@ export default function ViewResume() {
                 onClick={() => setIsDownloaderMinimized(!isDownloaderMinimized)}
                 className={isDownloaderMinimized ? activeStyles.inactiveTab : activeStyles.activeTab}
               >
-                📥 CV_Exporter.exe
+                {downloaderType === "resume" ? "📥 Resume_Download" : "📥 CV_Exporter.exe"}
               </button>
             </div>
           )}
@@ -887,18 +967,31 @@ export default function ViewResume() {
 
                 <hr className="border-gray-200 my-1" />
 
-                <div className="py-1 font-bold">
-                  {/* Download CV */}
+                <div className="py-1 font-bold flex flex-col gap-0.5">
+                  {/* Download Resume */}
                   <button
                     onClick={() => {
+                      handleDownloadResume();
+                      setIsStartMenuOpen(false);
+                    }}
+                    className="w-full text-left flex items-center gap-2.5 py-1.5 px-3 hover:bg-black hover:text-white transition-all cursor-pointer font-sans border-none"
+                  >
+                    <span>📄</span>
+                    <span>Download Resume (PDF)</span>
+                  </button>
+
+                  {/* Download Template */}
+                  <button
+                    onClick={() => {
+                      setDownloaderType("template");
                       setIsDownloaderOpen(true);
                       setIsDownloaderMinimized(false);
                       setIsStartMenuOpen(false);
                     }}
                     className="w-full text-left flex items-center gap-2.5 py-1.5 px-3 hover:bg-black hover:text-white transition-all cursor-pointer font-sans border-none"
                   >
-                    <span>💾</span>
-                    <span>Download CV / Resume</span>
+                    <span>📥</span>
+                    <span>Download Resume Template</span>
                   </button>
 
                   {/* Shut down trigger */}

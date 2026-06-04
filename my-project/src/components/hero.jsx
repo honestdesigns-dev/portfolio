@@ -18,7 +18,7 @@ import designui from "../assets/designui.png";
 import uiux from "../assets/uid.jpg";
 import manime from "../assets/manime.jpg";
 import threeD from "../assets/3dd.jpg";
-import resume from "../assets/HonestcvUIUX.pdf";
+import resume from "../assets/uicv.pdf";
 
 // Project Preview Images - UI/UX
 import awalPlastics from "../assets/projects/awal.png";

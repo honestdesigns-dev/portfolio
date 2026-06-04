@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import resume from "../assets/HonestcvUIUX.pdf";
+import resume from "../assets/uicv.pdf";
 
 export default function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
