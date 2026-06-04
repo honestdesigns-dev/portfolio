@@ -1947,7 +1947,7 @@ const ProjectDetailsView = ({ cat, onClose, onOpenGallery, onExpandImage }) => {
                 { name: "Awal Plastics ERP", type: "Enterprise ERP Dashboard Case", url: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study" },
                 { name: "Ligma ERP System", type: "Product Layout Wires Study", url: "https://www.behance.net/gallery/238328023/Ligma" },
                 { name: "CareTaker Social System", type: "High-Fidelity Social UI", url: "https://www.behance.net/gallery/206024825/Care-Taker-website-ui-design" },
-                { name: "Qodora Medical Platform", type: "Web App UI Prototype", url: "https://www.figma.com/proto/96NaXwVxNbHTitsOmLXaj0/Clemens" }
+                { name: "Qodora Medical Platform", type: "Web App UI Prototype", url: "https://www.behance.net/gallery/250527775/Qodora" }
             ]
         },
         motion: {
