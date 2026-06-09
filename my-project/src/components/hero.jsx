@@ -18,7 +18,7 @@ import designui from "../assets/designui.png";
 import uiux from "../assets/uid.jpg";
 import manime from "../assets/manime.jpg";
 import threeD from "../assets/3dd.jpg";
-import resume from "../assets/uicv.pdf";
+import resume from "../assets/Honest Resume UIUX Design.pdf";
 
 // Project Preview Images - UI/UX
 import awalPlastics from "../assets/projects/awal.png";
@@ -971,7 +971,7 @@ export default function Hero() {
                                     {/* CV file download anchor */}
                                     <a
                                         href={resume}
-                                        download="HCV-F.pdf"
+                                        download="Honest Resume UIUX Design.pdf"
                                         className="flex items-center gap-2.5 py-1.5 px-3 hover:bg-black hover:text-white transition-all cursor-pointer font-sans"
                                     >
                                         <span>💾</span>

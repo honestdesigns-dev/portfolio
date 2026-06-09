@@ -18,7 +18,7 @@ import Spline from "./assets/spline.png";
 import ReactLogo from "./assets/react.svg";
 import Framer from "./assets/framer.png";
 import AwardImg from "./assets/aw.jpg";
-import resume from "./assets/uicv.pdf";
+import resume from "./assets/Honest Resume UIUX Design.pdf";
 
 // Themes Config
 const themeStyles = {
@@ -363,6 +363,11 @@ export default function About() {
                   />
                   <AwardRegistryRow
                     year="Quarter I - July 2025"
+                    title="Best Performance and Lasting Contribution"
+                    company="Colan Infotech Private Limited"
+                  />
+                  <AwardRegistryRow
+                    year="Quarter IV - March 2025"
                     title="Solid Delivery Performance"
                     company="Colan Infotech Private Limited"
                   />
@@ -653,7 +658,7 @@ export default function About() {
                   {/* Download CV */}
                   <a
                     href={resume}
-                    download="HCV-F.pdf"
+                    download="Honest Resume UIUX Design.pdf"
                     className="flex items-center gap-2.5 py-1.5 px-3 hover:bg-black hover:text-white transition-all cursor-pointer font-sans"
                   >
                     <span>💾</span>

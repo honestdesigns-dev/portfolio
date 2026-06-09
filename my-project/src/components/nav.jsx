@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import resume from "../assets/uicv.pdf";
+import resume from "../assets/Honest Resume UIUX Design.pdf";
 
 export default function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +36,7 @@ export default function Navigation() {
                     </Link>
                     <a
                         href="mailto:honestdesigns0@gmail.com"
-                        className="bg-[#ffcc00] text-black border-2 border-black font-black uppercase text-[10px] tracking-widest py-1.5 px-4 text-center shadow-[2px_2px_0px_0px_#000] hover:scale-105 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rounded-md ml-2"
+                        className="bg-[#ffcc00] text-black border-2 border-black font-black uppercase text-xs tracking-widest py-1.5 px-4 text-center shadow-[2px_2px_0px_0px_#000] hover:scale-105 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rounded-md ml-2"
                     >
                         Hire
                     </a>

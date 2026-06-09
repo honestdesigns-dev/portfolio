@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 // Assets from existing project structure
-import resume from "./assets/uicv.pdf";
-import templatePdf from "./assets/uicv.pdf";
+import resume from "./assets/Honest Resume UIUX Design.pdf";
+import templatePdf from "./assets/Honest Resume UIUX Design.pdf";
 
 // Themes Config (perfectly aligned with about.jsx)
 const themeStyles = {
@@ -78,11 +78,12 @@ Extremely focused on aligning business logic with sleek, accessible user-centere
   },
 
   skills: {
-   title: "SKILLS.TXT",
-   content: `SKILLS:
+   title: "CORE SKILLS.TXT",
+   content: `CORE SKILLS:
 =========================================
-User Experience Design, User Interface Design, Motion Graphic Design, Video Editing, 3D
-Animation [Beginner], HTML, CSS, React / Tailwind / Github [Beginner].`
+User Research, User Flows, Information Architecture, Wireframing, Prototyping,
+Usability Testing, Interaction Design, Accessibility, Design Systems, Responsive Design, Visual Design, Enterprise Applications, ERP Systems, SaaS Products, Product Strategy, Cross-functional
+Collaboration.`
   },
 
   tools: {
@@ -103,26 +104,27 @@ Photoshop, Adobe Illustrator, Dora 3D, Adobe creative cloud, learning more tools
    Role: Lead UI/UX & Product Designer
    Duration: 4+ Years Hands-on Experience
    
-   * Architected 10+ client projects including scalable enterprise ERP systems.
-   * Designed rich aesthetic components in Blender, Spline, Figma, & React.`
+   * Delivered UX/UI solutions across 10+ projects.
+   * Led design system implementation for large-scale ERP products.`
   },
 
   education: {
     title: "EDUCATION.TXT",
     content: `ACADEMIC OUTLINE:
 =========================================
-🎓 Bachelor of Science in Computer Science
+🎓 Bachelor of Science in Computer Science - Thiruvalluvar University [2022]
    
 📌 Professional Certifications:
 =========================================
-🎓 Diploma in Computer Application`
+🎓 Diploma in Computer Application [2018]`
   },
   contact: {
     title: "CONTACT_INFO.TXT",
     content: `GET IN TOUCH:
 =========================================
 📬 Email: honestdesigns0.@gmail.com
-🌐 Location: Chennai, Tamil Nadu, India`
+🌐 Location: Chennai, Tamil Nadu, India
+📞 Contact Info : +91 6381636770`
   }
 };
 
@@ -306,7 +308,7 @@ export default function ViewResume() {
     setExportStatus("Connecting to document server...");
 
     const intervals = [
-      { progress: 20, status: "Retrieving uicv.pdf...", delay: 250 },
+      { progress: 20, status: "Retrieving Honest Resume UIUX Design.pdf...", delay: 250 },
       { progress: 50, status: "Verifying document signature...", delay: 500 },
       { progress: 80, status: "Generating print stream...", delay: 800 },
       { progress: 100, status: "Ready for download!", delay: 1100 }
@@ -321,7 +323,7 @@ export default function ViewResume() {
           setTimeout(() => {
             const link = document.createElement("a");
             link.href = resume;
-            link.download = "uicv.pdf";
+            link.download = "Honest Resume UIUX Design.pdf";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -355,7 +357,7 @@ export default function ViewResume() {
             if (selectedFormat === "pdf") {
               const link = document.createElement("a");
               link.href = templatePdf;
-              link.download = "Honestraj_CV_Template.pdf";
+              link.download = "Honest Resume UIUX Design.pdf";
               document.body.appendChild(link);
               link.click();
               document.body.removeChild(link);
