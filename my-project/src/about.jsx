@@ -362,13 +362,13 @@ export default function About() {
                     company="Colan Infotech Private Limited"
                   />
                   <AwardRegistryRow
-                    year="Quarter I - July 2025"
-                    title="Best Performance and Lasting Contribution"
+                    year="Quarter IV - March 2025"
+                    title="Solid Delivery Performance"
                     company="Colan Infotech Private Limited"
                   />
                   <AwardRegistryRow
-                    year="Quarter IV - March 2025"
-                    title="Solid Delivery Performance"
+                    year="Quarter I - July 2025"
+                    title="Best Performance and Lasting Contribution"
                     company="Colan Infotech Private Limited"
                   />
                 </div>
