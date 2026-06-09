@@ -254,7 +254,7 @@ export default function ViewResume() {
   const [theme, setTheme] = useState("win98");
   const [isReaderOpen, setIsReaderOpen] = useState(true);
   const [isReaderMinimized, setIsReaderMinimized] = useState(false);
-  const [isReaderMaximized, setIsReaderMaximized] = useState(false);
+  const [isReaderMaximized, setIsReaderMaximized] = useState(true);
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
   const [isShutDown, setIsShutDown] = useState(false);
 
@@ -478,7 +478,7 @@ export default function ViewResume() {
               initial={
                 isReaderMaximized
                   ? { left: 0, top: 0, width: "100%", height: "100%" }
-                  : { x: 100, y: 30, scale: 0.95, opacity: 0 }
+                  : { x: 100, y: 10, scale: 0.95, opacity: 0 }
               }
               animate={
                 isReaderMaximized
@@ -490,8 +490,10 @@ export default function ViewResume() {
                 width: isReaderMaximized ? "100%" : "720px",
                 position: "absolute",
               }}
-              className={`pointer-events-auto flex flex-col overflow-hidden max-h-[560px] ${activeStyles.windowBg} ${
-                isReaderMaximized ? "max-h-[calc(100%-48px)] h-[calc(100%-48px)] rounded-none" : "rounded-t"
+              className={`pointer-events-auto flex flex-col overflow-hidden ${activeStyles.windowBg} ${
+                isReaderMaximized 
+                  ? "max-h-[calc(100%-48px)] h-[calc(100%-48px)] rounded-none" 
+                  : "max-h-[calc(100%-58px)] h-[calc(100%-58px)] rounded-t"
               }`}
             >
               {/* Reader Title Bar */}

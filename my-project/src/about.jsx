@@ -161,7 +161,7 @@ export default function About() {
       <div className="fixed inset-0 bg-[#000000] z-[9999] flex flex-col items-center justify-center text-white font-mono p-4 select-none">
         {/* CRT Scanline Turn Off Effect */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,3px_100%] pointer-events-none" />
-        
+
         <div className="w-16 h-1 bg-white mb-8 animate-pulse rounded-full" />
         <h1 className="text-xl md:text-2xl font-bold tracking-widest text-[#ff4a7d] mb-2 text-center uppercase">
           SYSTEM SHUT DOWN SUCCESSFUL
@@ -180,7 +180,7 @@ export default function About() {
   }
 
   return (
-    <section 
+    <section
       ref={desktopRef}
       className={`fixed md:relative w-full h-[calc(100vh-80px)] md:h-[750px] max-w-[1280px] mx-auto top-20 md:top-auto left-0 md:left-auto right-0 md:right-auto mt-0 md:mt-28 mb-0 md:mb-16 overflow-hidden flex flex-col transition-all duration-300 border-t-4 border-b-4 border-x-0 md:border-4 border-black rounded-none md:rounded-lg shadow-2xl p-0`}
       style={activeStyles.desktopStyle}
@@ -193,7 +193,7 @@ export default function About() {
 
       {/* DESKTOP WORKSPACE */}
       <div className="flex-1 w-full p-4 md:p-6 relative flex flex-row md:flex-col flex-wrap content-start items-start justify-start gap-4 md:gap-8 z-10 overflow-y-auto">
-        
+
         {/* Desktop Folder Icons */}
         <DesktopIcon
           label="honest_me.doc"
@@ -228,7 +228,7 @@ export default function About() {
 
         {/* DRAGGABLE APP WINDOWS (Desktop / large screens) */}
         <div className="absolute inset-0 pointer-events-none hidden md:block z-20">
-          
+
           {/* WINDOW 1: PROFILE BIO */}
           <AnimateWindow
             isOpen={openWindows.bio && !minimizedWindows.bio}
@@ -260,8 +260,8 @@ export default function About() {
                 </div>
                 <div className="mt-3 text-center">
                   <span className="bg-black text-white text-[10px] font-black uppercase px-2 py-0.5 font-mono rounded tracking-wider">
-                    <span style={{paddingRight:"6px"}}>UI/UX | Motion Graphic</span> <br />
-                    <span style={{paddingLeft:"6px"}}> Designer </span>
+                    <span style={{ paddingRight: "6px" }}>UI/UX | Motion Graphic</span> <br />
+                    <span style={{ paddingLeft: "6px" }}> Designer </span>
                   </span>
                 </div>
               </div>
@@ -379,10 +379,10 @@ export default function About() {
                 <div className="w-[180px] h-[160px] bg-[#1a1c1e] border-4 border-gray-400 shadow-[inset_0_0_12px_#000] rounded-xl relative overflow-hidden flex flex-col items-center justify-center text-[10px] text-green-500 font-mono p-1">
                   {/* Blinking screen light */}
                   <div className="absolute top-1 right-2 w-2 h-2 bg-green-500 rounded-full animate-ping pointer-events-none" />
-                  
+
                   {/* Glowing mask overlay */}
                   <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.35)_50%)] bg-[size:100%_3px] pointer-events-none z-10 opacity-70" />
-                  
+
                   <img
                     src={AwardImg}
                     alt="Registry Projection"
@@ -426,7 +426,7 @@ export default function About() {
 
         {/* MOBILE LAYOUT STACKED PANELS (Visible on mobile/tablet) */}
         <div className="w-full md:hidden flex flex-col gap-6 mt-4 z-10">
-          
+
           {/* Mobile Tab 1: Profile */}
           {openWindows.bio && (
             <div className={`w-full overflow-hidden ${activeStyles.windowBg}`}>
@@ -600,7 +600,7 @@ export default function About() {
 
               {/* Start Menu Options List */}
               <div className="flex-1 flex flex-col bg-white text-black p-1 text-xs">
-                
+
                 {/* Theme Selector */}
                 <div className="p-2 border-b border-gray-200">
                   <span className="font-bold block text-gray-500 font-mono text-[9px] mb-1">WALLPAPER SCHEME</span>
@@ -745,14 +745,13 @@ const AnimateWindow = ({
         width: isMaximized ? "100%" : width,
         position: "absolute",
       }}
-      className={`pointer-events-auto flex flex-col overflow-hidden max-h-[500px] ${activeStyles.windowBg} ${
-        isMaximized ? "max-h-[calc(100%-48px)] h-[calc(100%-48px)] rounded-none" : "rounded-t"
-      }`}
+      className={`pointer-events-auto flex flex-col overflow-hidden max-h-[500px] ${activeStyles.windowBg} ${isMaximized ? "max-h-[calc(100%-48px)] h-[calc(100%-48px)] rounded-none" : "rounded-t"
+        }`}
     >
       {/* Title Bar */}
       <div className={isActive ? activeStyles.windowTitle : activeStyles.windowTitleInactive}>
         <span className="truncate select-none max-w-[70%] font-mono pr-2">{title}</span>
-        
+
         <div className="flex items-center gap-1.5 shrink-0 pointer-events-auto">
           {/* Minimize [ _ ] */}
           <button
@@ -762,7 +761,7 @@ const AnimateWindow = ({
           >
             _
           </button>
-          
+
           {/* Maximize [ ▢ ] */}
           <button
             onClick={(e) => toggleMaximize(winName, e)}
@@ -988,9 +987,8 @@ const RetroPaint = () => {
               key={c}
               onClick={() => setColor(c)}
               style={{ backgroundColor: c }}
-              className={`w-4 h-4 border cursor-pointer ${
-                color === c ? "border-2 border-black outline outline-1 outline-blue-500" : "border-gray-400"
-              }`}
+              className={`w-4 h-4 border cursor-pointer ${color === c ? "border-2 border-black outline outline-1 outline-blue-500" : "border-gray-400"
+                }`}
               title={c === "#ffffff" ? "Eraser Tool" : c}
             />
           ))}
@@ -1124,16 +1122,15 @@ Uptime: Flawless Performance
   return (
     <div className="flex flex-col h-full bg-[#000000] text-[#33ff33] font-mono text-[10px] md:text-xs p-2.5 overflow-hidden relative" style={{ minHeight: "220px" }}>
       {showMatrix && <MatrixRain />}
-      
+
       <div className="flex-1 overflow-y-auto mb-2 flex flex-col gap-1.5 z-10 pr-1">
         {history.map((h, i) => (
           <pre
             key={i}
-            className={`whitespace-pre-wrap ${
-              h.type === "input" ? "text-white font-bold" :
-              h.type === "error" ? "text-red-500 font-bold" :
-              h.type === "system" ? "text-green-500/80" : "text-[#33ff33]"
-            }`}
+            className={`whitespace-pre-wrap ${h.type === "input" ? "text-white font-bold" :
+                h.type === "error" ? "text-red-500 font-bold" :
+                  h.type === "system" ? "text-green-500/80" : "text-[#33ff33]"
+              }`}
           >
             {h.text}
           </pre>

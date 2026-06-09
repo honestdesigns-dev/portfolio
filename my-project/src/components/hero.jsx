@@ -570,8 +570,8 @@ export default function Hero() {
                                                 key={t}
                                                 onClick={() => setTheme(t)}
                                                 className={`px-3 py-1 cursor-pointer font-bold border transition-all ${theme === t
-                                                        ? "bg-black text-white border-black"
-                                                        : "bg-[#e0e0e0] border-gray-400 text-black hover:bg-gray-200"
+                                                    ? "bg-black text-white border-black"
+                                                    : "bg-[#e0e0e0] border-gray-400 text-black hover:bg-gray-200"
                                                     }`}
                                             >
                                                 {t.toUpperCase()}
@@ -589,8 +589,8 @@ export default function Hero() {
                                                 key={styleOpt}
                                                 onClick={() => setWallpaperPattern(styleOpt)}
                                                 className={`px-3 py-1 cursor-pointer font-bold border transition-all ${wallpaperPattern === styleOpt
-                                                        ? "bg-black text-white border-black"
-                                                        : "bg-[#e0e0e0] border-gray-400 text-black hover:bg-gray-200"
+                                                    ? "bg-black text-white border-black"
+                                                    : "bg-[#e0e0e0] border-gray-400 text-black hover:bg-gray-200"
                                                     }`}
                                             >
                                                 {styleOpt.toUpperCase()}
@@ -1849,8 +1849,8 @@ const RetroTerminal = ({ activeTheme }) => {
                     <pre
                         key={i}
                         className={`whitespace-pre-wrap select-text ${h.type === "input" ? "text-white font-bold" :
-                                h.type === "error" ? "text-red-500 font-bold" :
-                                    h.type === "system" ? "text-green-500/80" : "text-[#33ff33]"
+                            h.type === "error" ? "text-red-500 font-bold" :
+                                h.type === "system" ? "text-green-500/80" : "text-[#33ff33]"
                             }`}
                     >
                         {h.text}
