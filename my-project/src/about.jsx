@@ -1128,8 +1128,8 @@ Uptime: Flawless Performance
           <pre
             key={i}
             className={`whitespace-pre-wrap ${h.type === "input" ? "text-white font-bold" :
-                h.type === "error" ? "text-red-500 font-bold" :
-                  h.type === "system" ? "text-green-500/80" : "text-[#33ff33]"
+              h.type === "error" ? "text-red-500 font-bold" :
+                h.type === "system" ? "text-green-500/80" : "text-[#33ff33]"
               }`}
           >
             {h.text}

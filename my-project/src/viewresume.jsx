@@ -78,8 +78,8 @@ Extremely focused on aligning business logic with sleek, accessible user-centere
   },
 
   skills: {
-   title: "CORE SKILLS.TXT",
-   content: `CORE SKILLS:
+    title: "CORE SKILLS.TXT",
+    content: `CORE SKILLS:
 =========================================
 User Research, User Flows, Information Architecture, Wireframing, Prototyping,
 Usability Testing, Interaction Design, Accessibility, Design Systems, Responsive Design, Visual Design, Enterprise Applications, ERP Systems, SaaS Products, Product Strategy, Cross-functional
@@ -87,8 +87,8 @@ Collaboration.`
   },
 
   tools: {
-   title: "DESIGN TOOLS.TXT",
-   content: `DESIGN TOOLS:
+    title: "DESIGN TOOLS.TXT",
+    content: `DESIGN TOOLS:
 =========================================
 Figma, Adobe XD, Framer, Webflow, UX Pin, Marvel, Blender 3D, Spline, Cinema 4D,
 Adobe Aero 3D, Adobe Dimension, Adobe Mixamo 3D, Adobe After Effects, Premiere Pro,
@@ -209,7 +209,7 @@ const generateResumeDoc = (format) => {
       </table>
     </div>
   `;
-  
+
   const docHtml = `
     <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
     <head>
@@ -242,11 +242,11 @@ const generateResumeDoc = (format) => {
     </body>
     </html>
   `;
-  
-  const mimeType = format === 'docx' 
-    ? 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' 
+
+  const mimeType = format === 'docx'
+    ? 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
     : 'application/msword';
-  
+
   return new Blob([docHtml], { type: mimeType });
 };
 
@@ -338,19 +338,19 @@ export default function ViewResume() {
     setIsExporting(true);
     setExportProgress(0);
     setExportStatus("Initializing export stream...");
-    
+
     const intervals = [
       { progress: 25, status: "Resolving template metadata...", delay: 200 },
       { progress: 55, status: "Compiling structures & styling...", delay: 400 },
       { progress: 85, status: "Packaging stream buffer...", delay: 700 },
       { progress: 100, status: "Export complete!", delay: 950 }
     ];
-    
+
     intervals.forEach((step) => {
       setTimeout(() => {
         setExportProgress(step.progress);
         setExportStatus(step.status);
-        
+
         if (step.progress === 100) {
           setTimeout(() => {
             // Perform actual download
@@ -424,7 +424,7 @@ export default function ViewResume() {
   }
 
   return (
-    <section 
+    <section
       ref={desktopRef}
       className={`fixed md:relative w-full h-[calc(100vh-80px)] md:h-[750px] max-w-[1280px] mx-auto top-20 md:top-auto left-0 md:left-auto right-0 md:right-auto mt-0 md:mt-28 mb-0 md:mb-16 overflow-hidden flex flex-col transition-all duration-300 border-t-4 border-b-4 border-x-0 md:border-4 border-black rounded-none md:rounded-lg shadow-2xl p-0`}
       style={activeStyles.desktopStyle}
@@ -437,7 +437,7 @@ export default function ViewResume() {
 
       {/* DESKTOP AREA */}
       <div className="flex-1 w-full p-4 md:p-6 relative flex flex-row md:flex-col flex-wrap content-start items-start justify-start gap-4 md:gap-8 z-10 overflow-y-auto">
-        
+
         {/* Desktop Icons */}
         <DesktopIcon
           label="ResumeReader.exe"
@@ -490,16 +490,15 @@ export default function ViewResume() {
                 width: isReaderMaximized ? "100%" : "720px",
                 position: "absolute",
               }}
-              className={`pointer-events-auto flex flex-col overflow-hidden ${activeStyles.windowBg} ${
-                isReaderMaximized 
-                  ? "max-h-[calc(100%-48px)] h-[calc(100%-48px)] rounded-none" 
+              className={`pointer-events-auto flex flex-col overflow-hidden ${activeStyles.windowBg} ${isReaderMaximized
+                  ? "max-h-[calc(100%-48px)] h-[calc(100%-48px)] rounded-none"
                   : "max-h-[calc(100%-58px)] h-[calc(100%-58px)] rounded-t"
-              }`}
+                }`}
             >
               {/* Reader Title Bar */}
               <div className={activeStyles.windowTitle}>
                 <span className="truncate font-mono">ResumeReader.exe - Adobe Acrobat Pro 95</span>
-                
+
                 <div className="flex items-center gap-1.5 shrink-0">
                   <button onClick={toggleMinimize} className={activeStyles.windowButton} title="Minimize">_</button>
                   <button onClick={toggleMaximize} className={activeStyles.windowButton} title="Maximize">{isReaderMaximized ? "❐" : "▢"}</button>
@@ -537,7 +536,7 @@ export default function ViewResume() {
 
               {/* Reader Splitscreen Body */}
               <div className="flex-1 flex overflow-hidden bg-white text-black relative" style={{ minHeight: "360px" }}>
-                
+
                 {/* Left Outline tree panel */}
                 <div className="w-[200px] border-r border-gray-300 bg-[#f4f4f4] flex flex-col font-mono text-[10px] select-none shrink-0 p-3">
                   <span className="font-bold text-gray-500 block mb-2 font-sans tracking-wide">DOCUMENT OUTLINE</span>
@@ -546,11 +545,10 @@ export default function ViewResume() {
                       <button
                         key={key}
                         onClick={() => setActiveOutlineTab(key)}
-                        className={`text-left p-1.5 border border-transparent rounded cursor-pointer ${
-                          activeOutlineTab === key 
-                            ? "bg-blue-600 text-white font-bold border-blue-700" 
+                        className={`text-left p-1.5 border border-transparent rounded cursor-pointer ${activeOutlineTab === key
+                            ? "bg-blue-600 text-white font-bold border-blue-700"
                             : "hover:bg-gray-200 text-gray-800"
-                        }`}
+                          }`}
                       >
                         📄 {documentOutlines[key].title}
                       </button>
@@ -561,7 +559,7 @@ export default function ViewResume() {
                 {/* Right Viewer frame panel */}
                 <div className="flex-1 flex flex-col bg-[#e1e2e3] relative">
                   <div className="flex-1 p-2 flex gap-4 overflow-hidden h-full">
-                    
+
                     {/* Outline Text reader display box */}
                     <div className="w-1/2 flex flex-col bg-white border border-gray-300 shadow-sm p-3 font-mono text-[10px] text-black overflow-y-auto whitespace-pre-wrap select-text">
                       {documentOutlines[activeOutlineTab].content}
@@ -618,13 +616,12 @@ export default function ViewResume() {
                     </h3>
                     <div className="w-full bg-gray-300 border-2 border-t-[#808080] border-l-[#808080] border-b-white border-r-white h-6 relative overflow-hidden mb-2">
                       <div
-                        className={`h-full transition-all duration-100 ${
-                          theme === 'win98' 
-                            ? 'bg-blue-800' 
-                            : theme === 'synthwave' 
-                              ? 'bg-[#ff4a7d]' 
+                        className={`h-full transition-all duration-100 ${theme === 'win98'
+                            ? 'bg-blue-800'
+                            : theme === 'synthwave'
+                              ? 'bg-[#ff4a7d]'
                               : 'bg-black'
-                        }`}
+                          }`}
                         style={{ width: `${exportProgress}%` }}
                       />
                       <span className="absolute inset-0 flex items-center justify-center font-bold text-[10px] text-shadow mix-blend-difference text-white">
@@ -754,11 +751,10 @@ export default function ViewResume() {
                   <button
                     key={key}
                     onClick={() => setActiveOutlineTab(key)}
-                    className={`text-[9px] font-mono px-2 py-1 border rounded ${
-                      activeOutlineTab === key 
-                        ? "bg-black text-white border-black font-bold" 
+                    className={`text-[9px] font-mono px-2 py-1 border rounded ${activeOutlineTab === key
+                        ? "bg-black text-white border-black font-bold"
                         : "bg-white text-gray-700 border-gray-300"
-                    }`}
+                      }`}
                   >
                     {documentOutlines[key].title}
                   </button>
@@ -814,27 +810,24 @@ export default function ViewResume() {
                     <div className="grid grid-cols-3 gap-2">
                       <button
                         onClick={() => setSelectedFormat("pdf")}
-                        className={`p-2 border rounded text-center flex flex-col items-center gap-1 cursor-pointer ${
-                          selectedFormat === "pdf" ? "bg-black text-white border-black font-bold" : "bg-white text-gray-700 border-gray-300"
-                        }`}
+                        className={`p-2 border rounded text-center flex flex-col items-center gap-1 cursor-pointer ${selectedFormat === "pdf" ? "bg-black text-white border-black font-bold" : "bg-white text-gray-700 border-gray-300"
+                          }`}
                       >
                         <span className="text-xl">📄</span>
                         <span className="text-[9px]">PDF</span>
                       </button>
                       <button
                         onClick={() => setSelectedFormat("docx")}
-                        className={`p-2 border rounded text-center flex flex-col items-center gap-1 cursor-pointer ${
-                          selectedFormat === "docx" ? "bg-black text-white border-black font-bold" : "bg-white text-gray-700 border-gray-300"
-                        }`}
+                        className={`p-2 border rounded text-center flex flex-col items-center gap-1 cursor-pointer ${selectedFormat === "docx" ? "bg-black text-white border-black font-bold" : "bg-white text-gray-700 border-gray-300"
+                          }`}
                       >
                         <span className="text-xl">📝</span>
                         <span className="text-[9px]">DOCX</span>
                       </button>
                       <button
                         onClick={() => setSelectedFormat("doc")}
-                        className={`p-2 border rounded text-center flex flex-col items-center gap-1 cursor-pointer ${
-                          selectedFormat === "doc" ? "bg-black text-white border-black font-bold" : "bg-white text-gray-700 border-gray-300"
-                        }`}
+                        className={`p-2 border rounded text-center flex flex-col items-center gap-1 cursor-pointer ${selectedFormat === "doc" ? "bg-black text-white border-black font-bold" : "bg-white text-gray-700 border-gray-300"
+                          }`}
                       >
                         <span className="text-xl">💾</span>
                         <span className="text-[9px]">DOC</span>
@@ -930,7 +923,7 @@ export default function ViewResume() {
 
               {/* Start Menu Options List */}
               <div className="flex-1 flex flex-col bg-white text-black p-1 text-xs">
-                
+
                 {/* Theme Selector */}
                 <div className="p-2 border-b border-gray-200">
                   <span className="font-bold block text-gray-500 font-mono text-[9px] mb-1">WALLPAPER SCHEME</span>
