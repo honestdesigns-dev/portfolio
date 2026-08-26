@@ -101,7 +101,7 @@ export default function Works() {
                     <h1 className="text-4xl md:text-6xl font-bold text-black dark:text-white text-center">My Casing</h1>
                     <p className="mt-10 text-4xl md:text-4xl font-bold text-[#FF4D00] text-center">UIUX Design's</p>
                 </div>
-                <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl px-4 justify-items-center">
+                <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 w-full max-w-none px-6 md:px-16 justify-items-center">
                     {projects.map((project, index) => (
                         <a
                             key={index}

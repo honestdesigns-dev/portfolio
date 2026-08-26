@@ -426,7 +426,7 @@ export default function ViewResume() {
   return (
     <section
       ref={desktopRef}
-      className={`fixed md:relative w-full h-[calc(100vh-80px)] md:h-[750px] max-w-[1280px] mx-auto top-20 md:top-auto left-0 md:left-auto right-0 md:right-auto mt-0 md:mt-28 mb-0 md:mb-16 overflow-hidden flex flex-col transition-all duration-300 border-t-4 border-b-4 border-x-0 md:border-4 border-black rounded-none md:rounded-lg shadow-2xl p-0`}
+      className={`fixed w-full h-[calc(100vh-80px)] top-20 left-0 right-0 mt-0 mb-0 overflow-hidden flex flex-col transition-all duration-300 border-t-4 border-b-4 border-x-0 border-black rounded-none shadow-2xl p-0`}
       style={activeStyles.desktopStyle}
       onClick={() => setIsStartMenuOpen(false)}
     >

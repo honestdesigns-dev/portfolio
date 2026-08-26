@@ -25,7 +25,7 @@ export default function Works() {
                     <p className="mt-10 text-4xl md:text-4xl font-bold text-[#FF4D00] text-center">Motion Graphics Design's</p>
                 </div>
                 <div
-                    className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 cursor-none"
+                    className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 cursor-none w-full max-w-none px-6 md:px-16 justify-items-center"
                     onMouseEnter={() => setCursorVariant("project")}
                     onMouseLeave={() => setCursorVariant("default")}
                 >
