@@ -26,11 +26,13 @@ import caretaker from "../assets/projects/caretaker.png";
 import eedu from "../assets/projects/eeducation.png";
 import ehos from "../assets/projects/ehospital.png";
 import mist from "../assets/projects/mistnov.png";
-import ligma from "../assets/projects/ligma.png";
+import algominds from "../assets/projects/algomind.png";
 import sports from "../assets/projects/sportsref.png";
-import Imageprocessing from "../assets/projects/imageprocessing.png";
+import lightup from "../assets/projects/lightup.png";
 import kuvi from "../assets/projects/kuvi.png";
 import qodora from "../assets/projects/Qodora.png";
+import solar from "../assets/projects/solar.png";
+import hajj from "../assets/projects/hajj.png";
 
 // Project Preview Images - Motion
 import gg from "../assets/projects/gg.png";
@@ -1944,10 +1946,18 @@ const ProjectDetailsView = ({ cat, onClose, onOpenGallery, onExpandImage }) => {
             desc: "Intuitive, clean, and system-driven interface case designs built mainly for enterprise-grade ERP architectures and dashboards.",
             cover: uiux,
             items: [
-                { name: "Awal Plastics ERP", type: "Enterprise ERP Dashboard Case", url: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study" },
-                { name: "Ligma ERP System", type: "Product Layout Wires Study", url: "https://www.behance.net/gallery/238328023/Ligma" },
-                { name: "CareTaker Social System", type: "High-Fidelity Social UI", url: "https://www.behance.net/gallery/206024825/Care-Taker-website-ui-design" },
-                { name: "Qodora Medical Platform", type: "Web App UI Prototype", url: "https://www.behance.net/gallery/250527775/Qodora" }
+                { name: "Ramachandran Hospitality", type: "Hospitality Website Case Study", url: "https://www.behance.net/gallery/254825315/Hospitality" },
+                { name: "Ramachandran Education", type: "University Web Portal UI Layouts", url: "https://www.behance.net/gallery/254783717/Education-Website" },
+                { name: "Good Fellows (Healthcare)", type: "High-Fidelity Social UI / Healthcare", url: "https://www.behance.net/gallery/254562389/Healthcare" },
+                { name: "Travel Guide (HAJJ Travel)", type: "Travel & Tourism App", url: "https://www.behance.net/gallery/254786435/Travel-Tourism" },
+                { name: "QODORA (Medical Insurance)", type: "Medical Insurance App Prototype", url: "https://www.behance.net/gallery/250527775/Qodora" },
+                { name: "Solar Energy Management", type: "Energy Management Dashboard", url: "https://www.behance.net/gallery/254784961/Solar-Energy-Management" },
+                { name: "Signex (Enterprise)", type: "Enterprise ERP Dashboard Case", url: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study" },
+                { name: "Sports Reform", type: "Sports Performance Web Wires", url: "https://www.behance.net/gallery/205963977/Sports-Reform-website-ui-design" },
+                { name: "Guvi Learning Platform", type: "EdTech Learning Platform", url: "https://www.behance.net/gallery/240490215/Learning-Course-Landing-Page" },
+                { name: "Lightup Temple (Booking Pooja)", type: "SaaS Temple Booking Portal", url: "https://www.behance.net/gallery/205956803/Lightup-Temples-website-ui-design" },
+                { name: "Mistnov (Hotel Booking) - Freelance", type: "Hotel Booking Software UI", url: "https://www.behance.net/gallery/205870419/Mistnov" },
+                { name: "Algominds (Code learning platform)", type: "Developer Code Learning Platform", url: "https://www.behance.net/gallery/208198007/Algominds" }
             ]
         },
         motion: {
@@ -2045,15 +2055,18 @@ const CategoryGalleryView = ({ cat, onClose, onExpandImage }) => {
             title: "UI/UX Design Projects",
             desc: "Intuitive, clean, and system-driven interface case designs built mainly for enterprise-grade ERP architectures and dashboards.",
             items: [
-                { name: "Awal Plastics ERP", type: "Enterprise ERP Dashboard Case", url: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study", img: awalPlastics, tag: "ERP" },
-                { name: "Ligma ERP System", type: "Product Layout Wires Study", url: "https://www.behance.net/gallery/238328023/Ligma", img: ligma, tag: "ERP" },
-                { name: "CareTaker Social System", type: "High-Fidelity Social UI", url: "https://www.behance.net/gallery/206024825/Care-Taker-website-ui-design", img: caretaker, tag: "Social" },
-                { name: "Kuvi Tech Wires", type: "Training Course Platform Wires", url: "https://www.behance.net/gallery/240490215/Training-Course", img: kuvi, tag: "Education" },
-                { name: "Excellent Education", type: "University Web Portal UI Layouts", url: "https://rameducation.colanapps.in/", img: eedu, tag: "Academic" },
-                { name: "Excellent Hospital", type: "Clinical System Database UI", url: "https://excellenthealthcareinindia.com/", img: ehos, tag: "Medical" },
-                { name: "Mistnov Travel Hub", type: "Travel Booking Interface UI", url: "https://www.behance.net/gallery/205870419/Mistnov", img: mist, tag: "Travel" },
-                { name: "Sports Reform Portal", type: "Sports Performance Web Wires", url: "https://www.behance.net/gallery/205963977/Sports-Reform-website-ui-design", img: sports, tag: "Sports" },
-                { name: "Qodora Insurance App", type: "Medical Insurance App Prototype", url: "https://www.figma.com/proto/96NaXwVxNbHTitsOmLXaj0/Clemens?page-id=0%3A1&node-id=7-46&t=Du7VHba3ZZxyLNxO-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=7%3A46&hide-ui=1", img: qodora, tag: "Medical" }
+                { name: "Ramachandran Hospitality", type: "Hospitality Website Case Study", url: "https://www.behance.net/gallery/254825315/Hospitality", img: ehos, tag: "Hospitality" },
+                { name: "Ramachandran Education", type: "University Web Portal UI Layouts", url: "https://www.behance.net/gallery/254783717/Education-Website", img: eedu, tag: "Academic" },
+                { name: "Good Fellows (Healthcare)", type: "High-Fidelity Social UI / Healthcare", url: "https://www.behance.net/gallery/254562389/Healthcare", img: caretaker, tag: "Social" },
+                { name: "Travel Guide (HAJJ Travel)", type: "Travel & Tourism App", url: "https://www.behance.net/gallery/254786435/Travel-Tourism", img: hajj, tag: "Travel" },
+                { name: "QODORA (Medical Insurance)", type: "Medical Insurance App Prototype", url: "https://www.behance.net/gallery/250527775/Qodora", img: qodora, tag: "Medical" },
+                { name: "Solar Energy Management", type: "Energy Management Dashboard", url: "https://www.behance.net/gallery/254784961/Solar-Energy-Management", img: solar, tag: "Dashboard" },
+                { name: "Signex (Enterprise)", type: "Enterprise ERP Dashboard Case", url: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study", img: awalPlastics, tag: "ERP" },
+                { name: "Sports Reform", type: "Sports Performance Web Wires", url: "https://www.behance.net/gallery/205963977/Sports-Reform-website-ui-design", img: sports, tag: "Sports" },
+                { name: "Guvi Learning Platform", type: "EdTech Learning Platform", url: "https://www.behance.net/gallery/240490215/Learning-Course-Landing-Page", img: kuvi, tag: "EdTech" },
+                { name: "Lightup Temple (Booking Pooja)", type: "SaaS Temple Booking Portal", url: "https://www.behance.net/gallery/205956803/Lightup-Temples-website-ui-design", img: lightup, tag: "SaaS" },
+                { name: "Mistnov (Hotel Booking) - Freelance", type: "Hotel Booking Software UI", url: "https://www.behance.net/gallery/205870419/Mistnov", img: mist, tag: "Travel" },
+                { name: "Algominds (Code learning platform)", type: "Developer Code Learning Platform", url: "https://www.behance.net/gallery/208198007/Algominds", img: algominds, tag: "EdTech" }
             ]
         },
         motion: {

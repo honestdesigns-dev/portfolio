@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import awal from "../assets/projects/awal.png"
 import caretaker from "../assets/projects/caretaker.png"
-import acuite from "../assets/projects/acuite.jpg"
+import solar from "../assets/projects/solar.png"
 import mistnov from "../assets/projects/mistnov.png"
 import EH from "../assets/projects/eh.png"
 import EE from "../assets/projects/ee.png"
@@ -23,11 +23,11 @@ export default function Designworks() {
             alt: "caretaker"
         },
         {
-            image: acuite,
-            title: "Acuite Ratings",
-            description: <>As India’s foremost credit rating and research agency, we actively pursue our goal to unlock the growth potential of <br /> financial markets.</>,
-            link: "/acuite",
-            alt: "acuite"
+            image: solar,
+            title: "Solar Energy Management",
+            description: <>Energy management dashboard wires and study for solar installations and battery tracking systems.</>,
+            link: "/uidesigns",
+            alt: "solar"
         },
         {
             image: mistnov,
