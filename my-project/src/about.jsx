@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import LinkedIn from "./assets/linkedin_icon.png";
 
 // Assets from existing project structure
 import Me from "./assets/me.jpg";
@@ -200,30 +201,35 @@ export default function About() {
           icon="📂"
           themeStyles={activeStyles}
           onClick={() => openApp("bio")}
+          desktopRef={desktopRef}
         />
         <DesktopIcon
-          label="Skills Bin"
+          label="Tools Bin"
           icon="📁"
           themeStyles={activeStyles}
           onClick={() => openApp("skills")}
+          desktopRef={desktopRef}
         />
         <DesktopIcon
           label="awards.exe"
           icon="🏆"
           themeStyles={activeStyles}
           onClick={() => openApp("awards")}
+          desktopRef={desktopRef}
         />
         <DesktopIcon
           label="LinkedIn Profile"
-          icon="🔗"
+          icon={<img src={LinkedIn} alt="LinkedIn" className="w-10 h-10" />}
           themeStyles={activeStyles}
           onClick={() => window.open("https://www.linkedin.com/in/honestraj-vijay/", "_blank")}
+          desktopRef={desktopRef}
         />
         <DesktopIcon
           label="CLI Terminal"
           icon="📟"
           themeStyles={activeStyles}
           onClick={() => openApp("terminal")}
+          desktopRef={desktopRef}
         />
 
         {/* DRAGGABLE APP WINDOWS (Desktop / large screens) */}
@@ -685,15 +691,36 @@ export default function About() {
 }
 
 // Sub-Component: DesktopIcon
-const DesktopIcon = ({ label, icon, onClick, themeStyles }) => {
+const DesktopIcon = ({ label, icon, onClick, themeStyles, desktopRef }) => {
+  const isDragging = useRef(false);
+
   return (
-    <div
-      onClick={onClick}
-      className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 active:scale-95 transition-all text-center select-none"
+    <motion.div
+      drag
+      dragMomentum={false}
+      dragElastic={0.05}
+      dragConstraints={desktopRef}
+      onDragStart={() => {
+        isDragging.current = true;
+      }}
+      onDragEnd={() => {
+        setTimeout(() => {
+          isDragging.current = false;
+        }, 50);
+      }}
+      onClick={(e) => {
+        if (isDragging.current) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+        if (onClick) onClick(e);
+      }}
+      className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 active:scale-95 transition-all text-center select-none touch-none"
     >
       <div className="text-3xl filter drop-shadow-md leading-none mb-1.5">{icon}</div>
       <span className={themeStyles.iconText}>{label}</span>
-    </div>
+    </motion.div>
   );
 };
 

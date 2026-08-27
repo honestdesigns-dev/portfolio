@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import Behance from "../assets/behance_icon.jpg";
+import LinkedIn from "../assets/linkedin_icon.png";
+
 
 // Assets from existing structure
 import Figma from "../assets/fig.png";
@@ -280,36 +283,49 @@ export default function Hero() {
                     icon="📄"
                     themeStyles={activeStyles}
                     onClick={() => openApp("readme")}
+                    desktopRef={desktopRef}
                 />
                 <DesktopIcon
                     label="portfolio_projects"
                     icon="📂"
                     themeStyles={activeStyles}
                     onClick={() => openApp("projects")}
+                    desktopRef={desktopRef}
                 />
                 <DesktopIcon
                     label="retro_winamp.exe"
                     icon="📻"
                     themeStyles={activeStyles}
                     onClick={() => openApp("winamp")}
+                    desktopRef={desktopRef}
                 />
                 <DesktopIcon
                     label="linkedin_profile.lnk"
-                    icon="🔗"
+                    icon={<img src={LinkedIn} alt="LinkedIn" className="w-10 h-10" />}
                     themeStyles={activeStyles}
                     onClick={() => window.open("https://www.linkedin.com/in/honestraj-vijay/", "_blank")}
+                    desktopRef={desktopRef}
+                />
+                <DesktopIcon
+                    label="behance"
+                    icon={<img src={Behance} alt="Behance" className="w-10 h-10" />}
+                    themeStyles={activeStyles}
+                    onClick={() => window.open("https://www.behance.net/honestrhonestr1", "_blank")}
+                    desktopRef={desktopRef}
                 />
                 <DesktopIcon
                     label="terminal_prompt.exe"
                     icon="📟"
                     themeStyles={activeStyles}
                     onClick={() => openApp("terminal")}
+                    desktopRef={desktopRef}
                 />
                 <DesktopIcon
                     label="settings_control.exe"
                     icon="⚙️"
                     themeStyles={activeStyles}
                     onClick={() => openApp("settings")}
+                    desktopRef={desktopRef}
                 />
 
                 {/* DRAGGABLE APP WINDOWS (Large screens / Desktop view) */}
@@ -1045,15 +1061,36 @@ export default function Hero() {
 }
 
 // SUB-COMPONENT: DesktopIcon
-const DesktopIcon = ({ label, icon, onClick, themeStyles }) => {
+const DesktopIcon = ({ label, icon, onClick, themeStyles, desktopRef }) => {
+    const isDragging = useRef(false);
+
     return (
-        <div
-            onClick={onClick}
-            className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 active:scale-95 transition-all text-center select-none z-10"
+        <motion.div
+            drag
+            dragMomentum={false}
+            dragElastic={0.05}
+            dragConstraints={desktopRef}
+            onDragStart={() => {
+                isDragging.current = true;
+            }}
+            onDragEnd={() => {
+                setTimeout(() => {
+                    isDragging.current = false;
+                }, 50);
+            }}
+            onClick={(e) => {
+                if (isDragging.current) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return;
+                }
+                if (onClick) onClick(e);
+            }}
+            className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 active:scale-95 transition-all text-center select-none z-10 touch-none"
         >
             <div className="text-3xl filter drop-shadow-md leading-none mb-1.5">{icon}</div>
             <span className={themeStyles.iconText}>{label}</span>
-        </div>
+        </motion.div>
     );
 };
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 // Assets from existing project structure
@@ -272,6 +272,7 @@ export default function ViewResume() {
   const [activeOutlineTab, setActiveOutlineTab] = useState("summary");
 
   const desktopRef = useRef(null);
+  const navigate = useNavigate();
 
   const getPanelClass = () => {
     if (theme === "win98") {
@@ -447,25 +448,32 @@ export default function ViewResume() {
             setIsReaderOpen(true);
             setIsReaderMinimized(false);
           }}
+          desktopRef={desktopRef}
         />
-        <Link to="/" className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 text-center select-none">
-          <div className="text-3xl filter drop-shadow-md leading-none mb-1.5">🏠</div>
-          <span className={activeStyles.iconText}>Home.lnk</span>
-        </Link>
-        <Link to="/about" className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 text-center select-none">
-          <div className="text-3xl filter drop-shadow-md leading-none mb-1.5">📂</div>
-          <span className={activeStyles.iconText}>AboutOS.lnk</span>
-        </Link>
-        <div
+        <DesktopIcon
+          label="Home.lnk"
+          icon="🏠"
+          themeStyles={activeStyles}
+          onClick={() => navigate("/")}
+          desktopRef={desktopRef}
+        />
+        <DesktopIcon
+          label="AboutOS.lnk"
+          icon="📂"
+          themeStyles={activeStyles}
+          onClick={() => navigate("/about")}
+          desktopRef={desktopRef}
+        />
+        <DesktopIcon
+          label="CV_Exporter.exe"
+          icon="📥"
+          themeStyles={activeStyles}
           onClick={() => {
             setIsDownloaderOpen(true);
             setIsDownloaderMinimized(false);
           }}
-          className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 text-center select-none"
-        >
-          <div className="text-3xl filter drop-shadow-md leading-none mb-1.5">📥</div>
-          <span className={activeStyles.iconText}>CV_Exporter.exe</span>
-        </div>
+          desktopRef={desktopRef}
+        />
 
         {/* DRAGGABLE RESUME READER APPLICATION (Desktop Viewports) */}
         <div className="absolute inset-0 pointer-events-none hidden md:block z-20">
@@ -1011,15 +1019,36 @@ export default function ViewResume() {
 }
 
 // Sub-Component: DesktopIcon
-const DesktopIcon = ({ label, icon, onClick, themeStyles }) => {
+const DesktopIcon = ({ label, icon, onClick, themeStyles, desktopRef }) => {
+  const isDragging = useRef(false);
+
   return (
-    <div
-      onClick={onClick}
-      className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 active:scale-95 transition-all text-center select-none"
+    <motion.div
+      drag
+      dragMomentum={false}
+      dragElastic={0.05}
+      dragConstraints={desktopRef}
+      onDragStart={() => {
+        isDragging.current = true;
+      }}
+      onDragEnd={() => {
+        setTimeout(() => {
+          isDragging.current = false;
+        }, 50);
+      }}
+      onClick={(e) => {
+        if (isDragging.current) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+        if (onClick) onClick(e);
+      }}
+      className="flex flex-col items-center justify-center p-2 rounded cursor-pointer w-20 hover:bg-white/10 active:scale-95 transition-all text-center select-none z-10 touch-none"
     >
       <div className="text-3xl filter drop-shadow-md leading-none mb-1.5">{icon}</div>
       <span className={themeStyles.iconText}>{label}</span>
-    </div>
+    </motion.div>
   );
 };
 

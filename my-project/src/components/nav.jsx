@@ -50,6 +50,27 @@ const SEARCH_INDEX = [
     { name: "Colan Infotech Pvt Ltd (Current Company)", path: "/resume", category: "Experience", description: "4+ years hands-on experience delivering UX/UI solutions across 10+ projects" }
 ];
 
+const getCategoryDetails = (category) => {
+    switch (category) {
+        case "UI/UX Design":
+            return { color: "text-[#3bdfd9] bg-[#3bdfd9]/10 border-[#3bdfd9]/30", icon: "🎨" };
+        case "Motion Graphics":
+            return { color: "text-[#ff4a7d] bg-[#ff4a7d]/10 border-[#ff4a7d]/30", icon: "🎬" };
+        case "3D Animation":
+            return { color: "text-[#ffcc00] bg-[#ffcc00]/10 border-[#ffcc00]/30", icon: "🧊" };
+        case "Resume":
+            return { color: "text-[#39ff14] bg-[#39ff14]/10 border-[#39ff14]/30", icon: "📄" };
+        case "Skills":
+            return { color: "text-[#a855f7] bg-[#a855f7]/10 border-[#a855f7]/30", icon: "⚡" };
+        case "Experience":
+            return { color: "text-[#3b82f6] bg-[#3b82f6]/10 border-[#3b82f6]/30", icon: "💼" };
+        case "Awards":
+            return { color: "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/30", icon: "🏆" };
+        default:
+            return { color: "text-gray-400 bg-gray-900 border-gray-800", icon: "📁" };
+    }
+};
+
 export default function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
@@ -86,6 +107,40 @@ export default function Navigation() {
         };
     }, []);
 
+    useEffect(() => {
+        function handleGlobalKeys(event) {
+            const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
+            if (activeTag === "input" || activeTag === "textarea" || activeTag === "select") {
+                if (event.key === "Escape") {
+                    document.activeElement.blur();
+                    setShowResults(false);
+                }
+                return;
+            }
+
+            if (
+                (event.key === "k" && (event.ctrlKey || event.metaKey)) ||
+                (event.key === "/")
+            ) {
+                event.preventDefault();
+                const desktopInput = searchRef.current?.querySelector("input");
+                if (desktopInput && window.innerWidth >= 768) {
+                    desktopInput.focus();
+                } else {
+                    const mobileInput = mobileSearchRef.current?.querySelector("input");
+                    if (mobileInput) {
+                        setIsMenuOpen(true);
+                        setTimeout(() => mobileInput.focus(), 150);
+                    }
+                }
+            }
+        }
+        document.addEventListener("keydown", handleGlobalKeys);
+        return () => {
+            document.removeEventListener("keydown", handleGlobalKeys);
+        };
+    }, []);
+
     const handleSelect = (path) => {
         setSearchQuery("");
         setShowResults(false);
@@ -116,8 +171,18 @@ export default function Navigation() {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex gap-6 items-center">
                     {/* Search Bar - Desktop */}
-                    <div ref={searchRef} className="relative w-[240px] z-[99]">
+                    <div ref={searchRef} className="relative w-[240px] focus-within:w-[300px] transition-all duration-300 z-[99] group">
                         <div className="relative flex items-center">
+                            <svg 
+                                className="absolute left-3 w-3.5 h-3.5 text-gray-500 pointer-events-none transition-colors duration-200 group-focus-within:text-[#3bdfd9]" 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                fill="none" 
+                                viewBox="0 0 24 24" 
+                                stroke="currentColor" 
+                                strokeWidth={2.5}
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
                             <input
                                 type="text"
                                 placeholder="Search projects, resume..."
@@ -127,36 +192,56 @@ export default function Navigation() {
                                     setShowResults(true);
                                 }}
                                 onFocus={() => setShowResults(true)}
-                                className="w-full bg-[#111111] text-[#fff] placeholder-gray-600 border-2 border-gray-600 focus:border-[#3bdfd9] focus:outline-none rounded-md px-3 py-1.5 text-xs font-sans tracking-wide transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]"
+                                className="w-full bg-[#161616] text-[#fff] placeholder-gray-500 border-2 border-black focus:border-[#3bdfd9] focus:outline-none rounded-md pl-9 pr-14 py-1.5 text-xs font-sans tracking-wide transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:shadow-[3px_3px_0px_0px_#3bdfd9]"
                             />
-                            {searchQuery && (
+                            {searchQuery ? (
                                 <button
                                     onClick={() => {
                                         setSearchQuery("");
                                         setShowResults(false);
                                     }}
-                                    className="absolute right-2.5 text-gray-500 hover:text-white text-[10px] font-bold font-mono"
+                                    className="absolute right-3 text-gray-500 hover:text-[#ff4a7d] text-[10px] font-bold font-mono transition-colors"
                                 >
                                     ✕
                                 </button>
+                            ) : (
+                                <kbd className="absolute right-3 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-[#262626] text-gray-400 border border-[#3c3c3c] rounded select-none pointer-events-none">
+                                    ⌘K
+                                </kbd>
                             )}
                         </div>
                         {showResults && searchQuery.trim() && (
-                            <div className="absolute top-full left-0 right-0 mt-2 bg-[#0a0a0a] border-2 border-[#ff4a7d] shadow-[0_0_15px_rgba(255,74,125,0.4)] rounded-md overflow-hidden z-[100] max-h-64 overflow-y-auto">
+                            <div className="absolute top-full left-0 right-0 mt-2 bg-[#0c0c0c] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-md overflow-hidden z-[100] max-h-72 overflow-y-auto">
+                                <div className="px-3 py-1.5 bg-[#161616] border-b border-black text-[9px] font-mono text-gray-400 uppercase tracking-widest flex justify-between items-center">
+                                    <span>Index Query Search</span>
+                                    <span>{filteredProjects.length} found</span>
+                                </div>
                                 {filteredProjects.length > 0 ? (
-                                    filteredProjects.map((item, idx) => (
-                                        <button
-                                            key={idx}
-                                            onClick={() => handleSelect(item.path)}
-                                            className="w-full text-left px-3.5 py-2.5 hover:bg-[#ff4a7d]/10 hover:text-[#3bdfd9] text-gray-300 font-sans border-b border-gray-900 last:border-b-0 flex flex-col gap-0.5 transition-colors cursor-pointer"
-                                        >
-                                            <span className="font-bold text-xs flex justify-between items-center w-full">
-                                                <span>{item.name}</span>
-                                                <span className="text-[9px] bg-gray-900 text-gray-500 font-mono px-1 rounded uppercase tracking-wider">{item.category}</span>
-                                            </span>
-                                            <span className="text-[10px] text-gray-500 truncate w-full">{item.description}</span>
-                                        </button>
-                                    ))
+                                    filteredProjects.map((item, idx) => {
+                                        const details = getCategoryDetails(item.category);
+                                        return (
+                                            <button
+                                                key={idx}
+                                                onClick={() => handleSelect(item.path)}
+                                                className="w-full text-left px-3 py-2 flex items-start gap-2.5 hover:bg-[#1f1f1f] border-b border-black last:border-b-0 transition-colors cursor-pointer group"
+                                            >
+                                                <span className="text-xs select-none pt-0.5">{details.icon}</span>
+                                                <div className="flex flex-col flex-1 min-w-0">
+                                                    <div className="flex items-center justify-between gap-2">
+                                                        <span className="font-bold text-xs text-gray-200 group-hover:text-white truncate">
+                                                            {item.name}
+                                                        </span>
+                                                        <span className={`text-[7px] font-bold font-mono px-1 py-0.5 border rounded uppercase tracking-wider shrink-0 ${details.color}`}>
+                                                            {item.category}
+                                                        </span>
+                                                    </div>
+                                                    <span className="text-[9px] text-gray-500 group-hover:text-gray-400 truncate mt-0.5">
+                                                        {item.description}
+                                                    </span>
+                                                </div>
+                                            </button>
+                                        );
+                                    })
                                 ) : (
                                     <div className="px-3.5 py-3 text-xs text-gray-500 font-mono text-center">
                                         No matching objects found.
@@ -218,6 +303,16 @@ export default function Navigation() {
                     {/* Mobile Search Input */}
                     <div ref={mobileSearchRef} className="relative w-full max-w-[280px]">
                         <div className="relative flex items-center">
+                            <svg 
+                                className="absolute left-3 w-3.5 h-3.5 text-gray-500 pointer-events-none" 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                fill="none" 
+                                viewBox="0 0 24 24" 
+                                stroke="currentColor" 
+                                strokeWidth={2.5}
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
                             <input
                                 type="text"
                                 placeholder="Search projects, resume..."
@@ -227,7 +322,7 @@ export default function Navigation() {
                                     setShowResults(true);
                                 }}
                                 onFocus={() => setShowResults(true)}
-                                className="w-full bg-[#111111] text-[#fff] placeholder-gray-500 border-2 border-black focus:border-[#ff4a7d] focus:outline-none rounded-md px-3 py-2 text-xs font-sans tracking-wide transition-all shadow-[2px_2px_0px_0px_#000]"
+                                className="w-full bg-[#161616] text-[#fff] placeholder-gray-500 border-2 border-black focus:border-[#ff4a7d] focus:outline-none rounded-md pl-9 pr-10 py-2 text-xs font-sans tracking-wide transition-all shadow-[2px_2px_0px_0px_#000] focus:shadow-[3px_3px_0px_0px_#ff4a7d]"
                             />
                             {searchQuery && (
                                 <button
@@ -242,24 +337,40 @@ export default function Navigation() {
                             )}
                         </div>
                         {showResults && searchQuery.trim() && (
-                            <div className="absolute top-full left-0 right-0 mt-2 bg-[#0a0a0a] border-2 border-black shadow-[4px_4px_0px_0px_#000] rounded-md overflow-hidden z-[100] max-h-48 overflow-y-auto">
+                            <div className="absolute top-full left-0 right-0 mt-2 bg-[#0c0c0c] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-md overflow-hidden z-[100] max-h-52 overflow-y-auto">
+                                <div className="px-3 py-1.5 bg-[#161616] border-b border-black text-[9px] font-mono text-gray-400 uppercase tracking-widest flex justify-between items-center">
+                                    <span>Index Query Search</span>
+                                    <span>{filteredProjects.length} found</span>
+                                </div>
                                 {filteredProjects.length > 0 ? (
-                                    filteredProjects.map((item, idx) => (
-                                        <button
-                                            key={idx}
-                                            onClick={() => {
-                                                handleSelect(item.path);
-                                                setIsMenuOpen(false);
-                                            }}
-                                            className="w-full text-left px-3.5 py-2.5 hover:bg-[#ff4a7d]/10 hover:text-[#3bdfd9] text-gray-300 font-sans border-b border-gray-900 last:border-b-0 flex flex-col gap-0.5 transition-colors cursor-pointer"
-                                        >
-                                            <span className="font-bold text-xs flex justify-between items-center w-full">
-                                                <span>{item.name}</span>
-                                                <span className="text-[9px] bg-gray-900 text-gray-500 font-mono px-1 rounded uppercase tracking-wider">{item.category}</span>
-                                            </span>
-                                            <span className="text-[10px] text-gray-500 truncate w-full">{item.description}</span>
-                                        </button>
-                                    ))
+                                    filteredProjects.map((item, idx) => {
+                                        const details = getCategoryDetails(item.category);
+                                        return (
+                                            <button
+                                                key={idx}
+                                                onClick={() => {
+                                                    handleSelect(item.path);
+                                                    setIsMenuOpen(false);
+                                                }}
+                                                className="w-full text-left px-3 py-2 flex items-start gap-2.5 hover:bg-[#1f1f1f] border-b border-black last:border-b-0 transition-colors cursor-pointer group"
+                                            >
+                                                <span className="text-xs select-none pt-0.5">{details.icon}</span>
+                                                <div className="flex flex-col flex-1 min-w-0">
+                                                    <div className="flex items-center justify-between gap-2">
+                                                        <span className="font-bold text-xs text-gray-200 group-hover:text-white truncate">
+                                                            {item.name}
+                                                        </span>
+                                                        <span className={`text-[7px] font-bold font-mono px-1 py-0.5 border rounded uppercase tracking-wider shrink-0 ${details.color}`}>
+                                                            {item.category}
+                                                        </span>
+                                                    </div>
+                                                    <span className="text-[9px] text-gray-500 group-hover:text-gray-400 truncate mt-0.5">
+                                                        {item.description}
+                                                    </span>
+                                                </div>
+                                            </button>
+                                        );
+                                    })
                                 ) : (
                                     <div className="px-3.5 py-3 text-xs text-gray-500 font-mono text-center">
                                         No matching objects found.
