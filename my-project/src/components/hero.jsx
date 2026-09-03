@@ -230,7 +230,7 @@ const CenterWallpaper = () => {
                     src={currentImg}
                     alt="Center Workspace Wallpaper"
                     style={{ height: "400px", width: "auto" }}
-                    className={`max-h-[80vh] max-w-[90vw] object-contain drop-shadow-2xl pointer-events-none transition-transform duration-75 ${
+                    className={`max-h-[80vh] max-w-[90vw] object-contain pointer-events-none transition-transform duration-75 ${
                         isGlitching ? "scale-[1.02] skew-x-[-1.5deg] brightness-125 contrast-125" : "scale-100"
                     }`}
                 />
@@ -248,7 +248,6 @@ const CenterWallpaper = () => {
                                 width: "auto",
                                 clipPath: "polygon(0 15%, 100% 15%, 100% 45%, 0 45%)",
                                 transform: "translate(-5px, 2px)",
-                                filter: "drop-shadow(3px 0 0 #00ffff)",
                             }}
                             className="absolute inset-0 max-h-[80vh] max-w-[90vw] object-contain pointer-events-none opacity-90 mix-blend-screen"
                         />
@@ -263,7 +262,6 @@ const CenterWallpaper = () => {
                                 width: "auto",
                                 clipPath: "polygon(0 55%, 100% 55%, 100% 85%, 0 85%)",
                                 transform: "translate(5px, -2px)",
-                                filter: "drop-shadow(-3px 0 0 #ff0055)",
                             }}
                             className="absolute inset-0 max-h-[80vh] max-w-[90vw] object-contain pointer-events-none opacity-90 mix-blend-screen"
                         />
