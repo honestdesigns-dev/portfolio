@@ -35,17 +35,16 @@ const SEARCH_INDEX = [
 
     // Pages & Resume
     { name: "Resume & Professional CV", path: "/resume", category: "Resume", description: "Retro resume reader app, skills index & pdf download" },
-    { name: "About Artist Portfolio", path: "/About", category: "System Info", description: "Workstation terminal, bio doc details & awards" },
     { name: "UI/UX Projects Collection", path: "/uidesigns", category: "Gallery", description: "Explore full index of design files and casing" },
     { name: "Motion Graphic Showcase", path: "/motiondesigns", category: "Gallery", description: "Explore full vector animations and clips list" },
     { name: "3D Blender Work", path: "/3ddesigns", category: "Gallery", description: "Explore static Blender meshes and renders" },
 
     // Resume Details - Skills, Awards, Experience, Current Company
-    { name: "Core Skills: UI/UX & Prototyping", path: "/resume", category: "Skills", description: "User Research, User Flows, Wireframing, Prototyping, Usability Testing, Accessibility, Design Systems" },
-    { name: "Design Tools & 3D Software", path: "/resume", category: "Skills", description: "Figma, Adobe XD, Framer, Webflow, UX Pin, Marvel, Blender, Spline, Cinema 4D, Adobe Aero, Dimension, Mixamo, After Effects, Premiere Pro, Photoshop, Illustrator, Dora 3D" },
-    { name: "Quarter IV - March 2024 Award", path: "/About", category: "Awards", description: "Outstanding Performance and Lasting Contribution at Colan Infotech" },
-    { name: "Quarter IV - March 2025 Award", path: "/About", category: "Awards", description: "Solid Delivery Performance at Colan Infotech" },
-    { name: "Quarter I - July 2025 Award", path: "/About", category: "Awards", description: "Best Performance and Lasting Contribution at Colan Infotech" },
+    { name: "Core Skills: UI/UX & Prototyping", path: "/?open=skills", category: "Skills", description: "User Research, User Flows, Wireframing, Prototyping, Usability Testing, Accessibility, Design Systems" },
+    { name: "Design Tools & 3D Software", path: "/?open=skills", category: "Skills", description: "Figma, Adobe XD, Framer, Webflow, UX Pin, Marvel, Blender, Spline, Cinema 4D, Adobe Aero, Dimension, Mixamo, After Effects, Premiere Pro, Photoshop, Illustrator, Dora 3D" },
+    { name: "Quarter IV - March 2024 Award", path: "/?open=awards", category: "Awards", description: "Outstanding Performance and Lasting Contribution at Colan Infotech" },
+    { name: "Quarter IV - March 2025 Award", path: "/?open=awards", category: "Awards", description: "Solid Delivery Performance at Colan Infotech" },
+    { name: "Quarter I - July 2025 Award", path: "/?open=awards", category: "Awards", description: "Best Performance and Lasting Contribution at Colan Infotech" },
     { name: "Lead UI/UX & Product Designer (Current)", path: "/resume", category: "Experience", description: "Colan Infotech Pvt Ltd (2023 - Present) - Chennai, India" },
     { name: "Colan Infotech Pvt Ltd (Current Company)", path: "/resume", category: "Experience", description: "4+ years hands-on experience delivering UX/UI solutions across 10+ projects" }
 ];
@@ -258,12 +257,6 @@ export default function Navigation() {
                         Home
                     </Link>
                     <Link
-                        to="/About"
-                        className="neo-button text-xs tracking-widest text-center"
-                    >
-                        About
-                    </Link>
-                    <Link
                         to="/resume"
                         className="neo-button text-xs tracking-widest text-center"
                     >
@@ -386,13 +379,6 @@ export default function Navigation() {
                         className="bg-[#ffcc00] text-black border-2 border-black font-black uppercase text-xs tracking-widest py-3 px-6 text-center w-48 shadow-[3px_3px_0px_0px_#000] hover:scale-102 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rounded-md"
                     >
                         Home
-                    </Link>
-                    <Link
-                        to="/About"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="bg-[#3bdfd9] text-black border-2 border-black font-black uppercase text-xs tracking-widest py-3 px-6 text-center w-48 shadow-[3px_3px_0px_0px_#000] hover:scale-102 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rounded-md"
-                    >
-                        About
                     </Link>
                     <Link 
                         to="/resume" 

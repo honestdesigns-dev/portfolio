@@ -2,25 +2,32 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import Behance from "../assets/behance_icon.jpg";
 import LinkedIn from "../assets/linkedin_icon.png";
 
-
-// Assets from existing structure
+// Assets
+import Me from "../assets/me.jpg";
 import Figma from "../assets/fig.png";
 import Ae from "../assets/ae.png";
 import Ai from "../assets/ai.png";
 import Ps from "../assets/ps.png";
 import Pr from "../assets/pr.png";
+import Xd from "../assets/xd.png";
+import Rush from "../assets/rush.png";
+import Creatie from "../assets/creatie.png";
 import Blender from "../assets/blender.png";
 import Spline from "../assets/spline.png";
 import ReactLogo from "../assets/react.svg";
-import designui from "../assets/designui.png";
+import Framer from "../assets/framer.png";
+import AwardImg from "../assets/aw.jpg";
 import uiux from "../assets/uid.jpg";
 import manime from "../assets/manime.jpg";
 import threeD from "../assets/3dd.jpg";
+import ProjectsIcon from "../assets/projects-icon.png";
+import AwardIcon from "../assets/award-icon.png";
+import HonestIcon from "../assets/honestt.png";
+import holding1 from "../assets/holding.png";
+import holding2 from "../assets/holding2.png";
 import resume from "../assets/Honest Resume UIUX Design.pdf";
 
 // Project Preview Images - UI/UX
@@ -53,7 +60,6 @@ import trinity from "../assets/projects/trinity.png";
 // Project Preview Images - 3D
 import phoneix from "../assets/projects/phoneix.png";
 import winter from "../assets/projects/winter.png";
-import courtyardApocalypse from "../assets/projects/courtyard_apocalypse.mp3";
 
 // Themes Config
 const themeStyles = {
@@ -115,6 +121,168 @@ const themeStyles = {
     }
 };
 
+// Skills Database embedded inside honest_me.doc
+const SKILLS_DATA = [
+    { src: Figma, name: "Figma", level: "Expert (4+ yrs)", desc: "Design Systems, Auto-Layout, Tokens, Interactive Prototypes" },
+    { src: Ae, name: "After Effects", level: "Advanced", desc: "UI Motion, Lottie Animations, Micro-interactions & Visual Effects" },
+    { src: Ai, name: "Illustrator", level: "Expert", desc: "Vector Design, Iconography, Brand Systems & Visual Typography" },
+    { src: Ps, name: "Photoshop", level: "Advanced", desc: "High-res Graphics, Texture Rendering & Raster Composition" },
+    { src: Pr, name: "Premiere Pro", level: "Advanced", desc: "Product Launch Videos, Audio Timing & Motion Narrative" },
+    { src: Blender, name: "Blender 3D", level: "Advanced", desc: "Low-Poly Meshes, 3D Product Modeling, Materials & Lighting" },
+    { src: Spline, name: "Spline 3D", level: "Advanced", desc: "Real-time Interactive 3D Web Scenes & State Triggers" },
+    { src: Creatie, name: "Creatie AI", level: "Advanced", desc: "AI-Assisted Layout Exploration & Prototyping Workflows" },
+    { src: Xd, name: "Adobe XD", level: "Intermediate", desc: "Component Architecture & Wireframe Prototypes" },
+    { src: Rush, name: "Premiere Rush", level: "Intermediate", desc: "Rapid Mobile Edits & Sequence Assembly" },
+    { src: ReactLogo, name: "React", level: "Advanced", desc: "Modern Component Architecture, Tailwind, State & Hooks" },
+    { src: Framer, name: "Framer", level: "Advanced", desc: "Dynamic Layouts, Micro-Animations & Interactive Production" }
+];
+
+// Center Rotating Titles / Roles List
+const ROLES = [
+    "UI/UX Designer",
+    "Product Designer",
+    "Motion Animator",
+    "AI Front End Dev"
+];
+
+// SUB-COMPONENT: Smooth Text Counter Animation (Small font, pure white text, no glitch)
+const RoleTextCounter = ({ theme }) => {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prev) => (prev + 1) % ROLES.length);
+        }, 2800);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="relative pointer-events-none select-none inline-flex items-center gap-2.5 font-mono text-white  p-1.5">
+            {/* Animated Number Counter */}
+            <div className="flex items-center gap-1.5 text-[10px] md:text-xs font-black tracking-widest text-[#ffffff] border-r border-white/25 pr-2.5 shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ffffff] animate-pulse" />
+                <div className="h-4 overflow-hidden inline-flex items-center">
+                    <AnimatePresence mode="wait">
+                        <motion.span
+                            key={index}
+                            initial={{ opacity: 0, y: -6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 6 }}
+                            transition={{ duration: 0.22 }}
+                            className="inline-block"
+                        >
+                            0{index + 1}
+                        </motion.span>
+                    </AnimatePresence>
+                </div>
+                <span className="opacity-40 text-white font-normal">/</span>
+                <span className="opacity-60 text-white font-normal">0{ROLES.length}</span>
+            </div>
+
+            {/* Smooth Animated Title */}
+            <div className="h-5 overflow-hidden flex items-center min-w-[150px] md:min-w-[180px]">
+                <AnimatePresence mode="wait">
+                    <motion.span
+                        key={index}
+                        initial={{ opacity: 0, y: 9, filter: "blur(2px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, y: -9, filter: "blur(2px)" }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="text-xs md:text-sm font-bold tracking-wider uppercase text-white truncate block"
+                    >
+                        {ROLES[index]}
+                    </motion.span>
+                </AnimatePresence>
+            </div>
+        </div>
+    );
+};
+
+// Center Auto-Changing Wallpaper Images
+const WALLPAPER_IMAGES = [holding1, holding2];
+
+// SUB-COMPONENT: Center Auto Changing Wallpaper (Instant Glitch, width: auto, height: 400px)
+const CenterWallpaper = () => {
+    const [imgIndex, setImgIndex] = useState(0);
+    const [isGlitching, setIsGlitching] = useState(false);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIsGlitching(true);
+            // Instant image swap in the middle of glitch burst
+            setTimeout(() => {
+                setImgIndex((prev) => (prev + 1) % WALLPAPER_IMAGES.length);
+            }, 80);
+            setTimeout(() => {
+                setIsGlitching(false);
+            }, 240);
+        }, 3600);
+        return () => clearInterval(interval);
+    }, []);
+
+    const currentImg = WALLPAPER_IMAGES[imgIndex];
+
+    return (
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0 select-none overflow-hidden">
+            <div className="relative inline-block" style={{ height: "400px", width: "auto" }}>
+                {/* Main Instant Wallpaper Image */}
+                <img
+                    src={currentImg}
+                    alt="Center Workspace Wallpaper"
+                    style={{ height: "400px", width: "auto" }}
+                    className={`max-h-[80vh] max-w-[90vw] object-contain drop-shadow-2xl pointer-events-none transition-transform duration-75 ${
+                        isGlitching ? "scale-[1.02] skew-x-[-1.5deg] brightness-125 contrast-125" : "scale-100"
+                    }`}
+                />
+
+                {/* Instant Glitch Burst Slices */}
+                {isGlitching && (
+                    <>
+                        {/* Cyan RGB Shift Layer */}
+                        <img
+                            src={currentImg}
+                            alt=""
+                            aria-hidden="true"
+                            style={{
+                                height: "400px",
+                                width: "auto",
+                                clipPath: "polygon(0 15%, 100% 15%, 100% 45%, 0 45%)",
+                                transform: "translate(-5px, 2px)",
+                                filter: "drop-shadow(3px 0 0 #00ffff)",
+                            }}
+                            className="absolute inset-0 max-h-[80vh] max-w-[90vw] object-contain pointer-events-none opacity-90 mix-blend-screen"
+                        />
+
+                        {/* Magenta RGB Shift Layer */}
+                        <img
+                            src={currentImg}
+                            alt=""
+                            aria-hidden="true"
+                            style={{
+                                height: "400px",
+                                width: "auto",
+                                clipPath: "polygon(0 55%, 100% 55%, 100% 85%, 0 85%)",
+                                transform: "translate(5px, -2px)",
+                                filter: "drop-shadow(-3px 0 0 #ff0055)",
+                            }}
+                            className="absolute inset-0 max-h-[80vh] max-w-[90vw] object-contain pointer-events-none opacity-90 mix-blend-screen"
+                        />
+
+                        {/* White Scanline Jitter Flash */}
+                        <div
+                            className="absolute inset-0 pointer-events-none bg-white/20 mix-blend-overlay"
+                            style={{
+                                clipPath: "polygon(0 30%, 100% 30%, 100% 38%, 0 38%)",
+                                transform: "translate(4px, 0)",
+                            }}
+                        />
+                    </>
+                )}
+            </div>
+        </div>
+    );
+};
+
 export default function Hero() {
     const [theme, setTheme] = useState("win98");
     const [wallpaperPattern, setWallpaperPattern] = useState("grid");
@@ -122,48 +290,40 @@ export default function Hero() {
     const [crtStrength, setCrtStrength] = useState(0.25);
     const [isShutDown, setIsShutDown] = useState(false);
 
-    // Desktop Windows Control
+    // Desktop & Mobile Windows Control
     const [openWindows, setOpenWindows] = useState({
-        readme: true,
+        bio: true,
         projects: false,
-        winamp: false,
-        settings: false,
-        terminal: false,
+        awards: false,
         projDetail: false,
         gallery: false,
     });
 
     const [minimizedWindows, setMinimizedWindows] = useState({
-        readme: false,
+        bio: false,
         projects: false,
-        winamp: false,
-        settings: false,
-        terminal: false,
+        awards: false,
         projDetail: false,
         gallery: false,
     });
 
     const [maximizedWindows, setMaximizedWindows] = useState({
-        readme: false,
+        bio: false,
         projects: false,
-        winamp: false,
-        settings: false,
-        terminal: false,
+        awards: false,
         projDetail: false,
         gallery: false,
     });
 
-    const [activeWindow, setActiveWindow] = useState("readme");
+    const [activeWindow, setActiveWindow] = useState("bio");
     const [selectedProjCat, setSelectedProjCat] = useState(null);
     const [zoomImage, setZoomImage] = useState(null);
     const [zoomTitle, setZoomTitle] = useState("");
 
     const [zIndices, setZIndices] = useState({
-        readme: 10,
+        bio: 10,
         projects: 10,
-        winamp: 10,
-        settings: 10,
-        terminal: 10,
+        awards: 10,
         projDetail: 12,
         gallery: 13,
     });
@@ -239,6 +399,9 @@ export default function Hero() {
         return defaultStyles;
     };
 
+    // Check if any window is currently open on mobile
+    const isAnyMobileWindowOpen = Object.entries(openWindows).some(([k, v]) => v && !minimizedWindows[k]);
+
     if (isShutDown) {
         return (
             <div className="fixed inset-0 bg-[#000000] z-[9999] flex flex-col items-center justify-center text-white font-mono p-4 select-none">
@@ -263,7 +426,7 @@ export default function Hero() {
     return (
         <section
             ref={desktopRef}
-            className={`fixed w-full h-[calc(100vh-80px)] top-20 left-0 right-0 mt-0 mb-0 overflow-hidden flex flex-col transition-all duration-300 border-t-4 border-b-4 border-x-0 border-black rounded-none shadow-2xl p-0`}
+            className={`fixed w-full h-[calc(100vh-80px)] h-[calc(100dvh-80px)] top-20 left-0 right-0 overflow-hidden flex flex-col transition-all duration-300 border-t-4 border-b-4 border-x-0 border-black rounded-none shadow-2xl p-0`}
             style={getResponsiveDesktopStyle()}
             onClick={() => setIsStartMenuOpen(false)}
         >
@@ -275,32 +438,35 @@ export default function Hero() {
                 />
             )}
 
-            {/* DESKTOP WORKSPACE */}
-            <div className="flex-1 w-full p-4 md:p-6 relative flex flex-row md:flex-col flex-wrap content-start items-start justify-start gap-4 md:gap-8 z-10 overflow-y-auto">
-                {/* Folder / File Icons */}
+            {/* DESKTOP WORKSPACE (Desktop View) */}
+            <div className="flex-1 w-full p-4 md:p-6 relative hidden md:flex flex-col flex-wrap content-start items-start justify-start gap-4 md:gap-8 z-10 overflow-y-auto">
+                {/* Center Auto-Changing Wallpaper */}
+                <CenterWallpaper />
+
+                {/* Desktop Icons */}
                 <DesktopIcon
-                    label="welcome_readme.txt"
-                    icon="📄"
+                    label="honest_me.doc"
+                    icon={<img src={HonestIcon} alt="Honest Bio" className="w-10 h-10 object-contain drop-shadow-md" />}
                     themeStyles={activeStyles}
-                    onClick={() => openApp("readme")}
+                    onClick={() => openApp("bio")}
                     desktopRef={desktopRef}
                 />
                 <DesktopIcon
-                    label="portfolio_projects"
-                    icon="📂"
+                    label="projects"
+                    icon={<img src={ProjectsIcon} alt="Projects" className="w-10 h-10 object-contain drop-shadow-md" />}
                     themeStyles={activeStyles}
                     onClick={() => openApp("projects")}
                     desktopRef={desktopRef}
                 />
                 <DesktopIcon
-                    label="retro_winamp.exe"
-                    icon="📻"
+                    label="awards"
+                    icon={<img src={AwardIcon} alt="Awards" className="w-10 h-10 object-contain drop-shadow-md" />}
                     themeStyles={activeStyles}
-                    onClick={() => openApp("winamp")}
+                    onClick={() => openApp("awards")}
                     desktopRef={desktopRef}
                 />
                 <DesktopIcon
-                    label="linkedin_profile.lnk"
+                    label="linkedin"
                     icon={<img src={LinkedIn} alt="LinkedIn" className="w-10 h-10" />}
                     themeStyles={activeStyles}
                     onClick={() => window.open("https://www.linkedin.com/in/honestraj-vijay/", "_blank")}
@@ -313,85 +479,14 @@ export default function Hero() {
                     onClick={() => window.open("https://www.behance.net/honestrhonestr1", "_blank")}
                     desktopRef={desktopRef}
                 />
-                <DesktopIcon
-                    label="terminal_prompt.exe"
-                    icon="📟"
-                    themeStyles={activeStyles}
-                    onClick={() => openApp("terminal")}
-                    desktopRef={desktopRef}
-                />
-                <DesktopIcon
-                    label="settings_control.exe"
-                    icon="⚙️"
-                    themeStyles={activeStyles}
-                    onClick={() => openApp("settings")}
-                    desktopRef={desktopRef}
-                />
 
-                {/* DRAGGABLE APP WINDOWS (Large screens / Desktop view) */}
-                <div className="absolute inset-0 pointer-events-none hidden md:block z-20">
+                {/* Top-Right Fixed Animated Role Counter */}
+                <div className="absolute top-4 right-6 pointer-events-none z-30 select-none hidden md:flex items-center">
+                    <RoleTextCounter theme={theme} />
+                </div>
 
-                    {/* WINDOW 1: README NOTEPAD */}
-                    <AnimateWindow
-                        isOpen={openWindows.readme && !minimizedWindows.readme}
-                        isMaximized={maximizedWindows.readme}
-                        zIndex={zIndices.readme}
-                        title="welcome_readme.txt - Notepad"
-                        winName="readme"
-                        activeWindow={activeWindow}
-                        activeStyles={activeStyles}
-                        desktopRef={desktopRef}
-                        focusWindow={focusWindow}
-                        toggleMinimize={toggleMinimize}
-                        toggleMaximize={toggleMaximize}
-                        closeApp={closeApp}
-                        initialX={60}
-                        initialY={40}
-                        width="560px"
-                    >
-                        <div className="p-5 bg-white text-black h-full overflow-y-auto leading-relaxed select-text font-mono text-xs md:text-sm">
-                            <div className="border-b-2 border-black pb-2 mb-4">
-                                <h1 className="text-xl md:text-2xl font-black text-black">Welcome to HonestOS v1.0!</h1>
-                                <p className="text-gray-500 text-[10px] mt-1 font-bold">CREATED BY: HONESTRAJ // PRODUCT DESIGNER</p>
-                            </div>
-
-                            <p className="mb-4">
-                                I'm a passionate <span className="text-[#FF4D00] font-extrabold uppercase">UI/UX Product Designer</span> with 4+ years of hands-on experience, specialising in translating intricate user needs into neat, satisfying interfaces that elevate complex enterprise workflows.
-                            </p>
-
-                            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 mb-4 font-sans text-xs text-gray-700">
-                                <p className="font-bold mb-1">💡 Interactive Workstation Instructions:</p>
-                                <ul className="list-disc pl-4 space-y-1">
-                                    <li>Double-click or tap icons on the desktop to launch apps.</li>
-                                    <li>Click and drag window title bars to move them around the workspace.</li>
-                                    <li>Open <span className="font-bold underline cursor-pointer text-[#FF4D00]" onClick={() => openApp("projects")}>portfolio_projects</span> to easily browse custom designs!</li>
-                                    <li>Play 8-bit chip tunes and visualize the spectrum using <span className="font-bold underline cursor-pointer text-[#FF4D00]" onClick={() => openApp("winamp")}>retro_winamp.exe</span>.</li>
-                                </ul>
-                            </div>
-
-                            <div className="flex flex-col gap-2 p-3 bg-gray-50 border border-gray-300 font-mono text-xs rounded mb-4">
-                                <div>🌐 SYSTEM CORE INFORMATION:</div>
-                                <div className="text-gray-600">Location: Chennai, India</div>
-                                <div className="text-gray-600">Primary Focus: UI/UX Designs, Branding, Video Animation</div>
-                                <div className="text-gray-600">Active Workstation status: Online & Ready for start-ups</div>
-                            </div>
-
-                            <div className="flex gap-4">
-                                <button
-                                    onClick={() => openApp("projects")}
-                                    className="bg-black text-white hover:bg-gray-800 transition-all font-sans font-bold px-4 py-2 border-2 border-black active:translate-y-[1px] text-xs shadow-[3px_3px_0_0_#ccc] active:shadow-none"
-                                >
-                                    Browse Projects ➔
-                                </button>
-                                <Link
-                                    to="/resume"
-                                    className="bg-white text-black hover:bg-gray-100 transition-all font-sans font-bold px-4 py-2 border-2 border-black active:translate-y-[1px] text-xs shadow-[3px_3px_0_0_#000] active:shadow-none"
-                                >
-                                    View My Resume ➔
-                                </Link>
-                            </div>
-                        </div>
-                    </AnimateWindow>
+                {/* DRAGGABLE APP WINDOWS (Desktop view) */}
+                <div className="absolute inset-0 pointer-events-none z-20">
 
                     {/* WINDOW 2: PORTFOLIO PROJECTS EXPLORER */}
                     <AnimateWindow
@@ -445,7 +540,7 @@ export default function Hero() {
                             </div>
 
                             <div className="mt-4 p-3 bg-gray-100 border border-gray-300 font-mono text-[10px] rounded text-gray-600 select-none">
-                                ℹ️ Double-click or click any folder icon above to launch a responsive in-browser previews screen. You will have a fast-loading workspace designed for premium project handling.
+                                ℹ️ Double-click or click any folder icon above to launch a responsive in-browser previews screen.
                             </div>
                         </div>
                     </AnimateWindow>
@@ -511,13 +606,13 @@ export default function Hero() {
                         />
                     </AnimateWindow>
 
-                    {/* WINDOW 3: RETRO WINAMP AUDIO PLAYER */}
+                    {/* WINDOW 3: ABOUT ME & INTEGRATED TOOLS (honest_me.doc) */}
                     <AnimateWindow
-                        isOpen={openWindows.winamp && !minimizedWindows.winamp}
-                        isMaximized={maximizedWindows.winamp}
-                        zIndex={zIndices.winamp}
-                        title="Winamp v2.76 - Retro Media Player"
-                        winName="winamp"
+                        isOpen={openWindows.bio && !minimizedWindows.bio}
+                        isMaximized={maximizedWindows.bio}
+                        zIndex={zIndices.bio}
+                        title="honest_me.doc - WordPad"
+                        winName="bio"
                         activeWindow={activeWindow}
                         activeStyles={activeStyles}
                         desktopRef={desktopRef}
@@ -525,317 +620,518 @@ export default function Hero() {
                         toggleMinimize={toggleMinimize}
                         toggleMaximize={toggleMaximize}
                         closeApp={closeApp}
-                        initialX={360}
-                        initialY={100}
-                        width="380px"
+                        initialX={80}
+                        initialY={40}
+                        width="620px"
                     >
-                        <SoundboardWinamp />
-                    </AnimateWindow>
-
-
-
-                    {/* WINDOW 5: RETRO CMD TERMINAL PROMPT */}
-                    <AnimateWindow
-                        isOpen={openWindows.terminal && !minimizedWindows.terminal}
-                        isMaximized={maximizedWindows.terminal}
-                        zIndex={zIndices.terminal}
-                        title="C:\\WINDOWS\\SYSTEM32\\CMD.EXE"
-                        winName="terminal"
-                        activeWindow={activeWindow}
-                        activeStyles={activeStyles}
-                        desktopRef={desktopRef}
-                        focusWindow={focusWindow}
-                        toggleMinimize={toggleMinimize}
-                        toggleMaximize={toggleMaximize}
-                        closeApp={closeApp}
-                        initialX={110}
-                        initialY={210}
-                        width="550px"
-                    >
-                        <RetroTerminal activeTheme={theme} />
-                    </AnimateWindow>
-
-                    {/* WINDOW 6: WORKSTATION SETTINGS CONTROL */}
-                    <AnimateWindow
-                        isOpen={openWindows.settings && !minimizedWindows.settings}
-                        isMaximized={maximizedWindows.settings}
-                        zIndex={zIndices.settings}
-                        title="Workstation Control Panel"
-                        winName="settings"
-                        activeWindow={activeWindow}
-                        activeStyles={activeStyles}
-                        desktopRef={desktopRef}
-                        focusWindow={focusWindow}
-                        toggleMinimize={toggleMinimize}
-                        toggleMaximize={toggleMaximize}
-                        closeApp={closeApp}
-                        initialX={320}
-                        initialY={60}
-                        width="450px"
-                    >
-                        <div className="p-4 bg-[#f0f0f0] text-black h-full overflow-y-auto text-xs font-mono select-none">
-                            <div className="border-b border-gray-400 pb-2 mb-4">
-                                <h3 className="text-sm font-bold flex items-center gap-1.5">🛠️ Workstation Configuration Panel</h3>
-                            </div>
-
-                            <div className="space-y-4">
-                                {/* Theme Cycler */}
-                                <div className="p-3 border border-gray-400 bg-white shadow-[1px_1px_0_0_#000]">
-                                    <span className="font-bold block text-gray-700 font-mono text-[9px] mb-1.5">VISUAL WORKSPACE SKIN</span>
-                                    <div className="flex gap-2">
-                                        {["win98", "synthwave", "macOS"].map((t) => (
-                                            <button
-                                                key={t}
-                                                onClick={() => setTheme(t)}
-                                                className={`px-3 py-1 cursor-pointer font-bold border transition-all ${theme === t
-                                                    ? "bg-black text-white border-black"
-                                                    : "bg-[#e0e0e0] border-gray-400 text-black hover:bg-gray-200"
-                                                    }`}
-                                            >
-                                                {t.toUpperCase()}
-                                            </button>
-                                        ))}
+                        <div className="p-4 overflow-y-auto h-full text-black leading-relaxed font-sans text-sm bg-white space-y-5">
+                            {/* Profile Bio Header */}
+                            <div className="flex flex-col md:flex-row gap-5 pb-4 border-b border-gray-300">
+                                <div className="shrink-0 flex flex-col items-center">
+                                    <div className="relative group w-36 h-auto rounded-lg overflow-hidden border-2 border-black bg-white p-1 shadow-[3px_3px_0_0_#000]">
+                                        <img
+                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                                            src={Me}
+                                            alt="Honestraj"
+                                        />
+                                        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.1)_50%,transparent_50%)] bg-[size:100%_4px] pointer-events-none opacity-40" />
+                                    </div>
+                                    <div className="mt-2 text-center">
+                                        <span className="bg-black text-white text-[9px] font-black uppercase px-2 py-0.5 font-mono rounded tracking-wider">
+                                            UI/UX | Motion | 3D
+                                        </span>
                                     </div>
                                 </div>
-
-                                {/* Wallpaper Scheme */}
-                                <div className="p-3 border border-gray-400 bg-white shadow-[1px_1px_0_0_#000]">
-                                    <span className="font-bold block text-gray-700 font-mono text-[9px] mb-1.5">DESKTOP WALLPAPER STYLE</span>
-                                    <div className="flex gap-2">
-                                        {["grid", "solid"].map((styleOpt) => (
-                                            <button
-                                                key={styleOpt}
-                                                onClick={() => setWallpaperPattern(styleOpt)}
-                                                className={`px-3 py-1 cursor-pointer font-bold border transition-all ${wallpaperPattern === styleOpt
-                                                    ? "bg-black text-white border-black"
-                                                    : "bg-[#e0e0e0] border-gray-400 text-black hover:bg-gray-200"
-                                                    }`}
-                                            >
-                                                {styleOpt.toUpperCase()}
-                                            </button>
-                                        ))}
+                                <div className="flex-1 flex flex-col justify-start">
+                                    <h2 className="text-xl font-black font-mono border-b-2 border-black pb-1 mb-2 flex items-center justify-between">
+                                        <span>Honestraj Vijay</span>
+                                        <span className="text-gray-400 text-xs font-normal">v4.0.0</span>
+                                    </h2>
+                                    <div className="font-mono text-xs text-gray-500 mb-1.5">
+                                        JOB_TITLE: <span className="text-[#FF4D00] font-black">LEAD UI/UX PRODUCT DESIGNER</span>
                                     </div>
-                                </div>
-
-                                {/* CRT Scanline Filter Controls */}
-                                <div className="p-3 border border-gray-400 bg-white shadow-[1px_1px_0_0_#000]">
-                                    <span className="font-bold block text-gray-700 font-mono text-[9px] mb-1.5">CRT TUBE SCANLINES FILTER</span>
-                                    <div className="flex flex-col gap-2.5">
-                                        <label className="flex items-center gap-2 font-bold cursor-pointer">
-                                            <input
-                                                type="checkbox"
-                                                checked={crtScanlines}
-                                                onChange={() => setCrtScanlines(!crtScanlines)}
-                                                className="cursor-pointer"
-                                            />
-                                            <span>Enable CRT Phosphor Tube Overlay</span>
-                                        </label>
-
-                                        {crtScanlines && (
-                                            <div className="flex items-center gap-2">
-                                                <span>Opacity:</span>
-                                                <input
-                                                    type="range"
-                                                    min="0.05"
-                                                    max="0.65"
-                                                    step="0.05"
-                                                    value={crtStrength}
-                                                    onChange={(e) => setCrtStrength(Number(e.target.value))}
-                                                    className="flex-1 cursor-pointer"
-                                                />
-                                                <span className="w-10 text-right">{(crtStrength * 100).toFixed(0)}%</span>
-                                            </div>
-                                        )}
+                                    <p className="mb-2 text-xs md:text-sm text-gray-800">
+                                        Highly driven <span className="text-[#FF4D00] font-bold font-mono">UI/UX Designer</span> with 4+ years of experience in designing intuitive, scalable digital solutions for complex enterprise systems [ERP] and next-gen start-ups.
+                                    </p>
+                                    <div className="border border-dashed border-gray-400 p-2 bg-gray-50 font-mono text-[10px] leading-normal text-gray-600 rounded">
+                                        📌 WORKSTATION CORE: Chennai, India • <a href="https://colaninfotech.com/" target="_blank" rel="noopener noreferrer" className="text-[#FF4D00] font-bold font-mono underline hover:text-blue-600">Colan Infotech Pvt Ltd</a> • 10+ Delivered Case Studies
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="mt-4 border-t border-gray-300 pt-3 text-[10px] text-gray-500 flex justify-between items-center">
-                                <span>Kernel version: 1.0.1998</span>
-                                <span>Workstation diagnostic: OPTIMAL</span>
+                            {/* Integrated Tools & Software Arsenal */}
+                            <div>
+                                <div className="flex justify-between items-center mb-3">
+                                    <h3 className="font-mono font-bold text-xs uppercase tracking-wider text-black flex items-center gap-1.5">
+                                        🧰 Design Arsenal & Tools Stack ({SKILLS_DATA.length} Tools)
+                                    </h3>
+                                    <span className="text-[10px] font-mono text-gray-400">Hover for metadata</span>
+                                </div>
+
+                                <div className="grid grid-cols-4 gap-3 bg-[#f8f8f8] p-3 rounded border border-gray-200">
+                                    {SKILLS_DATA.map((s, idx) => (
+                                        <SkillItem key={idx} src={s.src} name={s.name} level={s.level} desc={s.desc} />
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Action Row */}
+                            <div className="flex gap-3 pt-2 border-t border-gray-200">
+                                <button
+                                    onClick={() => openApp("awards")}
+                                    className="flex-1 bg-black text-white hover:bg-gray-800 text-xs font-bold py-2 px-3 font-sans rounded border shadow-[2px_2px_0_0_#ccc] active:shadow-none cursor-pointer flex items-center justify-center gap-1.5"
+                                >
+                                    <img src={AwardIcon} alt="" className="w-3.5 h-3.5 object-contain" /> View Awards & Merits ➔
+                                </button>
+                                <button
+                                    onClick={() => openApp("projects")}
+                                    className="flex-1 bg-white hover:bg-gray-100 text-black text-xs font-bold py-2 px-3 font-sans rounded border-2 border-black shadow-[2px_2px_0_0_#000] active:shadow-none cursor-pointer flex items-center justify-center gap-1.5"
+                                >
+                                    <img src={ProjectsIcon} alt="" className="w-3.5 h-3.5 object-contain" /> Browse Projects ➔
+                                </button>
+                            </div>
+                        </div>
+                    </AnimateWindow>
+
+                    {/* WINDOW 5: AWARDS DATABASE */}
+                    <AnimateWindow
+                        isOpen={openWindows.awards && !minimizedWindows.awards}
+                        isMaximized={maximizedWindows.awards}
+                        zIndex={zIndices.awards}
+                        title="AWARDS_REGISTRY.EXE"
+                        winName="awards"
+                        activeWindow={activeWindow}
+                        activeStyles={activeStyles}
+                        desktopRef={desktopRef}
+                        focusWindow={focusWindow}
+                        toggleMinimize={toggleMinimize}
+                        toggleMaximize={toggleMaximize}
+                        closeApp={closeApp}
+                        initialX={160}
+                        initialY={140}
+                        width="600px"
+                    >
+                        <div className="p-4 flex flex-col md:flex-row gap-6 overflow-y-auto h-full bg-[#f3efe9] text-black">
+                            <div className="flex-1 flex flex-col gap-4 font-mono text-xs">
+                                <h3 className="text-base font-bold font-sans border-b-2 border-black pb-1 uppercase tracking-wider flex items-center gap-1.5">
+                                    <img src={AwardIcon} alt="" className="w-4 h-4 object-contain" /> Professional Merits
+                                </h3>
+                                <p className="text-gray-600 text-[11px] leading-relaxed">
+                                    Hover or select an item on the registry to project its credential certificate on the CRT output receiver.
+                                </p>
+                                <div className="flex flex-col gap-2">
+                                    <AwardRegistryRow
+                                        year="Quarter IV - March 2024"
+                                        title="Outstanding Performance and Lasting Contribution"
+                                        company="Colan Infotech Private Limited"
+                                    />
+                                    <AwardRegistryRow
+                                        year="Quarter IV - March 2025"
+                                        title="Solid Delivery Performance"
+                                        company="Colan Infotech Private Limited"
+                                    />
+                                    <AwardRegistryRow
+                                        year="Quarter I - July 2025"
+                                        title="Best Performance and Lasting Contribution"
+                                        company="Colan Infotech Private Limited"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* CRT Projection Monitor */}
+                            <div className="shrink-0 flex flex-col items-center justify-center">
+                                <div className="w-[180px] h-[160px] bg-[#1a1c1e] border-4 border-gray-400 shadow-[inset_0_0_12px_#000] rounded-xl relative overflow-hidden flex flex-col items-center justify-center text-[10px] text-green-500 font-mono p-1">
+                                    <div className="absolute top-1 right-2 w-2 h-2 bg-green-500 rounded-full animate-ping pointer-events-none" />
+                                    <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.35)_50%)] bg-[size:100%_3px] pointer-events-none z-10 opacity-70" />
+                                    <img
+                                        src={AwardImg}
+                                        alt="Registry Projection"
+                                        className="w-full h-full object-contain filter brightness-90 contrast-125"
+                                    />
+                                    <div className="absolute bottom-1 left-0 right-0 text-center bg-black/60 py-0.5 text-[8px] tracking-tighter">
+                                        CRT RECEIVER: ONLINE
+                                    </div>
+                                </div>
+                                <div className="text-[10px] text-gray-500 font-mono mt-1 flex items-center gap-1">
+                                    <span>Monitor model: CRT-2026</span>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                                </div>
                             </div>
                         </div>
                     </AnimateWindow>
                 </div>
+            </div>
 
-                {/* MOBILE LAYOUT STACKED PANELS (Visible on mobile/tablet screens) */}
-                <div className="w-full md:hidden flex flex-col gap-6 mt-4 z-10 select-none">
+            {/* MOBILE APPLICATION INTERFACE (Screens < 768px) */}
+            <div className="flex-1 w-full md:hidden flex flex-col relative z-10 overflow-hidden select-none">
 
-                    {/* Mobile Folder Navigation */}
-                    <div className={`p-4 ${activeStyles.windowBg} rounded text-black`}>
-                        <div className="font-mono text-xs font-bold border-b border-gray-300 pb-2 mb-3">📁 Workstation Folder Explorer</div>
-                        <div className="grid grid-cols-2 gap-3">
+                {/* Top Mobile Status Header */}
+                <div className="px-3 py-1.5 bg-black text-white flex items-center justify-between text-[10px] font-mono border-b border-black">
+                    <span className="flex items-center gap-1.5 text-green-400 font-bold">
+                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                        HonestOS Mobile
+                    </span>
+                    <span className="text-gray-400 uppercase">{theme} Skin</span>
+                </div>
+
+                {/* Scrollable Mobile Container */}
+                <div className="flex-1 overflow-y-auto p-3 space-y-4 pb-16">
+
+                    {/* Mobile Top-Right Animated Role Counter */}
+                    <div className="flex justify-end select-none pr-1">
+                        <RoleTextCounter theme={theme} />
+                    </div>
+
+                    {/* Active Window Display on Mobile (Slide-in App Screen) */}
+                    <AnimatePresence mode="wait">
+                        {openWindows.bio && !minimizedWindows.bio && (
+                            <motion.div
+                                key="mobile-bio"
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 15 }}
+                                className={`w-full overflow-hidden ${activeStyles.windowBg} rounded-md shadow-xl`}
+                            >
+                                <div className={activeStyles.windowTitle}>
+                                    <div className="flex items-center gap-1.5">
+                                        <button onClick={() => closeApp("bio")} className="text-[11px] font-bold pr-1 hover:underline">← Back</button>
+                                        <span className="flex items-center gap-1"><img src={HonestIcon} alt="" className="w-3.5 h-3.5 object-contain inline-block" /> honest_me.doc</span>
+                                    </div>
+                                    <button onClick={(e) => closeApp("bio", e)} className={activeStyles.windowButton}>✕</button>
+                                </div>
+                                <div className="p-3.5 bg-white text-black leading-relaxed font-sans text-xs space-y-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-20 h-24 rounded border border-black bg-white p-0.5 shrink-0 shadow-[2px_2px_0_0_#000]">
+                                            <img className="w-full h-full object-cover grayscale" src={Me} alt="Honestraj" />
+                                        </div>
+                                        <div>
+                                            <h2 className="text-base font-black font-mono">Honestraj Vijay</h2>
+                                            <p className="text-[10px] font-bold text-[#FF4D00] uppercase font-mono">Lead UI/UX Product Designer</p>
+                                            <p className="text-[10px] text-gray-500 mt-1">4+ yrs experience in ERP, enterprise systems & motion design.</p>
+                                        </div>
+                                    </div>
+
+                                    <p className="text-gray-700 leading-relaxed text-[11px] bg-gray-50 p-2.5 rounded border border-gray-200 font-mono">
+                                        Specialising in transforming intricate user needs into neat, satisfying interfaces that elevate complex enterprise workflows.
+                                    </p>
+
+                                    {/* Integrated Tools in Mobile */}
+                                    <div>
+                                        <div className="font-mono font-bold text-[11px] uppercase tracking-wide border-b border-gray-200 pb-1 mb-2.5 flex items-center justify-between">
+                                            <span>🧰 Design Arsenal ({SKILLS_DATA.length} Tools)</span>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-2 max-h-[220px] overflow-y-auto p-0.5">
+                                            {SKILLS_DATA.map((s, idx) => (
+                                                <SkillItemMobile key={idx} src={s.src} name={s.name} level={s.level} />
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="flex gap-2 pt-2 border-t border-gray-200">
+                                        <button
+                                            onClick={() => openApp("awards")}
+                                            className="flex-1 bg-black text-white text-center font-bold font-sans py-2 text-[10px] rounded"
+                                        >
+                                            🏆 Awards & Merits
+                                        </button>
+                                        <button
+                                            onClick={() => openApp("projects")}
+                                            className="flex-1 bg-white border border-black text-black text-center font-bold font-sans py-2 text-[10px] rounded"
+                                        >
+                                            📁 Projects Folder
+                                        </button>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+
+                        {openWindows.projects && !minimizedWindows.projects && (
+                            <motion.div
+                                key="mobile-projects"
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 15 }}
+                                className={`w-full overflow-hidden ${activeStyles.windowBg} rounded-md shadow-xl`}
+                            >
+                                <div className={activeStyles.windowTitle}>
+                                    <div className="flex items-center gap-1.5">
+                                        <button onClick={() => closeApp("projects")} className="text-[11px] font-bold pr-1 hover:underline">← Back</button>
+                                        <span className="flex items-center gap-1"><img src={ProjectsIcon} alt="" className="w-3.5 h-3.5 object-contain inline-block" /> PORTFOLIO_PROJECTS</span>
+                                    </div>
+                                    <button onClick={(e) => closeApp("projects", e)} className={activeStyles.windowButton}>✕</button>
+                                </div>
+                                <div className="p-3 bg-[#f8f8f8] text-black">
+                                    <div className="text-[10px] font-mono border-b border-gray-300 pb-1.5 mb-3 flex justify-between">
+                                        <span>Select category directory:</span>
+                                        <span className="text-gray-400">3 folders</span>
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-2.5">
+                                        <ProjectFolderIcon
+                                            label="UI_UX"
+                                            imgSrc={uiux}
+                                            onClick={() => {
+                                                setSelectedProjCat("uiux");
+                                                openApp("projDetail");
+                                            }}
+                                        />
+                                        <ProjectFolderIcon
+                                            label="Motion"
+                                            imgSrc={manime}
+                                            onClick={() => {
+                                                setSelectedProjCat("motion");
+                                                openApp("projDetail");
+                                            }}
+                                        />
+                                        <ProjectFolderIcon
+                                            label="3D_Anim"
+                                            imgSrc={threeD}
+                                            onClick={() => {
+                                                setSelectedProjCat("threeD");
+                                                openApp("projDetail");
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+
+                        {openWindows.awards && !minimizedWindows.awards && (
+                            <motion.div
+                                key="mobile-awards"
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 15 }}
+                                className={`w-full overflow-hidden ${activeStyles.windowBg} rounded-md shadow-xl`}
+                            >
+                                <div className={activeStyles.windowTitle}>
+                                    <div className="flex items-center gap-1.5">
+                                        <button onClick={() => closeApp("awards")} className="text-[11px] font-bold pr-1 hover:underline">← Back</button>
+                                        <span className="flex items-center gap-1"><img src={AwardIcon} alt="" className="w-3.5 h-3.5 object-contain inline-block" /> awards.exe</span>
+                                    </div>
+                                    <button onClick={(e) => closeApp("awards", e)} className={activeStyles.windowButton}>✕</button>
+                                </div>
+                                <div className="p-3.5 bg-white text-black flex flex-col gap-3 font-mono text-[10px]">
+                                    <div className="flex flex-col gap-2">
+                                        <div className="border border-gray-300 p-2 bg-gray-50 rounded">
+                                            <span className="font-bold text-[#FF4D00] block">Quarter IV - March 2024:</span>
+                                            Outstanding Performance & Lasting Contribution (Colan Infotech)
+                                        </div>
+                                        <div className="border border-gray-300 p-2 bg-gray-50 rounded">
+                                            <span className="font-bold text-[#FF4D00] block">Quarter IV - March 2025:</span>
+                                            Solid Delivery Performance (Colan Infotech)
+                                        </div>
+                                        <div className="border border-gray-300 p-2 bg-gray-50 rounded">
+                                            <span className="font-bold text-[#FF4D00] block">Quarter I - July 2025:</span>
+                                            Best Performance & Lasting Contribution (Colan Infotech)
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center p-2 bg-black border border-gray-400 rounded">
+                                        <img src={AwardImg} alt="Certificate" className="h-28 object-contain" />
+                                        <span className="text-[8px] text-green-400 mt-1 uppercase">CRT Receiver Projection</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+
+                        {openWindows.projDetail && !minimizedWindows.projDetail && (
+                            <motion.div
+                                key="mobile-projDetail"
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 15 }}
+                                className={`w-full overflow-hidden ${activeStyles.windowBg} rounded-md shadow-xl`}
+                            >
+                                <div className={activeStyles.windowTitle}>
+                                    <div className="flex items-center gap-1.5">
+                                        <button onClick={() => closeApp("projDetail")} className="text-[11px] font-bold pr-1 hover:underline">← Back</button>
+                                        <span>📂 {selectedProjCat ? selectedProjCat.toUpperCase() : "Preview"}</span>
+                                    </div>
+                                    <button onClick={(e) => closeApp("projDetail", e)} className={activeStyles.windowButton}>✕</button>
+                                </div>
+                                <div className="bg-white">
+                                    <ProjectDetailsView
+                                        cat={selectedProjCat}
+                                        onClose={() => closeApp("projDetail")}
+                                        onOpenGallery={(catName) => {
+                                            setSelectedProjCat(catName);
+                                            openApp("gallery");
+                                            closeApp("projDetail");
+                                        }}
+                                        onExpandImage={(img, title) => {
+                                            setZoomImage(img);
+                                            setZoomTitle(title);
+                                        }}
+                                    />
+                                </div>
+                            </motion.div>
+                        )}
+
+                        {openWindows.gallery && !minimizedWindows.gallery && (
+                            <motion.div
+                                key="mobile-gallery"
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 15 }}
+                                className={`w-full overflow-hidden ${activeStyles.windowBg} rounded-md shadow-xl`}
+                            >
+                                <div className={activeStyles.windowTitle}>
+                                    <div className="flex items-center gap-1.5">
+                                        <button onClick={() => closeApp("gallery")} className="text-[11px] font-bold pr-1 hover:underline">← Back</button>
+                                        <span>🎛️ {selectedProjCat ? selectedProjCat.toUpperCase() : "Gallery"}</span>
+                                    </div>
+                                    <button onClick={(e) => closeApp("gallery", e)} className={activeStyles.windowButton}>✕</button>
+                                </div>
+                                <div className="bg-white">
+                                    <CategoryGalleryView
+                                        cat={selectedProjCat}
+                                        onClose={() => closeApp("gallery")}
+                                        onExpandImage={(img, title) => {
+                                            setZoomImage(img);
+                                            setZoomTitle(title);
+                                        }}
+                                    />
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
+                    {/* Mobile App Grid Launcher (Home Screen) */}
+                    <div className="bg-white/90 backdrop-blur border-2 border-black rounded-lg p-3 shadow-[3px_3px_0_0_#000]">
+                        <div className="font-mono text-[11px] font-bold border-b border-gray-300 pb-1.5 mb-3 flex items-center justify-between text-black">
+                            <span>📱 Application Launcher</span>
+                            <span className="text-gray-400 text-[9px]">Tap to open</span>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-2.5">
+                            <button
+                                onClick={() => openApp("bio")}
+                                className="flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-yellow-50 border-2 border-black rounded-md text-left active:scale-95 transition-transform cursor-pointer shadow-[2px_2px_0_0_#000]"
+                            >
+                                <img src={HonestIcon} alt="About" className="w-7 h-7 object-contain shrink-0" />
+                                <div>
+                                    <span className="font-mono text-xs font-black block text-black">About & Tools</span>
+                                    <span className="text-[9px] text-gray-500 leading-tight block">Bio & Software Stack</span>
+                                </div>
+                            </button>
+
+                            <button
+                                onClick={() => openApp("projects")}
+                                className="flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-yellow-50 border-2 border-black rounded-md text-left active:scale-95 transition-transform cursor-pointer shadow-[2px_2px_0_0_#000]"
+                            >
+                                <img src={ProjectsIcon} alt="Projects" className="w-7 h-7 object-contain shrink-0" />
+                                <div>
+                                    <span className="font-mono text-xs font-black block text-black">Projects</span>
+                                    <span className="text-[9px] text-gray-500 leading-tight block">UI/UX, Motion, 3D</span>
+                                </div>
+                            </button>
+
+                            <button
+                                onClick={() => openApp("awards")}
+                                className="flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-yellow-50 border-2 border-black rounded-md text-left active:scale-95 transition-transform cursor-pointer shadow-[2px_2px_0_0_#000]"
+                            >
+                                <img src={AwardIcon} alt="Awards" className="w-7 h-7 object-contain shrink-0" />
+                                <div>
+                                    <span className="font-mono text-xs font-black block text-black">Awards</span>
+                                    <span className="text-[9px] text-gray-500 leading-tight block">Company Recognition</span>
+                                </div>
+                            </button>
+
+                            <a
+                                href="https://www.linkedin.com/in/honestraj-vijay/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-blue-50 border-2 border-black rounded-md text-left active:scale-95 transition-transform cursor-pointer no-underline text-black shadow-[2px_2px_0_0_#000]"
+                            >
+                                <img src={LinkedIn} alt="LinkedIn" className="w-7 h-7 object-contain shrink-0" />
+                                <div>
+                                    <span className="font-mono text-xs font-black block text-black">LinkedIn</span>
+                                    <span className="text-[9px] text-gray-500 leading-tight block">Professional Profile</span>
+                                </div>
+                            </a>
+
+                            <a
+                                href="https://www.behance.net/honestrhonestr1"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-blue-50 border-2 border-black rounded-md text-left active:scale-95 transition-transform cursor-pointer no-underline text-black shadow-[2px_2px_0_0_#000]"
+                            >
+                                <img src={Behance} alt="Behance" className="w-7 h-7 object-contain shrink-0 rounded" />
+                                <div>
+                                    <span className="font-mono text-xs font-black block text-black">Behance</span>
+                                    <span className="text-[9px] text-gray-500 leading-tight block">Design Portfolio</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Quick Category Jump Section */}
+                    <div className="bg-white/90 backdrop-blur border-2 border-black rounded-lg p-3 shadow-[3px_3px_0_0_#000]">
+                        <div className="font-mono text-[11px] font-bold border-b border-gray-300 pb-1.5 mb-2.5 text-black">
+                            ⚡ Quick Case Studies
+                        </div>
+                        <div className="flex flex-col gap-2">
                             <button
                                 onClick={() => {
                                     setSelectedProjCat("uiux");
                                     openApp("projDetail");
                                 }}
-                                className="flex items-center gap-2 p-2 bg-white border border-gray-300 rounded text-left active:scale-95 cursor-pointer"
+                                className="flex items-center justify-between p-2 bg-gray-50 hover:bg-gray-100 border border-black rounded text-left"
                             >
-                                <span>📂</span>
-                                <span className="font-mono text-[10px] font-bold">UI/UX</span>
+                                <div className="flex items-center gap-2">
+                                    <span className="w-8 h-8 rounded overflow-hidden border border-black shrink-0">
+                                        <img src={uiux} alt="UI/UX" className="w-full h-full object-cover" />
+                                    </span>
+                                    <div>
+                                        <span className="font-bold text-xs block text-black">UI/UX Design Projects</span>
+                                        <span className="text-[9px] text-gray-500">12 Enterprise & SaaS Layouts</span>
+                                    </div>
+                                </div>
+                                <span className="text-[10px] font-bold text-[#FF4D00]">Open ➔</span>
                             </button>
+
                             <button
                                 onClick={() => {
                                     setSelectedProjCat("motion");
                                     openApp("projDetail");
                                 }}
-                                className="flex items-center gap-2 p-2 bg-white border border-gray-300 rounded text-left active:scale-95 cursor-pointer"
+                                className="flex items-center justify-between p-2 bg-gray-50 hover:bg-gray-100 border border-black rounded text-left"
                             >
-                                <span>📂</span>
-                                <span className="font-mono text-[10px] font-bold">Motion</span>
+                                <div className="flex items-center gap-2">
+                                    <span className="w-8 h-8 rounded overflow-hidden border border-black shrink-0">
+                                        <img src={manime} alt="Motion" className="w-full h-full object-cover" />
+                                    </span>
+                                    <div>
+                                        <span className="font-bold text-xs block text-black">Motion Graphics</span>
+                                        <span className="text-[9px] text-gray-500">11 Promo Flows & Video Clips</span>
+                                    </div>
+                                </div>
+                                <span className="text-[10px] font-bold text-[#FF4D00]">Open ➔</span>
                             </button>
+
                             <button
                                 onClick={() => {
                                     setSelectedProjCat("threeD");
                                     openApp("projDetail");
                                 }}
-                                className="flex items-center gap-2 p-2 bg-white border border-gray-300 rounded text-left active:scale-95 cursor-pointer"
+                                className="flex items-center justify-between p-2 bg-gray-50 hover:bg-gray-100 border border-black rounded text-left"
                             >
-                                <span>📂</span>
-                                <span className="font-mono text-[10px] font-bold">3D Anim</span>
+                                <div className="flex items-center gap-2">
+                                    <span className="w-8 h-8 rounded overflow-hidden border border-black shrink-0">
+                                        <img src={threeD} alt="3D" className="w-full h-full object-cover" />
+                                    </span>
+                                    <div>
+                                        <span className="font-bold text-xs block text-black">3D Animation Works</span>
+                                        <span className="text-[9px] text-gray-500">Blender Meshes & Scenes</span>
+                                    </div>
+                                </div>
+                                <span className="text-[10px] font-bold text-[#FF4D00]">Open ➔</span>
                             </button>
-                            <a
-                                href="https://www.linkedin.com/in/honestraj-vijay/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 p-2 bg-white border border-gray-300 rounded text-left active:scale-95 cursor-pointer no-underline text-black"
-                            >
-                                <span>🔗</span>
-                                <span className="font-mono text-[10px] font-bold">LinkedIn</span>
-                            </a>
                         </div>
                     </div>
-
-                    {/* Welcome Screen - Notepad */}
-                    {openWindows.readme && (
-                        <div className={`w-full overflow-hidden ${activeStyles.windowBg}`}>
-                            <div className={activeStyles.windowTitle}>
-                                <span>📄 welcome_readme.txt</span>
-                                <button onClick={(e) => closeApp("readme", e)} className={activeStyles.windowButton}>✕</button>
-                            </div>
-                            <div className="p-4 bg-white text-black leading-relaxed font-mono text-xs flex flex-col gap-3">
-                                <h2 className="text-sm font-black border-b border-black pb-1">Honestraj // UI/UX Designer</h2>
-                                <p>
-                                    I'm a responsive Product Designer with 4+ years of expertise. I build scalable digital solutions for start-ups and ERP databases.
-                                </p>
-                                <div className="bg-gray-100 p-2.5 border border-dashed border-gray-400 rounded text-[10px] text-gray-600">
-                                    ⚡ Chennai, India. Active in building motion graphics, creative scripts, and 3D modeling interfaces.
-                                </div>
-                                <div className="flex gap-2 mt-1">
-                                    <button
-                                        onClick={() => openApp("projects")}
-                                        className="flex-1 bg-black text-white text-center font-bold font-sans py-2 text-[10px]"
-                                    >
-                                        Projects Folder
-                                    </button>
-                                    <Link
-                                        to="/resume"
-                                        className="flex-1 bg-white border border-black text-black text-center font-bold font-sans py-2 text-[10px]"
-                                    >
-                                        View Resume
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Project Previews Detail Mobile */}
-                    {openWindows.projDetail && (
-                        <div className={`w-full overflow-hidden ${activeStyles.windowBg}`}>
-                            <div className={activeStyles.windowTitle}>
-                                <span>📂 {selectedProjCat ? selectedProjCat.toUpperCase() : "Preview"}</span>
-                                <button onClick={(e) => closeApp("projDetail", e)} className={activeStyles.windowButton}>✕</button>
-                            </div>
-                            <div className="bg-white">
-                                <ProjectDetailsView
-                                    cat={selectedProjCat}
-                                    onClose={() => closeApp("projDetail")}
-                                    onOpenGallery={(catName) => {
-                                        setSelectedProjCat(catName);
-                                        openApp("gallery");
-                                        closeApp("projDetail");
-                                    }}
-                                    onExpandImage={(img, title) => {
-                                        setZoomImage(img);
-                                        setZoomTitle(title);
-                                    }}
-                                />
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Project Gallery Mobile */}
-                    {openWindows.gallery && (
-                        <div className={`w-full overflow-hidden ${activeStyles.windowBg}`}>
-                            <div className={activeStyles.windowTitle}>
-                                <span>🎛️ Category Gallery - {selectedProjCat ? selectedProjCat.toUpperCase() : "Gallery"}</span>
-                                <button onClick={(e) => closeApp("gallery", e)} className={activeStyles.windowButton}>✕</button>
-                            </div>
-                            <div className="bg-white">
-                                <CategoryGalleryView
-                                    cat={selectedProjCat}
-                                    onClose={() => closeApp("gallery")}
-                                    onExpandImage={(img, title) => {
-                                        setZoomImage(img);
-                                        setZoomTitle(title);
-                                    }}
-                                />
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Mobile Winamp */}
-                    {openWindows.winamp && (
-                        <div className={`w-full overflow-hidden ${activeStyles.windowBg}`}>
-                            <div className={activeStyles.windowTitle}>
-                                <span>📻 retro_winamp.exe</span>
-                                <button onClick={(e) => closeApp("winamp", e)} className={activeStyles.windowButton}>✕</button>
-                            </div>
-                            <div className="bg-[#1c1c22]">
-                                <SoundboardWinamp />
-                            </div>
-                        </div>
-                    )}
-
-
-
-                    {/* Mobile Settings */}
-                    {openWindows.settings && (
-                        <div className={`w-full overflow-hidden ${activeStyles.windowBg}`}>
-                            <div className={activeStyles.windowTitle}>
-                                <span>⚙️ settings.exe</span>
-                                <button onClick={(e) => closeApp("settings", e)} className={activeStyles.windowButton}>✕</button>
-                            </div>
-                            <div className="p-4 bg-white text-black flex flex-col gap-3 font-mono text-[10px]">
-                                <div className="font-bold text-[#FF4D00]">Workstation Themes:</div>
-                                <div className="flex gap-2">
-                                    {["win98", "synthwave", "macOS"].map((t) => (
-                                        <button
-                                            key={t}
-                                            onClick={() => setTheme(t)}
-                                            className={`flex-1 font-bold py-1 border text-center ${theme === t ? "bg-black text-white" : "bg-[#f0f0f0] border-gray-300"
-                                                }`}
-                                        >
-                                            {t}
-                                        </button>
-                                    ))}
-                                </div>
-                                <label className="flex items-center gap-1.5 font-bold cursor-pointer mt-2">
-                                    <input
-                                        type="checkbox"
-                                        checked={crtScanlines}
-                                        onChange={() => setCrtScanlines(!crtScanlines)}
-                                    />
-                                    <span>Enable CRT Scanline Filter</span>
-                                </label>
-                            </div>
-                        </div>
-                    )}
                 </div>
             </div>
 
-            {/* TASKBAR */}
+            {/* TASKBAR (Desktop & Mobile) */}
             <div className={`w-full h-12 shrink-0 flex items-center justify-between px-3 relative z-30 select-none ${activeStyles.taskbar}`}>
                 <div className="flex items-center gap-2">
                     {/* Start Menu Trigger Button */}
@@ -850,14 +1146,14 @@ export default function Hero() {
                         <span>Start</span>
                     </button>
 
-                    {/* Running Tabs on Taskbar (large screens only) */}
+                    {/* Running Tabs on Taskbar (Desktop) */}
                     <div className="hidden sm:flex items-center gap-1.5 overflow-x-auto max-w-[500px]">
-                        {openWindows.readme && (
+                        {openWindows.bio && (
                             <button
-                                onClick={() => toggleMinimize("readme")}
-                                className={minimizedWindows.readme ? activeStyles.inactiveTab : activeStyles.activeTab}
+                                onClick={() => toggleMinimize("bio")}
+                                className={minimizedWindows.bio ? activeStyles.inactiveTab : activeStyles.activeTab}
                             >
-                                📄 welcome_readme.txt
+                                <span className="flex items-center gap-1"><img src={HonestIcon} alt="" className="w-3.5 h-3.5 object-contain inline-block" /> honest_me.doc</span>
                             </button>
                         )}
                         {openWindows.projects && (
@@ -865,32 +1161,15 @@ export default function Hero() {
                                 onClick={() => toggleMinimize("projects")}
                                 className={minimizedWindows.projects ? activeStyles.inactiveTab : activeStyles.activeTab}
                             >
-                                📂 portfolio_projects
+                                <span className="flex items-center gap-1"><img src={ProjectsIcon} alt="" className="w-3.5 h-3.5 object-contain inline-block" /> portfolio_projects</span>
                             </button>
                         )}
-                        {openWindows.winamp && (
+                        {openWindows.awards && (
                             <button
-                                onClick={() => toggleMinimize("winamp")}
-                                className={minimizedWindows.winamp ? activeStyles.inactiveTab : activeStyles.activeTab}
+                                onClick={() => toggleMinimize("awards")}
+                                className={minimizedWindows.awards ? activeStyles.inactiveTab : activeStyles.activeTab}
                             >
-                                📻 retro_winamp.exe
-                            </button>
-                        )}
-
-                        {openWindows.terminal && (
-                            <button
-                                onClick={() => toggleMinimize("terminal")}
-                                className={minimizedWindows.terminal ? activeStyles.inactiveTab : activeStyles.activeTab}
-                            >
-                                📟 terminal.exe
-                            </button>
-                        )}
-                        {openWindows.settings && (
-                            <button
-                                onClick={() => toggleMinimize("settings")}
-                                className={minimizedWindows.settings ? activeStyles.inactiveTab : activeStyles.activeTab}
-                            >
-                                ⚙️ settings.exe
+                                <span className="flex items-center gap-1"><img src={AwardIcon} alt="" className="w-3.5 h-3.5 object-contain inline-block" /> awards.exe</span>
                             </button>
                         )}
                         {openWindows.gallery && (
@@ -929,12 +1208,12 @@ export default function Hero() {
 
                                 {/* Theme Switch Selector inside Start Menu */}
                                 <div className="p-2 border-b border-gray-200">
-                                    <span className="font-bold block text-gray-500 font-mono text-[9px] mb-1">WALLPAPER SCHEME</span>
+                                    <span className="font-bold block text-gray-500 font-mono text-[9px] mb-1">WORKSPACE THEME</span>
                                     <button
                                         onClick={cycleTheme}
-                                        className="w-full text-left font-bold py-1 px-2 border hover:bg-gray-100 flex items-center justify-between cursor-pointer border-gray-300"
+                                        className="w-full text-left font-bold py-1 px-2 border hover:bg-gray-100 flex items-center justify-between cursor-pointer border-gray-300 rounded"
                                     >
-                                        <span>🎨 Change Workspace Skin</span>
+                                        <span>🎨 Switch Skin</span>
                                         <span className="bg-[#ff4a7d]/10 text-[#ff4a7d] px-1.5 py-0.5 rounded text-[10px] uppercase font-mono font-black">
                                             {theme}
                                         </span>
@@ -943,34 +1222,29 @@ export default function Hero() {
 
                                 <div className="py-1">
                                     <StartMenuLink
-                                        icon="📄"
-                                        label="welcome_readme.txt"
-                                        onClick={() => { openApp("readme"); setIsStartMenuOpen(false); }}
+                                        icon={<img src={HonestIcon} alt="About" className="w-4 h-4 object-contain inline-block" />}
+                                        label="honest_me.doc (About & Tools)"
+                                        onClick={() => { openApp("bio"); setIsStartMenuOpen(false); }}
                                     />
                                     <StartMenuLink
-                                        icon="📂"
+                                        icon={<img src={ProjectsIcon} alt="Projects" className="w-4 h-4 object-contain inline-block" />}
                                         label="portfolio_projects (Folders)"
                                         onClick={() => { openApp("projects"); setIsStartMenuOpen(false); }}
                                     />
                                     <StartMenuLink
-                                        icon="📻"
-                                        label="retro_winamp.exe (Player)"
-                                        onClick={() => { openApp("winamp"); setIsStartMenuOpen(false); }}
+                                        icon={<img src={AwardIcon} alt="Awards" className="w-4 h-4 object-contain inline-block" />}
+                                        label="awards.exe (Merits & Awards)"
+                                        onClick={() => { openApp("awards"); setIsStartMenuOpen(false); }}
                                     />
                                     <StartMenuLink
-                                        icon="🔗"
+                                        icon={<img src={LinkedIn} alt="LinkedIn" className="w-4 h-4 object-contain inline-block" />}
                                         label="linkedin_profile.lnk"
                                         onClick={() => { window.open("https://www.linkedin.com/in/honestraj-vijay/", "_blank"); setIsStartMenuOpen(false); }}
                                     />
                                     <StartMenuLink
-                                        icon="📟"
-                                        label="terminal_prompt.exe (CMD)"
-                                        onClick={() => { openApp("terminal"); setIsStartMenuOpen(false); }}
-                                    />
-                                    <StartMenuLink
-                                        icon="⚙️"
-                                        label="settings_control.exe"
-                                        onClick={() => { openApp("settings"); setIsStartMenuOpen(false); }}
+                                        icon={<img src={Behance} alt="Behance" className="w-4 h-4 object-contain inline-block rounded-xs" />}
+                                        label="behance_portfolio.lnk"
+                                        onClick={() => { window.open("https://www.behance.net/honestrhonestr1", "_blank"); setIsStartMenuOpen(false); }}
                                     />
                                 </div>
 
@@ -1051,7 +1325,7 @@ export default function Hero() {
 
                         {/* Bottom info label */}
                         <div className="text-center font-mono text-[9px] text-gray-400 mt-2">
-                            ℹ️ Click outside or tap close button to return to workspace workstation.
+                            ℹ️ Click outside or tap close button to return to workstation.
                         </div>
                     </motion.div>
                 )}
@@ -1060,7 +1334,7 @@ export default function Hero() {
     );
 }
 
-// SUB-COMPONENT: DesktopIcon
+// SUB-COMPONENT: DesktopIcon (Drag on desktop)
 const DesktopIcon = ({ label, icon, onClick, themeStyles, desktopRef }) => {
     const isDragging = useRef(false);
 
@@ -1099,24 +1373,24 @@ const ProjectFolderIcon = ({ label, imgSrc, onClick }) => {
     return (
         <div
             onClick={onClick}
-            className="flex flex-col items-center justify-center p-3 hover:bg-blue-100 hover:outline hover:outline-1 hover:outline-blue-400 rounded cursor-pointer select-none group"
+            className="flex flex-col items-center justify-center p-3 hover:bg-blue-100 hover:outline hover:outline-1 hover:outline-blue-400 rounded cursor-pointer select-none group bg-white border border-gray-200"
         >
-            <div className="w-14 h-14 bg-white border border-gray-300 rounded p-1 shadow-sm mb-2 relative overflow-hidden group-hover:scale-105 transition-transform flex items-center justify-center">
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-white border border-gray-300 rounded p-1 shadow-sm mb-2 relative overflow-hidden group-hover:scale-105 transition-transform flex items-center justify-center">
                 {imgSrc ? (
                     <img src={imgSrc} alt={label} className="w-full h-full object-cover rounded" />
                 ) : (
-                    <span className="text-3xl">📁</span>
+                    <img src={ProjectsIcon} alt={label} className="w-8 h-8 object-contain" />
                 )}
                 <div className="absolute inset-0 bg-yellow-500/10 group-hover:opacity-0 transition-opacity" />
             </div>
-            <span className="font-mono text-[9px] font-bold tracking-tight text-center leading-tight truncate w-full text-black">
+            <span className="font-mono text-[9px] md:text-[10px] font-bold tracking-tight text-center leading-tight truncate w-full text-black">
                 {label}
             </span>
         </div>
     );
 };
 
-// SUB-COMPONENT: Draggable Window Shell frame container
+// SUB-COMPONENT: Draggable Window Shell frame container (Desktop)
 const AnimateWindow = ({
     isOpen,
     isMaximized,
@@ -1218,7 +1492,7 @@ const SystemClock = ({ theme }) => {
             const minutes = d.getMinutes().toString().padStart(2, "0");
             const ampm = hours >= 12 ? "PM" : "AM";
             hours = hours % 12;
-            hours = hours ? hours : 12; // 0 should be 12
+            hours = hours ? hours : 12;
             setTimeStr(`${hours}:${minutes} ${ampm}`);
         };
 
@@ -1242,734 +1516,81 @@ const SystemClock = ({ theme }) => {
     );
 };
 
-// SUB-COMPONENT: Canvas Pixel Drawing Paint widget
-const RetroPaint = () => {
-    const canvasRef = useRef(null);
-    const [color, setColor] = useState("#000000");
-    const [brushSize, setBrushSize] = useState(4);
-    const [isDrawing, setIsDrawing] = useState(false);
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
-
-        // Set height correctly
-        const rect = canvas.parentElement.getBoundingClientRect();
-        canvas.width = rect.width || 420;
-        canvas.height = rect.height || 260;
-
-        // Fill background
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }, []);
-
-    const startDrawing = (e) => {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d");
-        const rect = canvas.getBoundingClientRect();
-
-        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-
-        if (!clientX || !clientY) return;
-
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
-
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.strokeStyle = color;
-        ctx.lineWidth = brushSize;
-        setIsDrawing(true);
-    };
-
-    const draw = (e) => {
-        if (!isDrawing) return;
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d");
-        const rect = canvas.getBoundingClientRect();
-
-        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-
-        if (!clientX || !clientY) return;
-
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
-
-        ctx.lineTo(x, y);
-        ctx.stroke();
-    };
-
-    const stopDrawing = () => {
-        setIsDrawing(false);
-    };
-
-    const clearCanvas = () => {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    };
-
-    return (
-        <div className="flex flex-col h-full bg-[#f0f0f0] p-1.5 font-mono text-[10px] text-black">
-            {/* Paint Toolbar buttons */}
-            <div className="flex items-center gap-2 pb-2 mb-1.5 border-b border-gray-400 flex-wrap">
-                <span className="font-bold">Palette:</span>
-                <div className="flex gap-1 border border-gray-300 p-0.5 bg-white">
-                    {["#000000", "#ff0000", "#0000ff", "#00ff00", "#ffff00", "#ffffff"].map((c) => (
-                        <button
-                            key={c}
-                            onClick={() => setColor(c)}
-                            style={{ backgroundColor: c }}
-                            className={`w-4 h-4 border cursor-pointer ${color === c ? "border-2 border-black outline outline-1 outline-blue-500" : "border-gray-400"
-                                }`}
-                            title={c === "#ffffff" ? "Eraser Tool" : c}
-                        />
-                    ))}
-                </div>
-                <div className="flex items-center gap-1">
-                    <span>Brush:</span>
-                    <select
-                        value={brushSize}
-                        onChange={(e) => setBrushSize(Number(e.target.value))}
-                        className="bg-white border border-gray-300 text-[10px] py-0.5 px-1 outline-none cursor-pointer"
-                    >
-                        <option value={2}>Small (2px)</option>
-                        <option value={4}>Medium (4px)</option>
-                        <option value={8}>Large (8px)</option>
-                        <option value={15}>Extra (15px)</option>
-                    </select>
-                </div>
-                <button
-                    onClick={clearCanvas}
-                    className="ml-auto px-2.5 py-0.5 border border-gray-500 bg-white hover:bg-gray-100 active:bg-gray-200 cursor-pointer shadow-[1px_1px_0px_0px_#000]"
-                >
-                    Clear
-                </button>
-            </div>
-
-            {/* Paint Canvas Sheet grid */}
-            <div className="flex-1 bg-white border border-gray-400 overflow-hidden relative" style={{ minHeight: "220px" }}>
-                <canvas
-                    ref={canvasRef}
-                    onMouseDown={startDrawing}
-                    onMouseMove={draw}
-                    onMouseUp={stopDrawing}
-                    onMouseLeave={stopDrawing}
-                    onTouchStart={startDrawing}
-                    onTouchMove={draw}
-                    onTouchEnd={stopDrawing}
-                    className="w-full h-full cursor-crosshair touch-none select-none bg-white"
-                />
-            </div>
-        </div>
-    );
-};
-
-// SUB-COMPONENT: Soundboard Winamp retro MP3 audio synth player
-const SoundboardWinamp = () => {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [volume, setVolume] = useState(50);
-    const [trackIndex, setTrackIndex] = useState(0);
-    const [visualizerMode, setVisualizerMode] = useState("bars"); // bars or waves
-
-    const canvasRef = useRef(null);
-    const audioCtxRef = useRef(null);
-    const loopTimerRef = useRef(null);
-    const gainNodeRef = useRef(null);
-    const analyserRef = useRef(null);
-    const audioElRef = useRef(null);
-    const audioSourceRef = useRef(null);
-
-    const [playlist, setPlaylist] = useState([
-        { title: "Courtyard Apocalypse", fileUrl: courtyardApocalypse, type: "file" }
-    ]);
-
-    // Initialize Web Audio Engine
-    const initAudioEngine = () => {
-        if (audioCtxRef.current) return audioCtxRef.current;
-
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        const ctx = new AudioContextClass();
-        audioCtxRef.current = ctx;
-
-        const analyser = ctx.createAnalyser();
-        analyser.fftSize = 64;
-        analyserRef.current = analyser;
-
-        const gainNode = ctx.createGain();
-        gainNode.gain.setValueAtTime(volume / 100, ctx.currentTime);
-        gainNodeRef.current = gainNode;
-
-        // Route: Gain -> Analyser -> Output
-        gainNode.connect(analyser);
-        analyser.connect(ctx.destination);
-
-        return ctx;
-    };
-
-    // Start synthesizing simple 8-bit retro loops
-    const startSynthEngine = (index = trackIndex) => {
-        const ctx = initAudioEngine();
-
-        if (loopTimerRef.current) return;
-
-        // Play a basic synth melody loop
-        let beatStep = 0;
-        const track = playlist[index];
-        const beatDuration = 60 / track.tempo / 2; // eighth notes
-
-        const playMelodyNote = () => {
-            if (ctx.state === "suspended") {
-                ctx.resume();
-            }
-
-            const time = ctx.currentTime;
-
-            // Basic synthesizer oscillator node
-            const osc = ctx.createOscillator();
-            const oscGain = ctx.createGain();
-
-            // Triangular wave for custom vintage game console sound
-            osc.type = "triangle";
-
-            // Melody note selection
-            const notes = track.scale;
-            const selectFreq = notes[Math.floor(Math.random() * notes.length)];
-            osc.frequency.setValueAtTime(selectFreq, time);
-
-            // Simple amplitude envelope
-            oscGain.gain.setValueAtTime(0.01, time);
-            oscGain.gain.linearRampToValueAtTime(0.15, time + 0.05);
-            oscGain.gain.exponentialRampToValueAtTime(0.001, time + beatDuration - 0.02);
-
-            osc.connect(oscGain);
-            oscGain.connect(gainNodeRef.current);
-            osc.start(time);
-            osc.stop(time + beatDuration);
-
-            // Occasional retro bass synth note
-            if (beatStep % 4 === 0) {
-                const bassOsc = ctx.createOscillator();
-                const bassGain = ctx.createGain();
-                bassOsc.type = "sawtooth";
-                bassOsc.frequency.setValueAtTime(notes[0] / 2, time); // Octave lower
-
-                bassGain.gain.setValueAtTime(0.01, time);
-                bassGain.gain.linearRampToValueAtTime(0.2, time + 0.02);
-                bassGain.gain.exponentialRampToValueAtTime(0.001, time + beatDuration * 2 - 0.05);
-
-                bassOsc.connect(bassGain);
-                bassGain.connect(gainNodeRef.current);
-                bassOsc.start(time);
-                bassOsc.stop(time + beatDuration * 2);
-            }
-
-            beatStep = (beatStep + 1) % 16;
-            loopTimerRef.current = setTimeout(playMelodyNote, beatDuration * 1000);
-        };
-
-        playMelodyNote();
-    };
-
-    // Play uploaded/custom audio files
-    const startAudioFileEngine = (url) => {
-        const ctx = initAudioEngine();
-
-        if (ctx.state === "suspended") {
-            ctx.resume();
-        }
-
-        // Initialize Audio Element if not exists
-        if (!audioElRef.current) {
-            const audio = new Audio();
-            audio.crossOrigin = "anonymous";
-            audioElRef.current = audio;
-
-            const source = ctx.createMediaElementSource(audio);
-            audioSourceRef.current = source;
-            source.connect(gainNodeRef.current);
-
-            // Play next track automatically on end
-            audio.onended = () => {
-                changeTrack(1);
-            };
-        }
-
-        audioElRef.current.src = url;
-        audioElRef.current.play().catch((err) => {
-            console.warn("Audio playback failed to start:", err);
-        });
-    };
-
-    const stopSynthEngine = () => {
-        if (loopTimerRef.current) {
-            clearTimeout(loopTimerRef.current);
-            loopTimerRef.current = null;
-        }
-    };
-
-    const handlePlayToggle = () => {
-        const track = playlist[trackIndex];
-        if (isPlaying) {
-            if (track.type === "file" && audioElRef.current) {
-                audioElRef.current.pause();
-            } else {
-                stopSynthEngine();
-            }
-            setIsPlaying(false);
-        } else {
-            setIsPlaying(true);
-            if (track.type === "file") {
-                startAudioFileEngine(track.fileUrl);
-            } else {
-                startSynthEngine(trackIndex);
-            }
-        }
-    };
-
-    const handleVolumeChange = (e) => {
-        const val = Number(e.target.value);
-        setVolume(val);
-        if (gainNodeRef.current && audioCtxRef.current) {
-            gainNodeRef.current.gain.setValueAtTime(val / 100, audioCtxRef.current.currentTime);
-        }
-    };
-
-    const handleFileUpload = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        const fileUrl = URL.createObjectURL(file);
-        const newTrack = {
-            title: file.name.replace(/\.[^/.]+$/, ""), // remove extension
-            fileUrl: fileUrl,
-            type: "file"
-        };
-
-        // Stop current playing track
-        if (audioElRef.current) {
-            audioElRef.current.pause();
-        }
-        stopSynthEngine();
-
-        setPlaylist((prev) => {
-            const nextPlaylist = [...prev, newTrack];
-            const newIndex = nextPlaylist.length - 1;
-            setTrackIndex(newIndex);
-
-            setIsPlaying(true);
-            setTimeout(() => {
-                startAudioFileEngine(fileUrl);
-            }, 100);
-
-            return nextPlaylist;
-        });
-    };
-
-    // Visualizer spectrum rendering animation
-    useEffect(() => {
-        let animId;
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const canvasCtx = canvas.getContext("2d");
-
-        const drawVisualizer = () => {
-            animId = requestAnimationFrame(drawVisualizer);
-
-            const width = canvas.width;
-            const height = canvas.height;
-
-            // Dark solid background with glowing border line
-            canvasCtx.fillStyle = "#0c0d12";
-            canvasCtx.fillRect(0, 0, width, height);
-
-            if (analyserRef.current && isPlaying) {
-                const bufferLength = analyserRef.current.frequencyBinCount;
-                const dataArray = new Uint8Array(bufferLength);
-                analyserRef.current.getByteFrequencyData(dataArray);
-
-                if (visualizerMode === "bars") {
-                    // Render classic spectrum frequency bars
-                    const barWidth = (width / bufferLength) * 1.5;
-                    let barHeight;
-                    let x = 0;
-
-                    for (let i = 0; i < bufferLength; i++) {
-                        barHeight = dataArray[i] / 2;
-
-                        // Gradients from green to orange
-                        canvasCtx.fillStyle = `rgb(${barHeight + 50}, 220, 50)`;
-                        canvasCtx.fillRect(x, height - barHeight, barWidth - 2, barHeight);
-
-                        x += barWidth;
-                    }
-                } else {
-                    // Render waveforms
-                    canvasCtx.lineWidth = 2;
-                    canvasCtx.strokeStyle = "#39ff14";
-                    canvasCtx.beginPath();
-
-                    const sliceWidth = width / bufferLength;
-                    let x = 0;
-
-                    for (let i = 0; i < bufferLength; i++) {
-                        const v = dataArray[i] / 128.0;
-                        const y = (v * height) / 2;
-
-                        if (i === 0) {
-                            canvasCtx.moveTo(x, y);
-                        } else {
-                            canvasCtx.lineTo(x, y);
-                        }
-
-                        x += sliceWidth;
-                    }
-
-                    canvasCtx.lineTo(width, height / 2);
-                    canvasCtx.stroke();
-                }
-            } else {
-                // Inactive flat green scanning line
-                canvasCtx.strokeStyle = "#005500";
-                canvasCtx.lineWidth = 1.5;
-                canvasCtx.beginPath();
-                canvasCtx.moveTo(0, height / 2);
-                canvasCtx.lineTo(width, height / 2);
-                canvasCtx.stroke();
-
-                // Overlay text
-                canvasCtx.fillStyle = "#008800";
-                canvasCtx.font = "8px monospace";
-                canvasCtx.fillText("SPECTRUM ANALYSER: STANDBY", 10, height - 8);
-            }
-        };
-
-        drawVisualizer();
-
-        return () => {
-            cancelAnimationFrame(animId);
-        };
-    }, [isPlaying, visualizerMode]);
-
-    // Clean engine on unmount
-    useEffect(() => {
-        return () => {
-            if (loopTimerRef.current) {
-                clearTimeout(loopTimerRef.current);
-            }
-            if (audioElRef.current) {
-                audioElRef.current.pause();
-                audioElRef.current = null;
-            }
-            if (audioCtxRef.current) {
-                audioCtxRef.current.close();
-                audioCtxRef.current = null;
-            }
-        };
-    }, []);
-
-    const changeTrack = (direction) => {
-        setTrackIndex((prevIndex) => {
-            const nextIdx = (prevIndex + direction + playlist.length) % playlist.length;
-
-            // Stop current playing
-            if (audioElRef.current) {
-                audioElRef.current.pause();
-            }
-            stopSynthEngine();
-
-            if (isPlaying) {
-                // Short delay before rebooting oscillator/playback
-                setTimeout(() => {
-                    const nextTrack = playlist[nextIdx];
-                    if (nextTrack.type === "file") {
-                        startAudioFileEngine(nextTrack.fileUrl);
-                    } else {
-                        startSynthEngine(nextIdx);
-                    }
-                }, 100);
-            }
-            return nextIdx;
-        });
-    };
-
-    return (
-        <div className="flex flex-col bg-[#1c1d22] text-[#00ff00] font-mono text-[10px] p-3 border-2 border-black select-none">
-            {/* Player Header LCD Panel */}
-            <div className="bg-[#0b0c10] border border-gray-700 p-2.5 mb-2.5 rounded flex flex-col gap-1 shadow-[inset_0_0_8px_#000]">
-                <div className="flex justify-between items-center text-gray-400 text-[8px] uppercase tracking-wide">
-                    <span>Track #{trackIndex + 1}</span>
-                    <span className="text-[#39ff14] animate-pulse">
-                        {isPlaying
-                            ? (playlist[trackIndex]?.type === "file" ? "● PLAYING AUDIO" : "● PLAYING CHIPTUNE")
-                            : "■ STOPPED"}
-                    </span>
-                </div>
-                <div className="text-white text-xs font-bold truncate leading-tight select-text">
-                    {playlist[trackIndex]?.title}
-                </div>
-                <div className="text-[9px] text-[#39ff14]/70 mt-0.5">
-                    {playlist[trackIndex]?.type === "file"
-                        ? (playlist[trackIndex]?.title === "Courtyard Apocalypse" ? "Source: OST Track // 44.1 kHz Stereo" : "Source: Local File // Stereo Channel")
-                        : `Tempo: ${playlist[trackIndex]?.tempo} BPM // Synth Wave`}
-                </div>
-            </div>
-
-            {/* Spectrum Visualizer Canvas */}
-            <div className="h-16 border border-gray-700 bg-black overflow-hidden mb-3.5 relative rounded">
-                <canvas ref={canvasRef} width="350" height="64" className="w-full h-full block" />
-                <button
-                    onClick={() => setVisualizerMode(visualizerMode === "bars" ? "waves" : "bars")}
-                    className="absolute top-1 right-1 bg-black/80 hover:bg-gray-800 border border-gray-700 text-[8px] text-gray-400 px-1 py-0.5 rounded cursor-pointer transition-all"
-                >
-                    MODE: {visualizerMode.toUpperCase()}
-                </button>
-            </div>
-
-            {/* Winamp Controls */}
-            <div className="flex items-center justify-between gap-3 mb-2 flex-wrap sm:flex-nowrap">
-                {/* Playback Buttons */}
-                <div className="flex items-center gap-1 border border-gray-700 p-0.5 bg-[#2a2b30] rounded">
-                    <button
-                        onClick={() => changeTrack(-1)}
-                        className="px-2 py-1 bg-black/40 hover:bg-[#ff4a7d] text-white border border-gray-800 rounded font-bold cursor-pointer transition-colors active:scale-95 text-[9px]"
-                        title="Previous Track"
-                    >
-                        ◀◀
-                    </button>
-                    <button
-                        onClick={handlePlayToggle}
-                        className={`px-3 py-1 font-bold border border-gray-800 rounded cursor-pointer transition-colors active:scale-95 text-[9px] ${isPlaying ? "bg-[#ff0000] text-white" : "bg-[#00ff00] text-black"
-                            }`}
-                        title={isPlaying ? "Pause Synth" : "Play Synth"}
-                    >
-                        {isPlaying ? "PAUSE" : "PLAY"}
-                    </button>
-                    <button
-                        onClick={() => changeTrack(1)}
-                        className="px-2 py-1 bg-black/40 hover:bg-[#ff4a7d] text-white border border-gray-800 rounded font-bold cursor-pointer transition-colors active:scale-95 text-[9px]"
-                        title="Next Track"
-                    >
-                        ▶▶
-                    </button>
-                    {/* Eject / Load Custom File */}
-                    <label
-                        htmlFor="winamp-file-upload"
-                        className="px-2.5 py-1 bg-black/40 hover:bg-[#39ff14] hover:text-black text-white border border-gray-800 rounded font-bold cursor-pointer transition-colors active:scale-95 text-[9px] flex items-center justify-center gap-1"
-                        title="Load Custom MP3/Audio File"
-                    >
-                        <span>⏏</span>
-                        <span>LOAD</span>
-                    </label>
-                    <input
-                        type="file"
-                        id="winamp-file-upload"
-                        accept="audio/*"
-                        onChange={handleFileUpload}
-                        className="hidden"
-                    />
-                </div>
-
-                {/* Volume controls */}
-                <div className="flex items-center gap-2 border border-gray-700 py-1 px-2.5 rounded bg-[#2a2b30] flex-1">
-                    {volume === 0 ? <VolumeOffIcon className="text-sm text-gray-500" /> : <VolumeUpIcon className="text-sm text-gray-400" />}
-                    <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value={volume}
-                        onChange={handleVolumeChange}
-                        className="w-full accent-[#39ff14] bg-black/50 h-1.5 rounded cursor-pointer"
-                        title={`Volume: ${volume}%`}
-                    />
-                    <span className="w-6 text-right font-mono text-[9px] text-[#39ff14]">{volume}%</span>
-                </div>
-            </div>
-
-            <div className="text-[8px] text-gray-500 text-center font-mono leading-relaxed mt-1">
-                {playlist[trackIndex]?.type === "file"
-                    ? "🎵 PLAYING CUSTOM AUDIO FILE VIA WEB AUDIO API DECODE & SPECTRAL ANALYSER."
-                    : "🔊 GENERATED DYNAMICALLY USING WEB AUDIO OSCILLATORS. NO STATIC FILES REQUIRED."}
-            </div>
-        </div>
-    );
-};
-
-// SUB-COMPONENT: RetroTerminal CLI Shell prompt
-const RetroTerminal = ({ activeTheme }) => {
-    const [history, setHistory] = useState([
-        { text: "HONEST_OS Workstation [Version 1.0.1998]", type: "system" },
-        { text: "(c) 1998-2026 Honestraj Corp. All rights reserved.", type: "system" },
-        { text: "Type 'help' for a list of active terminal commands.", type: "system" },
-        { text: "", type: "system" }
-    ]);
-    const [inputVal, setInputVal] = useState("");
-    const [showMatrix, setShowMatrix] = useState(false);
-    const terminalEndRef = useRef(null);
-
-    useEffect(() => {
-        terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, [history]);
-
-    const handleCommandSubmit = (e) => {
-        e.preventDefault();
-        const cmd = inputVal.trim().toLowerCase();
-        if (!cmd) return;
-
-        const newHistory = [...history, { text: `C:\\WINDOWS\\DESKTOP>${inputVal}`, type: "input" }];
-
-        if (cmd === "clear") {
-            setHistory([]);
-            setInputVal("");
-            return;
-        }
-
-        if (cmd === "help") {
-            newHistory.push({
-                text: "Available commands:\n  help      - Show this documentation\n  about     - Learn more about Honestraj\n  projects  - Read portfolio listings\n  system    - Display OS configuration info\n  matrix    - Toggle green phosphor digital rain\n  clear     - Wipe command screen log",
-                type: "output"
-            });
-        } else if (cmd === "about") {
-            newHistory.push({
-                text: "Honestraj is a lead UI/UX Product Designer with 4+ years of expertise. He designs intuitive, scalable solutions for start-ups and enterprise ERP databases.",
-                type: "output"
-            });
-        } else if (cmd === "projects" || cmd === "portfolio") {
-            newHistory.push({
-                text: "ACTIVE PORTFOLIO DIRECTORIES:\n  [Folder] UI_UX_Design\n  [Folder] Motion_Graphics\n  [Folder] 3D_Animation\n  [Folder] Image_Processing\n\nDouble-click folder icons on the desktop workspace to open previews.",
-                type: "output"
-            });
-        } else if (cmd === "system" || cmd === "neofetch") {
-            newHistory.push({
-                text: `
-  ██████╗ ███╗   ██╗███████╗███████╗████████╗
-  ██╔═══██╗████╗  ██║██╔════╝██╔════╝╚══██╔══╝
-  ██║   ██║██╔██╗ ██║█████╗  ███████╗   ██║   
-  ██║   ██║██║╚██╗██║██╔══╝  ╚════██║   ██║   
-  ╚██████╔╝██║ ╚████║███████╗███████║   ██║   
-   ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝   ╚═╝   
-  -----------------------------------------
-  OS: HonestOS v1.0 x86_64
-  Active Workspace: Home Page Dashboard
-  Active Theme Scheme: ${activeTheme.toUpperCase()}
-  Creative Engine Uptime: OPTIMAL UPTIME
-  `,
-                type: "output"
-            });
-        } else if (cmd === "matrix") {
-            setShowMatrix(!showMatrix);
-            newHistory.push({
-                text: showMatrix ? "Matrix falling phosphor deactivated." : "Matrix falling phosphor activated.",
-                type: "output"
-            });
-        } else {
-            newHistory.push({
-                text: `'${cmd}' is not recognized as an internal command. Type 'help' for instructions.`,
-                type: "error"
-            });
-        }
-
-        setHistory(newHistory);
-        setInputVal("");
-    };
-
-    return (
-        <div className="flex flex-col h-full bg-[#000000] text-[#33ff33] font-mono text-[10px] md:text-xs p-2.5 overflow-hidden relative select-text" style={{ minHeight: "220px" }}>
-            {showMatrix && <MatrixRain />}
-
-            <div className="flex-1 overflow-y-auto mb-2 flex flex-col gap-1.5 z-10 pr-1 select-text">
-                {history.map((h, i) => (
-                    <pre
-                        key={i}
-                        className={`whitespace-pre-wrap select-text ${h.type === "input" ? "text-white font-bold" :
-                            h.type === "error" ? "text-red-500 font-bold" :
-                                h.type === "system" ? "text-green-500/80" : "text-[#33ff33]"
-                            }`}
-                    >
-                        {h.text}
-                    </pre>
-                ))}
-                <div ref={terminalEndRef} />
-            </div>
-
-            <form onSubmit={handleCommandSubmit} className="flex items-center gap-1 border-t border-green-950 pt-2 shrink-0 z-10 select-none">
-                <span className="shrink-0 text-white">C:\WINDOWS\DESKTOP&gt;</span>
-                <input
-                    type="text"
-                    value={inputVal}
-                    onChange={(e) => setInputVal(e.target.value)}
-                    className="flex-1 bg-transparent text-white outline-none border-none p-0 select-text font-mono text-[10px] md:text-xs caret-green-500"
-                    placeholder="Type 'help'..."
-                />
-            </form>
-        </div>
-    );
-};
-
-// Falling Code Matrix Rain canvas component
-const MatrixRain = () => {
-    const canvasRef = useRef(null);
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
-
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight || 220;
-
-        const cols = Math.floor(canvas.width / 14) + 1;
-        const ypos = Array(cols).fill(0);
-
-        const draw = () => {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#0f0";
-            ctx.font = "10pt monospace";
-
-            ypos.forEach((y, ind) => {
-                const text = String.fromCharCode(Math.floor(Math.random() * 94) + 33);
-                const x = ind * 14;
-                ctx.fillText(text, x, y);
-                if (y > 100 + Math.random() * 10000) ypos[ind] = 0;
-                else ypos[ind] = y + 14;
-            });
-        };
-
-        const interval = setInterval(draw, 33);
-
-        const handleResize = () => {
-            if (!canvas) return;
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = canvas.parentElement.clientHeight || 220;
-        };
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            clearInterval(interval);
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
-
-    return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none opacity-25 z-0 bg-transparent" />;
-};
-
 // SUB-COMPONENT: Start Menu link
 const StartMenuLink = ({ icon, label, onClick }) => {
     return (
         <button
             onClick={onClick}
-            className="w-full text-left flex items-center gap-2.5 py-1.5 px-3 hover:bg-black hover:text-white transition-all cursor-pointer font-medium font-sans border-none"
+            className="w-full text-left flex items-center gap-2.5 py-1.5 px-3 hover:bg-black hover:text-white transition-all cursor-pointer font-medium font-sans border-none rounded"
         >
             <span className="text-sm filter drop-shadow-sm select-none">{icon}</span>
             <span className="font-mono text-xs">{label}</span>
         </button>
+    );
+};
+
+// SUB-COMPONENT: SkillItem file inside Explorer (Desktop)
+const SkillItem = ({ src, name, level, desc }) => {
+    const [showTooltip, setShowTooltip] = useState(false);
+
+    return (
+        <div
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+            className="flex flex-col items-center justify-center p-2 bg-white border border-gray-200 hover:border-black rounded cursor-pointer relative select-none group transition-all"
+        >
+            <div className="w-9 h-9 flex items-center justify-center p-1 bg-white rounded mb-1.5 group-hover:scale-105 transition-transform">
+                <img src={src} alt={name} className="w-full h-full object-contain" />
+            </div>
+            <span className="font-mono text-[10px] font-bold tracking-tight text-center leading-tight truncate w-full text-black">
+                {name}
+            </span>
+
+            {/* Retro style Tooltip block */}
+            <AnimatePresence>
+                {showTooltip && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9, y: 5 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, y: 5 }}
+                        className="absolute bottom-full mb-2 bg-[#ffffe1] border border-black shadow-[3px_3px_0_0_rgba(0,0,0,0.85)] p-2.5 z-50 text-[10px] text-black w-48 rounded-md font-mono pointer-events-none"
+                    >
+                        <span className="font-bold text-[#FF4D00] block mb-0.5">{name}</span>
+                        <div className="text-[9px] text-gray-500 font-bold mb-1">PROFICIENCY: {level}</div>
+                        <p className="text-[9px] leading-tight text-gray-700">{desc}</p>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
+
+// SUB-COMPONENT: Skill Item for Mobile
+const SkillItemMobile = ({ src, name, level }) => {
+    return (
+        <div className="flex items-center gap-2 p-2 bg-white border border-gray-200 rounded shadow-xs">
+            <div className="w-7 h-7 flex items-center justify-center p-0.5 bg-gray-50 border border-gray-100 rounded shrink-0">
+                <img src={src} alt={name} className="w-full h-full object-contain" />
+            </div>
+            <div className="flex-1 font-mono text-[9px] min-w-0">
+                <span className="font-bold block text-black truncate">{name}</span>
+                <span className="text-gray-500 font-medium truncate block">{level}</span>
+            </div>
+        </div>
+    );
+};
+
+// SUB-COMPONENT: Award Registry Item
+const AwardRegistryRow = ({ year, title, company }) => {
+    return (
+        <div className="flex items-center justify-between border-b border-black/10 py-2 hover:bg-black/5 hover:px-1.5 transition-all group cursor-help">
+            <div className="flex flex-col">
+                <span className="font-bold text-[#FF4D00] text-[11px] leading-none mb-0.5">{year}</span>
+                <span className="font-bold text-gray-800 text-[11px]">{title}</span>
+                <span className="text-[10px] text-gray-500 leading-none">{company}</span>
+            </div>
+            <ArrowOutwardIcon className="text-[14px] text-gray-400 group-hover:text-[#FF4D00] group-hover:rotate-45 transition-all" />
+        </div>
     );
 };
 
@@ -2067,13 +1688,13 @@ const ProjectDetailsView = ({ cat, onClose, onOpenGallery, onExpandImage }) => {
                 <div className="flex gap-2 select-none border-t border-gray-200 pt-3">
                     <button
                         onClick={() => onOpenGallery && onOpenGallery(cat)}
-                        className="flex-1 bg-black text-white hover:bg-gray-800 font-bold py-2 text-center text-[10px] tracking-wide active:translate-y-[1px] cursor-pointer shadow-[2px_2px_0_0_#ccc] active:shadow-none transition-all"
+                        className="flex-1 bg-black text-white hover:bg-gray-800 font-bold py-2 text-center text-[10px] tracking-wide active:translate-y-[1px] cursor-pointer shadow-[2px_2px_0_0_#ccc] active:shadow-none transition-all rounded"
                     >
                         Open Category Gallery ➔
                     </button>
                     <button
                         onClick={onClose}
-                        className="px-4 py-2 border border-black hover:bg-gray-100 font-bold text-black text-center text-[10px] cursor-pointer"
+                        className="px-4 py-2 border border-black hover:bg-gray-100 font-bold text-black text-center text-[10px] cursor-pointer rounded"
                     >
                         Close
                     </button>
@@ -2188,7 +1809,7 @@ const CategoryGalleryView = ({ cat, onClose, onExpandImage }) => {
                             {item.isRouter ? (
                                 <Link
                                     to={item.url}
-                                    className="w-full py-1.5 bg-[#dfdfdf] border border-t-white border-l-white border-b-gray-700 border-r-gray-700 text-center font-bold text-[9px] text-[#FF4D00] flex items-center justify-center gap-0.5 select-none hover:bg-gray-100 active:border-b-white active:border-r-white active:border-t-gray-700 active:border-l-gray-700"
+                                    className="w-full py-1.5 bg-[#dfdfdf] border border-t-white border-l-white border-b-gray-700 border-r-gray-700 text-center font-bold text-[9px] text-[#FF4D00] flex items-center justify-center gap-0.5 select-none hover:bg-gray-100 active:border-b-white active:border-r-white active:border-t-gray-700 active:border-l-gray-700 rounded"
                                 >
                                     Open Machine Page <ArrowOutwardIcon className="text-[10px]" />
                                 </Link>
@@ -2197,12 +1818,12 @@ const CategoryGalleryView = ({ cat, onClose, onExpandImage }) => {
                                     href={item.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-full py-1.5 bg-[#dfdfdf] border border-t-white border-l-white border-b-gray-700 border-r-gray-700 text-center font-bold text-[9px] text-black flex items-center justify-center gap-0.5 select-none group-hover:bg-[#FF4D00] group-hover:text-white hover:border-black active:border-b-white active:border-r-white active:border-t-gray-700 active:border-l-gray-700"
+                                    className="w-full py-1.5 bg-[#dfdfdf] border border-t-white border-l-white border-b-gray-700 border-r-gray-700 text-center font-bold text-[9px] text-black flex items-center justify-center gap-0.5 select-none group-hover:bg-[#FF4D00] group-hover:text-white hover:border-black active:border-b-white active:border-r-white active:border-t-gray-700 active:border-l-gray-700 rounded"
                                 >
                                     Launch Project Wires <ArrowOutwardIcon className="text-[10px]" />
                                 </a>
                             ) : (
-                                <div className="w-full py-1.5 bg-[#dfdfdf] border border-gray-300 text-center font-mono text-[9px] text-gray-400 select-none">
+                                <div className="w-full py-1.5 bg-[#dfdfdf] border border-gray-300 text-center font-mono text-[9px] text-gray-400 select-none rounded">
                                     FILE OFFLINE: LOCAL ONLY
                                 </div>
                             )}
@@ -2215,7 +1836,7 @@ const CategoryGalleryView = ({ cat, onClose, onExpandImage }) => {
             <div className="p-3 bg-[#c0c0c0] border-t-2 border-t-white flex gap-2 select-none justify-end">
                 <button
                     onClick={onClose}
-                    className="px-6 py-1.5 bg-[#c0c0c0] border-2 border-t-white border-l-white border-b-gray-800 border-r-gray-800 font-bold text-[10px] cursor-pointer hover:bg-gray-200 active:border-b-white active:border-r-white active:border-t-gray-800 active:border-l-gray-800"
+                    className="px-6 py-1.5 bg-[#c0c0c0] border-2 border-t-white border-l-white border-b-gray-800 border-r-gray-800 font-bold text-[10px] cursor-pointer hover:bg-gray-200 active:border-b-white active:border-r-white active:border-t-gray-800 active:border-l-gray-800 rounded"
                 >
                     ✕ Close File
                 </button>

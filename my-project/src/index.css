@@ -18,6 +18,23 @@ a {
   text-decoration: inherit;
 }
 
+/* Custom Hand Cursor */
+a,
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+summary,
+.cursor-pointer,
+.cursor-help,
+.neo-button,
+[data-cursor="pointer"],
+.neo-sticker {
+  cursor: url('./assets/hand-cursor-32.png') 3 1, url('./assets/hand cursor.png') 3 1, pointer !important;
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -188,4 +205,55 @@ body {
 .terminal-green-text {
   color: #39ff14;
   text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+}
+
+/* Authentic VHS Glitch Styles */
+@keyframes vhs-flicker {
+  0%, 100% { opacity: 0.98; transform: skewX(0); }
+  48% { opacity: 1; transform: skewX(0); }
+  50% { opacity: 0.88; transform: skewX(-1.5deg) translate(-1px, 0); }
+  52% { opacity: 1; transform: skewX(0); }
+  82% { transform: translate(0, 0); }
+  84% { transform: translate(-2px, 1px) skewX(1deg); }
+  86% { transform: translate(0, 0); }
+}
+
+@keyframes vhs-noise-bar {
+  0% { top: -20%; opacity: 0; }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.9; }
+  100% { top: 120%; opacity: 0; }
+}
+
+.vhs-glitch-layer {
+  position: relative;
+  display: inline-block;
+  animation: vhs-flicker 2.8s infinite linear;
+}
+
+.vhs-glitch-layer::before,
+.vhs-glitch-layer::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.vhs-glitch-layer::before {
+  left: -2px;
+  color: #00ffff;
+  clip-path: inset(20% 0 50% 0);
+  animation: glitch-anim-1 1.8s infinite linear alternate-reverse;
+  opacity: 0.75;
+}
+
+.vhs-glitch-layer::after {
+  left: 2px;
+  color: #ff0055;
+  clip-path: inset(60% 0 10% 0);
+  animation: glitch-anim-2 2.1s infinite linear alternate-reverse;
+  opacity: 0.75;
 }
