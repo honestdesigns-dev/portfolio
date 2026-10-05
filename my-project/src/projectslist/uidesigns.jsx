@@ -13,9 +13,16 @@ import qodora from "../assets/projects/Qodora.png";
 import colan from "../assets/projects/colan.png";
 import solar from "../assets/projects/solar.png";
 import hajj from "../assets/projects/hajj.png";
+import rido from "../assets/projects/rido.png";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const projects = [
+    {
+        name: "Rido (Bike/Cab Booking)",
+        link: "https://www.behance.net/gallery/256520445/Rido-Travel-App-Bike-Cab-Ride-App-Travel-App",
+        img: rido,
+        category: "Bike & Cab Booking App"
+    },
     {
         name: "Ramachandran Hospitality",
         link: "https://www.behance.net/gallery/254825315/Hospitality",

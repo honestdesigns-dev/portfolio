@@ -43,6 +43,7 @@ import kuvi from "../assets/projects/kuvi.png";
 import qodora from "../assets/projects/Qodora.png";
 import solar from "../assets/projects/solar.png";
 import hajj from "../assets/projects/hajj.png";
+import rido from "../assets/projects/rido.png";
 
 // Project Preview Images - Motion
 import gg from "../assets/projects/gg.png";
@@ -1602,6 +1603,7 @@ const ProjectDetailsView = ({ cat, onClose, onOpenGallery, onExpandImage }) => {
             desc: "Intuitive, clean, and system-driven interface case designs built mainly for enterprise-grade ERP architectures and dashboards.",
             cover: uiux,
             items: [
+                { name: "Rido (Bike/Cab Booking)", type: "Bike & Cab Booking App Case Study", url: "https://www.behance.net/honestrhonestr1" },
                 { name: "Ramachandran Hospitality", type: "Hospitality Website Case Study", url: "https://www.behance.net/gallery/254825315/Hospitality" },
                 { name: "Ramachandran Education", type: "University Web Portal UI Layouts", url: "https://www.behance.net/gallery/254783717/Education-Website" },
                 { name: "Good Fellows (Healthcare)", type: "High-Fidelity Social UI / Healthcare", url: "https://www.behance.net/gallery/254562389/Healthcare" },
@@ -1711,6 +1713,7 @@ const CategoryGalleryView = ({ cat, onClose, onExpandImage }) => {
             title: "UI/UX Design Projects",
             desc: "Intuitive, clean, and system-driven interface case designs built mainly for enterprise-grade ERP architectures and dashboards.",
             items: [
+                { name: "Rido (Bike/Cab Booking)", type: "Bike & Cab Booking App Case Study", url: "https://www.behance.net/honestrhonestr1", img: rido, tag: "Ride-Hailing" },
                 { name: "Ramachandran Hospitality", type: "Hospitality Website Case Study", url: "https://www.behance.net/gallery/254825315/Hospitality", img: ehos, tag: "Hospitality" },
                 { name: "Ramachandran Education", type: "University Web Portal UI Layouts", url: "https://www.behance.net/gallery/254783717/Education-Website", img: eedu, tag: "Academic" },
                 { name: "Good Fellows (Healthcare)", type: "High-Fidelity Social UI / Healthcare", url: "https://www.behance.net/gallery/254562389/Healthcare", img: caretaker, tag: "Social" },

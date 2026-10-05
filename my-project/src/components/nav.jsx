@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const SEARCH_INDEX = [
     // UI/UX
+    { name: "Rido (Bike/Cab Booking)", path: "https://www.behance.net/honestrhonestr1", category: "UI/UX Design", description: "On-demand bike taxi & cab booking mobile app case study" },
     { name: "Ramachandran Hospitality", path: "https://www.behance.net/gallery/254825315/Hospitality", category: "UI/UX Design", description: "Hospitality and dining system case design layouts" },
     { name: "Ramachandran Education", path: "https://www.behance.net/gallery/254783717/Education-Website", category: "UI/UX Design", description: "University web portal interface layouts" },
     { name: "Good Fellows (Healthcare)", path: "https://www.behance.net/gallery/254562389/Healthcare", category: "UI/UX Design", description: "Social caretaker system high-fidelity wireframes" },
