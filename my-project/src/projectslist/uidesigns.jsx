@@ -94,6 +94,12 @@ const projects = [
         link: "https://www.behance.net/gallery/208198007/Algominds",
         img: algominds,
         category: "Developer Education"
+    },
+    {
+        name: "Aspire Lens",
+        link: "https://www.aspirelens.com/",
+        img: aspirelens,
+        category: "Wedding Photography"
     }
 ];
 
