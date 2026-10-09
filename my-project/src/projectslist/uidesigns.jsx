@@ -10,13 +10,19 @@ import sports from "../assets/projects/sportsref.png";
 import lightup from "../assets/projects/lightup.png";
 import kuvi from "../assets/projects/kuvi.png";
 import qodora from "../assets/projects/Qodora.png";
-import colan from "../assets/projects/colan.png";
 import solar from "../assets/projects/solar.png";
 import hajj from "../assets/projects/hajj.png";
 import rido from "../assets/projects/rido.png";
+import aspirelens from "../assets/projects/aspirelenss.png";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const projects = [
+    {
+        name: "Aspire Lens",
+        link: "https://www.aspirelens.com/",
+        img: aspirelens,
+        category: "School Photography Platform"
+    },
     {
         name: "Rido (Bike/Cab Booking)",
         link: "https://www.behance.net/gallery/256520445/Rido-Travel-App-Bike-Cab-Ride-App-Travel-App",
@@ -94,12 +100,6 @@ const projects = [
         link: "https://www.behance.net/gallery/208198007/Algominds",
         img: algominds,
         category: "Developer Education"
-    },
-    {
-        name: "Aspire Lens",
-        link: "https://www.aspirelens.com/",
-        img: aspirelens,
-        category: "Wedding Photography"
     }
 ];
 
