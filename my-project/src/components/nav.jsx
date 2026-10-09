@@ -168,7 +168,7 @@ export default function Navigation() {
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-[#000000] transition-all duration-300">
-            <div className="max-w-[1880px] mx-auto flex items-center justify-between px-6 py-4 xl:px-0">
+            <div className="max-w-[1880px] mx-auto flex items-center justify-between px-6 py-4 xl:px-0 ml-4 mr-4">
 
                 <Link to="/" className="flex items-center gap-3 select-none shrink-0">
                     <span className="text-[#f2efe9] font-black text-2xl tracking-widest uppercase font-mono">HONEST</span>
