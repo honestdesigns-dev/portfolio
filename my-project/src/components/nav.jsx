@@ -168,7 +168,7 @@ export default function Navigation() {
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-[#000000] transition-all duration-300">
-            <div className="max-w-[1880px] mx-auto flex items-center justify-between px-6 py-4 xl:px-0 ml-4 mr-4">
+            <div className="max-w-[1880px] mx-auto flex items-center justify-between px-6 py-4 xl:px-0 ml-8 mr-8">
 
                 <Link to="/" className="flex items-center gap-3 select-none shrink-0">
                     <span className="text-[#f2efe9] font-black text-2xl tracking-widest uppercase font-mono">HONEST</span>
@@ -179,12 +179,12 @@ export default function Navigation() {
                     {/* Search Bar - Desktop */}
                     <div ref={searchRef} className="relative w-[240px] focus-within:w-[300px] transition-all duration-300 z-[99] group">
                         <div className="relative flex items-center">
-                            <svg 
-                                className="absolute left-3 w-3.5 h-3.5 text-gray-500 pointer-events-none transition-colors duration-200 group-focus-within:text-[#3bdfd9]" 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                fill="none" 
-                                viewBox="0 0 24 24" 
-                                stroke="currentColor" 
+                            <svg
+                                className="absolute left-3 w-3.5 h-3.5 text-gray-500 pointer-events-none transition-colors duration-200 group-focus-within:text-[#3bdfd9]"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
                                 strokeWidth={2.5}
                             >
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -303,12 +303,12 @@ export default function Navigation() {
                     {/* Mobile Search Input */}
                     <div ref={mobileSearchRef} className="relative w-full max-w-[280px]">
                         <div className="relative flex items-center">
-                            <svg 
-                                className="absolute left-3 w-3.5 h-3.5 text-gray-500 pointer-events-none" 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                fill="none" 
-                                viewBox="0 0 24 24" 
-                                stroke="currentColor" 
+                            <svg
+                                className="absolute left-3 w-3.5 h-3.5 text-gray-500 pointer-events-none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
                                 strokeWidth={2.5}
                             >
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -387,8 +387,8 @@ export default function Navigation() {
                     >
                         Home
                     </Link>
-                    <Link 
-                        to="/resume" 
+                    <Link
+                        to="/resume"
                         onClick={() => setIsMenuOpen(false)}
                         className="bg-[#b1e847] text-black border-2 border-black font-black uppercase text-xs tracking-widest py-3 px-6 text-center w-48 shadow-[3px_3px_0px_0px_#000] hover:scale-102 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rounded-md"
                     >

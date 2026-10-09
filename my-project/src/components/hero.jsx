@@ -234,9 +234,8 @@ const CenterWallpaper = () => {
                     src={currentImg}
                     alt="Center Workspace Wallpaper"
                     style={{ height: "400px", width: "auto" }}
-                    className={`max-h-[80vh] max-w-[90vw] object-contain pointer-events-none transition-transform duration-75 ${
-                        isGlitching ? "scale-[1.02] skew-x-[-1.5deg] brightness-125 contrast-125" : "scale-100"
-                    }`}
+                    className={`max-h-[80vh] max-w-[90vw] object-contain pointer-events-none transition-transform duration-75 ${isGlitching ? "scale-[1.02] skew-x-[-1.5deg] brightness-125 contrast-125" : "scale-100"
+                        }`}
                 />
 
                 {/* Instant Glitch Burst Slices */}
