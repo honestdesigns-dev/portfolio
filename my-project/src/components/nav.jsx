@@ -10,7 +10,7 @@ const SEARCH_INDEX = [
     { name: "Travel Guide (HAJJ Travel)", path: "https://www.behance.net/gallery/254786435/Travel-Tourism", category: "UI/UX Design", description: "Hajj travel guide mobile app screens & map workflow" },
     { name: "QODORA (Medical Insurance)", path: "https://www.behance.net/gallery/250527775/Qodora", category: "UI/UX Design", description: "Medical insurance prototype & checkout flows" },
     { name: "Solar Energy Management", path: "https://www.behance.net/gallery/254784961/Solar-Energy-Management", category: "UI/UX Design", description: "Battery tracking & solar generation metric dashboard" },
-    { name: "Signex (Enterprise)", path: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study", category: "UI/UX Design", description: "Enterprise ERP product and signage dashboard case study" },
+    { name: "Awal Plastics (Enterprise)", path: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study", category: "UI/UX Design", description: "Enterprise ERP product and signage dashboard case study" },
     { name: "Sports Reform", path: "https://www.behance.net/gallery/205963977/Sports-Reform-website-ui-design", category: "UI/UX Design", description: "Sports performance dashboard and wireframe layouts" },
     { name: "Guvi Learning Platform", path: "https://www.behance.net/gallery/240490215/Learning-Course-Landing-Page", category: "UI/UX Design", description: "EdTech course portal & registration landing page" },
     { name: "Lightup Temple (Booking Pooja)", path: "https://www.behance.net/gallery/205956803/Lightup-Temples-website-ui-design", category: "UI/UX Design", description: "SaaS booking engine for pooja and spiritual services" },
@@ -34,9 +34,13 @@ const SEARCH_INDEX = [
     { name: "Phoneix Bird", path: "https://drive.google.com/file/d/1fvthm8s8gaUEzqzAE-cF-PADXcgndxEi/view?usp=sharing", category: "3D Animation", description: "Blender asset pack 3D mesh modeling rendering" },
     { name: "Winter Environment", path: "https://drive.google.com/file/d/1bY_IJ9-j5qRLcUO70GuiEmp907Z-wI4F/view?usp=sharing", category: "3D Animation", description: "Low-poly environment render & Blender meshes" },
 
+    // Web Development
+    { name: "Aspire Lens", path: "https://www.aspirelens.com/", category: "Web Development", description: "Integrated online school photography platform and client portal" },
+
     // Pages & Resume
     { name: "Resume & Professional CV", path: "/resume", category: "Resume", description: "Retro resume reader app, skills index & pdf download" },
     { name: "UI/UX Projects Collection", path: "/uidesigns", category: "Gallery", description: "Explore full index of design files and casing" },
+    { name: "Web Development Projects", path: "/webdevelopment", category: "Gallery", description: "Explore full index of live web apps and client platforms" },
     { name: "Motion Graphic Showcase", path: "/motiondesigns", category: "Gallery", description: "Explore full vector animations and clips list" },
     { name: "3D Blender Work", path: "/3ddesigns", category: "Gallery", description: "Explore static Blender meshes and renders" },
 
@@ -58,6 +62,8 @@ const getCategoryDetails = (category) => {
             return { color: "text-[#ff4a7d] bg-[#ff4a7d]/10 border-[#ff4a7d]/30", icon: "🎬" };
         case "3D Animation":
             return { color: "text-[#ffcc00] bg-[#ffcc00]/10 border-[#ffcc00]/30", icon: "🧊" };
+        case "Web Development":
+            return { color: "text-[#10b981] bg-[#10b981]/10 border-[#10b981]/30", icon: "🌐" };
         case "Resume":
             return { color: "text-[#39ff14] bg-[#39ff14]/10 border-[#39ff14]/30", icon: "📄" };
         case "Skills":

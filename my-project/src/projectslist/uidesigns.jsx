@@ -4,8 +4,6 @@ import awalPlastics from "../assets/projects/awal.png";
 import caretaker from "../assets/projects/caretaker.png";
 import eedu from "../assets/projects/eeducation.png";
 import ehos from "../assets/projects/ehospital.png";
-import mist from "../assets/projects/mistnov.png";
-import algominds from "../assets/projects/algomind.png";
 import sports from "../assets/projects/sportsref.png";
 import lightup from "../assets/projects/lightup.png";
 import kuvi from "../assets/projects/kuvi.png";
@@ -13,15 +11,14 @@ import qodora from "../assets/projects/Qodora.png";
 import solar from "../assets/projects/solar.png";
 import hajj from "../assets/projects/hajj.png";
 import rido from "../assets/projects/rido.png";
-import aspirelens from "../assets/projects/aspirelenss.png";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const projects = [
     {
-        name: "Aspire Lens",
-        link: "https://www.aspirelens.com/",
-        img: aspirelens,
-        category: "School Photography Platform"
+        name: "Awal Plastics (Enterprise)",
+        link: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study",
+        img: awalPlastics,
+        category: "Enterprise Platform"
     },
     {
         name: "Rido (Bike/Cab Booking)",
@@ -66,12 +63,6 @@ const projects = [
         category: "Energy Management Dashboard"
     },
     {
-        name: "Signex (Enterprise)",
-        link: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study",
-        img: awalPlastics,
-        category: "ERP / Enterprise Dashboard"
-    },
-    {
         name: "Sports Reform",
         link: "https://www.behance.net/gallery/205963977/Sports-Reform-website-ui-design",
         img: sports,
@@ -89,18 +80,6 @@ const projects = [
         img: lightup,
         category: "SaaS Booking Platform"
     },
-    {
-        name: "Mistnov (Hotel Booking) - Freelance",
-        link: "https://www.behance.net/gallery/205870419/Mistnov",
-        img: mist,
-        category: "Travel & Hospitality"
-    },
-    {
-        name: "Algominds (Code learning platform)",
-        link: "https://www.behance.net/gallery/208198007/Algominds",
-        img: algominds,
-        category: "Developer Education"
-    }
 ];
 
 export default function Works() {

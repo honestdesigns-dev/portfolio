@@ -3,6 +3,7 @@ import './App.css'
 import Navigation from './components/nav'
 import Hero from './components/hero'
 import UIDesigns from './projectslist/uidesigns';
+import WebDevelopment from './projectslist/webdevelopment';
 import MotionDesigns from './projectslist/motiondesigns';
 import ThreeDDesigns from './projectslist/3ddesigns';
 import ViewResume from './viewresume'; // Retro Resume Reader App Route
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Hero />} />
             <Route path="/uidesigns" element={<UIDesigns />} />
+            <Route path="/webdevelopment" element={<WebDevelopment />} />
             <Route path="/motiondesigns" element={<MotionDesigns />} />
             <Route path="/3ddesigns" element={<ThreeDDesigns />} />
             <Route path="/about" element={<Navigate to="/" replace />} />

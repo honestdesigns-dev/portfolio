@@ -62,6 +62,9 @@ import trinity from "../assets/projects/trinity.png";
 import phoneix from "../assets/projects/phoneix.png";
 import winter from "../assets/projects/winter.png";
 
+// Project Preview Images - Web Development
+import aspirelens from "../assets/projects/aspirelenss.png";
+
 // Themes Config
 const themeStyles = {
     win98: {
@@ -508,15 +511,23 @@ export default function Hero() {
                         <div className="p-4 flex flex-col h-full bg-[#f8f8f8] text-black">
                             <div className="flex justify-between items-center text-xs font-mono border-b border-gray-300 pb-2 mb-4 select-none">
                                 <span>Select a portfolio category directory to open previews</span>
-                                <span className="text-gray-400">3 folders found</span>
+                                <span className="text-gray-400">4 folders found</span>
                             </div>
 
-                            <div className="grid grid-cols-3 gap-4 overflow-y-auto p-1 flex-1">
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 overflow-y-auto p-1 flex-1">
                                 <ProjectFolderIcon
                                     label="UI_UX_Design"
                                     imgSrc={uiux}
                                     onClick={() => {
                                         setSelectedProjCat("uiux");
+                                        openApp("projDetail");
+                                    }}
+                                />
+                                <ProjectFolderIcon
+                                    label="Web_Development"
+                                    imgSrc={aspirelens}
+                                    onClick={() => {
+                                        setSelectedProjCat("webdev");
                                         openApp("projDetail");
                                     }}
                                 />
@@ -862,14 +873,22 @@ export default function Hero() {
                                 <div className="p-3 bg-[#f8f8f8] text-black">
                                     <div className="text-[10px] font-mono border-b border-gray-300 pb-1.5 mb-3 flex justify-between">
                                         <span>Select category directory:</span>
-                                        <span className="text-gray-400">3 folders</span>
+                                        <span className="text-gray-400">4 folders</span>
                                     </div>
-                                    <div className="grid grid-cols-3 gap-2.5">
+                                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                                         <ProjectFolderIcon
                                             label="UI_UX"
                                             imgSrc={uiux}
                                             onClick={() => {
                                                 setSelectedProjCat("uiux");
+                                                openApp("projDetail");
+                                            }}
+                                        />
+                                        <ProjectFolderIcon
+                                            label="Web_Dev"
+                                            imgSrc={aspirelens}
+                                            onClick={() => {
+                                                setSelectedProjCat("webdev");
                                                 openApp("projDetail");
                                             }}
                                         />
@@ -1082,7 +1101,26 @@ export default function Hero() {
                                     </span>
                                     <div>
                                         <span className="font-bold text-xs block text-black">UI/UX Design Projects</span>
-                                        <span className="text-[9px] text-gray-500">12 Enterprise & SaaS Layouts</span>
+                                        <span className="text-[9px] text-gray-500">11 Enterprise & SaaS Layouts</span>
+                                    </div>
+                                </div>
+                                <span className="text-[10px] font-bold text-[#FF4D00]">Open ➔</span>
+                            </button>
+
+                            <button
+                                onClick={() => {
+                                    setSelectedProjCat("webdev");
+                                    openApp("projDetail");
+                                }}
+                                className="flex items-center justify-between p-2 bg-gray-50 hover:bg-gray-100 border border-black rounded text-left"
+                            >
+                                <div className="flex items-center gap-2">
+                                    <span className="w-8 h-8 rounded overflow-hidden border border-black shrink-0">
+                                        <img src={aspirelens} alt="Web Dev" className="w-full h-full object-cover" />
+                                    </span>
+                                    <div>
+                                        <span className="font-bold text-xs block text-black">Web Development</span>
+                                        <span className="text-[9px] text-gray-500">Live Client Platforms</span>
                                     </div>
                                 </div>
                                 <span className="text-[10px] font-bold text-[#FF4D00]">Open ➔</span>
@@ -1610,7 +1648,7 @@ const ProjectDetailsView = ({ cat, onClose, onOpenGallery, onExpandImage }) => {
                 { name: "Travel Guide (HAJJ Travel)", type: "Travel & Tourism App", url: "https://www.behance.net/gallery/254786435/Travel-Tourism" },
                 { name: "QODORA (Medical Insurance)", type: "Medical Insurance App Prototype", url: "https://www.behance.net/gallery/250527775/Qodora" },
                 { name: "Solar Energy Management", type: "Energy Management Dashboard", url: "https://www.behance.net/gallery/254784961/Solar-Energy-Management" },
-                { name: "Signex (Enterprise)", type: "Enterprise ERP Dashboard Case", url: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study" },
+                { name: "Awal Plastics (Enterprise)", type: "Enterprise ERP Dashboard Case", url: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study" },
                 { name: "Sports Reform", type: "Sports Performance Web Wires", url: "https://www.behance.net/gallery/205963977/Sports-Reform-website-ui-design" },
                 { name: "Guvi Learning Platform", type: "EdTech Learning Platform", url: "https://www.behance.net/gallery/240490215/Learning-Course-Landing-Page" },
                 { name: "Lightup Temple (Booking Pooja)", type: "SaaS Temple Booking Portal", url: "https://www.behance.net/gallery/205956803/Lightup-Temples-website-ui-design" },
@@ -1634,6 +1672,14 @@ const ProjectDetailsView = ({ cat, onClose, onOpenGallery, onExpandImage }) => {
             items: [
                 { name: "Winter Falls", type: "Low poly animation ", url: "https://drive.google.com/file/d/1bY_IJ9-j5qRLcUO70GuiEmp907Z-wI4F/view" },
                 { name: "Phoneix Bird", type: "Low poly animation ", url: "https://drive.google.com/file/d/1fvthm8s8gaUEzqzAE-cF-PADXcgndxEi/view" }
+            ]
+        },
+        webdev: {
+            title: "Web Development Projects",
+            desc: "Responsive web applications, modern front-end platforms, and live client websites engineered with high performance and interactive UX.",
+            cover: aspirelens,
+            items: [
+                { name: "Aspire Lens", type: "School Photography Platform", url: "https://www.aspirelens.com/" }
             ]
         }
     };
@@ -1720,7 +1766,7 @@ const CategoryGalleryView = ({ cat, onClose, onExpandImage }) => {
                 { name: "Travel Guide (HAJJ Travel)", type: "Travel & Tourism App", url: "https://www.behance.net/gallery/254786435/Travel-Tourism", img: hajj, tag: "Travel" },
                 { name: "QODORA (Medical Insurance)", type: "Medical Insurance App Prototype", url: "https://www.behance.net/gallery/250527775/Qodora", img: qodora, tag: "Medical" },
                 { name: "Solar Energy Management", type: "Energy Management Dashboard", url: "https://www.behance.net/gallery/254784961/Solar-Energy-Management", img: solar, tag: "Dashboard" },
-                { name: "Signex (Enterprise)", type: "Enterprise ERP Dashboard Case", url: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study", img: awalPlastics, tag: "ERP" },
+                { name: "Awal Plastics (Enterprise)", type: "Enterprise ERP Dashboard Case", url: "https://www.behance.net/gallery/237202087/Signex-ERP-App-UIUX-Product-Design-Case-Study", img: awalPlastics, tag: "ERP" },
                 { name: "Sports Reform", type: "Sports Performance Web Wires", url: "https://www.behance.net/gallery/205963977/Sports-Reform-website-ui-design", img: sports, tag: "Sports" },
                 { name: "Guvi Learning Platform", type: "EdTech Learning Platform", url: "https://www.behance.net/gallery/240490215/Learning-Course-Landing-Page", img: kuvi, tag: "EdTech" },
                 { name: "Lightup Temple (Booking Pooja)", type: "SaaS Temple Booking Portal", url: "https://www.behance.net/gallery/205956803/Lightup-Temples-website-ui-design", img: lightup, tag: "SaaS" },
@@ -1751,6 +1797,13 @@ const CategoryGalleryView = ({ cat, onClose, onExpandImage }) => {
             items: [
                 { name: "Phoneix Bird", type: "Blender Asset Pack Modeling", url: "https://drive.google.com/file/d/1fvthm8s8gaUEzqzAE-cF-PADXcgndxEi/view?usp=sharing", img: phoneix, tag: "3D Mesh" },
                 { name: "Winter Scene", type: "Low-Poly Environment Scene", url: "https://drive.google.com/file/d/1bY_IJ9-j5qRLcUO70GuiEmp907Z-wI4F/view?usp=sharing", img: winter, tag: "Renders" }
+            ]
+        },
+        webdev: {
+            title: "Web Development Projects",
+            desc: "Responsive web applications, modern front-end platforms, and live client websites engineered with high performance and interactive UX.",
+            items: [
+                { name: "Aspire Lens", type: "School Photography Platform", url: "https://www.aspirelens.com/", img: aspirelens, tag: "Live Site" }
             ]
         }
     };
